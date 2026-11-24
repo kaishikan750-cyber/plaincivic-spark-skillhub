@@ -1,0 +1,305 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C07",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理年龄与户籍/常住范围\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"仅限年满65周岁及以上、本市户籍老年人办理\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理年龄与常住范围\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"年满60周岁及以上、常住老年人即可申领\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L2\",\n      \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"必备材料（S1）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"身份证原件、户口簿原件、近期2寸纸质彩色照片2张\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"必备材料（S2）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L3\",\n      \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"fee\",\n      \"item\": \"办理费用（S1）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"首次办卡收取工本费20元\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"办理费用：首次办卡收取工本费20元。\"\n    },\n    {\n      \"id\": \"R6\",\n      \"category\": \"fee\",\n      \"item\": \"办理费用（S2）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"首次申领免收工本费\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L4\",\n      \"quote\": \"办理费用：首次申领免收工本费。\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\n      \"topic\": \"办理年龄与户籍/常住范围\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L2\",\n        \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L2\",\n        \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n      }\n    },\n    {\n      \"topic\": \"必备材料\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L3\",\n        \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L3\",\n        \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n      }\n    },\n    {\n      \"topic\": \"办理费用\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L4\",\n        \"quote\": \"办理费用：首次办卡收取工本费20元。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L4\",\n        \"quote\": \"办理费用：首次申领免收工本费。\"\n      }\n    }\n  ],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": []\n}\n```",
+    "reasoning_content": "我们需要回答用户。需要输出合法 JSON 对象，根据任务。注意系统说 thinking_effort high? 但用户要求输出 JSON，不要额外解释。我们需要从原文提取要求。\n\n需要仔细解析输入。\n\n用户给了事项：老年人敬老卡（免费乘车卡）申领（参考日期：2026-11-24）\n\n然后【登记来源全文】\n[S1] filename=community_poster_2024.txt | date=2024-05-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【小区宣传栏通知】老年人敬老卡办理须知（2024年5月张贴）\nL2: 办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\nL3: 必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\nL4: 办理费用：首次办卡收取工本费20元。\n\n[S2] filename=district_notice_2026.txt | date=2026-09-15 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【区民政与交通局联合通知】2026年敬老卡便民升级通知（2026年9月15日发布）\nL2: 办理年龄：年满60周岁及以上的常住老年人即可申领。\nL3: 必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\nL4: 办理费用：首次申领免收工本费。\n\n输出 JSON 格式要求：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}\n\n需要输出合法 JSON。注意我们只能从原文提取，跳过纯标题行。需要提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。\n\n原文没有 L7/L8? S1 只有 L1-L4, S2 L1-L4。unreadable_sections 应该没有，因为没有扫描模糊/不可读段落。service_info_notes 一般性受理后审批工作日/收费标准/开放时间/不设截止日期。这里办理费用是硬性要求，不是一般性服务信息？用户说“一般性的‘受理后审批工作日/收费标准/开放时间/不设截止日期’记入 service_info_notes”。这里办理费用明确是收费条件，应该放在 extracted_requirements category=fee，而不是 service_info_notes？ 但 service_info_notes 字段存在，可放一般性信息。原文没有审批工作日/开放时间/截止日期。费用是明确条款，应提取为要求。需要决定。\n\nS1 和 S2 互相冲突：办理年龄、必备材料、办理费用。需要 multi_source_conflicts 并列双方。可能每个冲突项分别写？ 模板给一个对象有 topic, side_a, side_b。可以多个冲突项。应该列出所有冲突：年龄、材料、费用。注意 S1 与 S2 冲突，S1 date 2024, S2 date 2026。用户参考日期 2026-11-24，可能 S2 更新，但要求不自行选边。\n\n需要提取 requirements 所有可核验条件：\n- 办理年龄：S1 L2 仅限年满65周岁及以上的本市户籍老年人办理。necessity required, category eligibility, constraints 含“年满65周岁及以上、本市户籍”。S2 L2 年满60周岁及以上的常住老年人即可申领。necessity required, constraints 含“年满60周岁及以上、常住老年人”。\n- 必备材料：S1 L3 身份证原件、户口簿原件、近期2寸纸质彩色照片2张。necessity required, category document, constraints 含“身份证原件、户口簿原件、近期2寸纸质彩色照片2张”。S2 L3 身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。necessity required? 必备材料：S2 说身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。可提取为 S2 document requirement。注意 S2 说“身份证原件即可”是必备材料，但“现场免费采集电子照片”是条件材料？ 可以提取为 required document with constraints 含“身份证原件即可、现场免费采集电子照片、无需携带纸质照片及户口簿”。necessity required。\n- 办理费用：S1 L4 首次办卡收取工本费20元。category fee, necessity required, constraints 含“首次办卡收取工本",
+    "raw_content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理年龄与户籍/常住范围\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"仅限年满65周岁及以上、本市户籍老年人办理\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理年龄与常住范围\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"年满60周岁及以上、常住老年人即可申领\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L2\",\n      \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"必备材料（S1）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"身份证原件、户口簿原件、近期2寸纸质彩色照片2张\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"必备材料（S2）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L3\",\n      \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"fee\",\n      \"item\": \"办理费用（S1）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"首次办卡收取工本费20元\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"办理费用：首次办卡收取工本费20元。\"\n    },\n    {\n      \"id\": \"R6\",\n      \"category\": \"fee\",\n      \"item\": \"办理费用（S2）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"首次申领免收工本费\",\n      \"source_id\": \"S2\",\n      \"locator\": \"L4\",\n      \"quote\": \"办理费用：首次申领免收工本费。\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\n      \"topic\": \"办理年龄与户籍/常住范围\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L2\",\n        \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L2\",\n        \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n      }\n    },\n    {\n      \"topic\": \"必备材料\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L3\",\n        \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L3\",\n        \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n      }\n    },\n    {\n      \"topic\": \"办理费用\",\n      \"side_a\": {\n        \"source_id\": \"S1\",\n        \"locator\": \"L4\",\n        \"quote\": \"办理费用：首次办卡收取工本费20元。\"\n      },\n      \"side_b\": {\n        \"source_id\": \"S2\",\n        \"locator\": \"L4\",\n        \"quote\": \"办理费用：首次申领免收工本费。\"\n      }\n    }\n  ],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": []\n}\n```",
+    "prompt_tokens": 1019,
+    "completion_tokens": 2513,
+    "total_tokens": 3532,
+    "wall_seconds": 53.363,
+    "tokens_per_sec": 47.09,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：老年人敬老卡（免费乘车卡）申领（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=community_poster_2024.txt | date=2024-05-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【小区宣传栏通知】老年人敬老卡办理须知（2024年5月张贴）\nL2: 办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\nL3: 必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\nL4: 办理费用：首次办卡收取工本费20元。\n\n[S2] filename=district_notice_2026.txt | date=2026-09-15 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【区民政与交通局联合通知】2026年敬老卡便民升级通知（2026年9月15日发布）\nL2: 办理年龄：年满60周岁及以上的常住老年人即可申领。\nL3: 必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\nL4: 办理费用：首次申领免收工本费。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "eligibility",
+        "item": "办理年龄与户籍/常住范围",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "仅限年满65周岁及以上、本市户籍老年人办理",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。"
+      },
+      {
+        "id": "R2",
+        "category": "eligibility",
+        "item": "办理年龄与常住范围",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "年满60周岁及以上、常住老年人即可申领",
+        "source_id": "S2",
+        "locator": "L2",
+        "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "必备材料（S1）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "身份证原件、户口簿原件、近期2寸纸质彩色照片2张",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "必备材料（S2）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿",
+        "source_id": "S2",
+        "locator": "L3",
+        "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+      },
+      {
+        "id": "R5",
+        "category": "fee",
+        "item": "办理费用（S1）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "首次办卡收取工本费20元",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "办理费用：首次办卡收取工本费20元。"
+      },
+      {
+        "id": "R6",
+        "category": "fee",
+        "item": "办理费用（S2）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "首次申领免收工本费",
+        "source_id": "S2",
+        "locator": "L4",
+        "quote": "办理费用：首次申领免收工本费。"
+      }
+    ],
+    "multi_source_conflicts": [
+      {
+        "topic": "办理年龄与户籍/常住范围",
+        "side_a": {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。"
+        },
+        "side_b": {
+          "source_id": "S2",
+          "locator": "L2",
+          "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。"
+        }
+      },
+      {
+        "topic": "必备材料",
+        "side_a": {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。"
+        },
+        "side_b": {
+          "source_id": "S2",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+        }
+      },
+      {
+        "topic": "办理费用",
+        "side_a": {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "办理费用：首次办卡收取工本费20元。"
+        },
+        "side_b": {
+          "source_id": "S2",
+          "locator": "L4",
+          "quote": "办理费用：首次申领免收工本费。"
+        }
+      }
+    ],
+    "unreadable_sections": [],
+    "service_info_notes": []
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\"overall_status\":\"not_ready\",\"requirements\":[{\"id\":\"R1\",\"item\":\"办理年龄与户籍/常住范围\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。\",\"evidence_refs\":[\"S1:L2\",\"S2:L2\"]},{\"id\":\"R2\",\"item\":\"办理年龄与户籍/常住范围\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。\",\"evidence_refs\":[\"S1:L2\",\"S2:L2\"]},{\"id\":\"R3\",\"item\":\"必备材料（S1）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知材料要求冲突：S1要求身份证原件、户口簿原件、近期2寸纸质彩色照片2张，用户未带户口簿和纸质照片；S2要求身份证原件即可，现场免费采集电子照片，无需携带户口簿和纸质照片。\",\"evidence_refs\":[\"S1:L3\",\"S2:L3\"]},{\"id\":\"R4\",\"item\":\"必备材料（S2）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知材料要求冲突：S1要求户口簿原件及2寸纸质彩色照片，用户未带；S2要求身份证原件即可，现场免费采集电子照片。\",\"evidence_refs\":[\"S1:L3\",\"S2:L3\"]},{\"id\":\"R5\",\"item\":\"办理费用（S1）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。\",\"evidence_refs\":[\"S1:L4\",\"S2:L4\"]},{\"id\":\"R6\",\"item\":\"办理费用（S2）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。\",\"evidence_refs\":[\"S1:L4\",\"S2:L4\"]}],\"actions\":[{\"id\":\"T1\",\"action\":\"携带身份证原件和手机电子证件照前往办理窗口，主动出示本人62周岁、本市户籍身份，请窗口按区里最新新通知确认办理资格与材料要求，避免被旧公告要求户口簿和纸质照片阻拦。\",\"priority\":\"blocking\",\"evidence_refs\":[\"S2:L3\"]},{\"id\":\"T2\",\"action\":\"若窗口仍要求户口簿或2寸纸质照片，立即询问是否可凭手机电子证件照办理、或现场补交，并确认费用按最新新通知免收工本费。\",\"priority\":\"high\",\"evidence_refs\":[\"S1:L3\",\"S2:L4\"]},{\"id\":\"T3\",\"action\":\"办理前再次核对最新区里新通知，以S2的60周岁以上、身份证原件即可、现场免费采集电子照片、免收工本费为准。\",\"priority\":\"normal\",\"evidence_refs\":[\"S2:L2\",\"S2:L3\",\"S2:L4\"]}],\"questions\":[\"办理资格和材料要求应以小区旧公告还是区里新通知为准？\",\"本次申领费用按新通知免收工本费，是否需要窗口额外确认？\",\"若按新通知办理，是否仍需要提交户口簿或纸质照片？\"],\"plain_language_summary_zh\":\"您62周岁、本市户籍，材料上身份证和电子证件照已具备，但新旧通知对年龄、材料、收费要求有冲突，需先确认以区里新通知为准再办理。\",\"plain_language_steps_zh\":[\"第1步：带上居民身份证原件和手机电子证件照，到敬老卡办理窗口出示本人身份信息。\",\"第2步：主动告诉窗口您62周岁、本市户籍，并请按区里最新新通知确认年龄、材料与收费要求，避免被旧公告的户口簿、纸质照片要求拦住。\",\"第3步：如果窗口仍要求户口簿或2寸纸质照片，就当场询问能否凭手机电子证件照办理，并确认首次申领免收工本费。\",\"第4步：按窗口最终确认的要求备齐材料完成申领，若仍有材料或收费疑问，直接向窗口工作人员进一步确认。\"],\"bilingual_summary_en\":\"\",\"bilingual_steps_en\":[]}",
+    "reasoning_content": "我们需要回答用户要求，直接输出合法 JSON。需要按技能步骤推理。需要仔细分析。\n\n题目：老年人敬老卡（免费乘车卡）申领｜参考日期：2026-11-24｜模式 plain_zh\n用户画像：62周岁本市户籍居民，本人持身份证和手机电子证件照前往办理，手上同时拿到了小区旧公告(S1)和区里新通知(S2)。\n现有材料：\n- I01: 居民身份证原件（年龄62周岁，本市户籍）\n- I02: 手机电子证件照（无2寸纸质照片，未带户口簿）\n\nStage A 盲提结果给出 requirements R1-R6，multi_source_conflicts 三个主题年龄、材料、费用。unreadable_sections空。service_info_notes空。\n\n需要输出 JSON 符合契约。必须严格处理多源冲突：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 status conflict 且 evidence_refs 同时引用双方行号，严禁自行选边。这里 multi_source_conflicts 有年龄、材料、费用三个，对应 R1/R2、R3/R4、R5/R6。因此这些 requirement 应标 conflict，evidence_refs 同时引用 S1:L? 和 S2:L?。\n\n还要注意整体状态铁律：有任一 missing/expired/conflict → not_ready；否则 needs_confirmation；否则 ready。这里有 conflict，所以 overall_status = not_ready。\n\n需要 applicability？用户画像明确 62周岁本市户籍，排除条件：成年非未成年、未婚非已婚、民营退休非国家工作人员等不相关。这里适用。applicability = \"applies\"。\n\n需要 status 对每个 requirement：\nR1 eligibility age/hukou S1: conflict? 因为 S1 要求65周岁及以上，用户62，不符合；S2要求60周岁以上，符合。这是多源冲突。按照铁律标 conflict。evidence_refs 引用 S1:L2, S2:L2。reason 说明冲突：旧公告要求65+，新通知为60+；用户62周岁，按新通知可申领，按旧公告不符合，需以最新区里新通知为准？但严禁自行选边？可能 reason 只能说明冲突，不能选边？可以说“新旧通知年龄门槛不一致（S1要求65+，S2要求60+），用户62周岁，存在适用冲突，需确认以最新通知为准”。但 status conflict。\nR2 同，S2 age 60+，用户62符合，S1 65+不符合，conflict。evidence_refs [\"S1:L2\",\"S2:L2\"]。\nR3 document S1 必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。用户只有身份证原件和电子证件照，无户口簿、无纸质照片。这本身 missing? 但 R3 与 R4 冲突。由于 S1/S2 冲突，标 conflict 且 evidence_refs 双方。是否同时考虑用户材料不足导致 missing？铁律说有任一 missing/expired/conflict → not_ready。这里已有 conflict，不需要额外 missing。但 status 是否 conflict 即可。R3 status conflict。matched_inventory_ids? 契约：status ready 必须填写至少一个 matched_inventory_ids。对于 conflict 条目，可以空？字段要求包括 matched_inventory_ids 可能可空。需要看格式示例。示例中 requirements 有 matched_inventory_ids。我们应给每个 requirement 合适 matched_inventory_ids。对于 conflict 条目，也许 matched_inventory_ids 可以为 [] 或引用实际已有材料？但契约只要求 status ready 必须填写至少一个 matched_inventory_ids。其他可以空。但最好给实际匹配的？R3 S1 要求户口簿和照片，用户没有，matched_inventory_ids 可为 []。R4 S2 要求身份证原件即可、现场采集电子照片，用户有身份证原件和电子证件照，虽然电子证件照可现场采集，但已有 I02 可能算 matched? 对于 conflict 条目，如果标 conflict，匹配可能不完整，matched_inventory_ids 可 []。但也许需要记录实际已备材料？契约没有强制。为安全，conflict 条目 matched_inventory_ids 可 []。R5/R6 fee 冲突，S1 20元，S2 免费，用户已有 I01/I02，但费用冲突。标 conflict，evidence_refs 双方。\nR6? 注意 Stage A 有 R6 fee S2 免收工本费。\n\n还需要 actions：需要列出补救/准备动作，priority blocking/high/normal。因为用户已有身份证和电子证件照，但旧公告要求户口簿和纸质照片，新通知不需要。冲突需确认以哪个为准。可能 actions:\n- T1 blocking: 携带身份证原件、手机电子证件照，向办理窗口出示，请窗口按最新区里新通知确认办理资格与材料（年龄60+即可，无需户口簿和纸质照片），避免因旧公告要求被拒。evidence_refs? 可能引用 S2:L3 或 S1:L3? 需要合法。可能 action 可以引用冲突相关。比如 [\"S2:L3\"] 或 [\"S1:L3\",\"S2:L3\"]? 契约示例 actions evidence_refs [\"S1:L6\"]，没有限制。我们可以给 [\"S2:L3\"] 或 [\"S1:L3\",\"S2:L3\"]。\n- T2 high: 若窗口仍要求户口簿/2寸纸质照片，可现场询问是否可凭电子证件照办理，或咨询是否可补交。evidence_refs maybe S1:L3.\n- T3 normal: 办理前再次确认最新办理通知，以区里新通知为准。evidence_refs maybe S2:L2? 但可能不需要。\n\n需要 questions：最多3个待澄清问题，无则 []。这里确实有冲突，需要澄清：以哪份文件为准？是旧公告还是新通知？或者是否需要确认年龄按60还是65？因为用户62，按新通知可办，按旧公告不行。材料方面新通知不需要户口簿和纸质照片，但旧公告需要。费用按新",
+    "raw_content": "{\"overall_status\":\"not_ready\",\"requirements\":[{\"id\":\"R1\",\"item\":\"办理年龄与户籍/常住范围\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。\",\"evidence_refs\":[\"S1:L2\",\"S2:L2\"]},{\"id\":\"R2\",\"item\":\"办理年龄与户籍/常住范围\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。\",\"evidence_refs\":[\"S1:L2\",\"S2:L2\"]},{\"id\":\"R3\",\"item\":\"必备材料（S1）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知材料要求冲突：S1要求身份证原件、户口簿原件、近期2寸纸质彩色照片2张，用户未带户口簿和纸质照片；S2要求身份证原件即可，现场免费采集电子照片，无需携带户口簿和纸质照片。\",\"evidence_refs\":[\"S1:L3\",\"S2:L3\"]},{\"id\":\"R4\",\"item\":\"必备材料（S2）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知材料要求冲突：S1要求户口簿原件及2寸纸质彩色照片，用户未带；S2要求身份证原件即可，现场免费采集电子照片。\",\"evidence_refs\":[\"S1:L3\",\"S2:L3\"]},{\"id\":\"R5\",\"item\":\"办理费用（S1）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。\",\"evidence_refs\":[\"S1:L4\",\"S2:L4\"]},{\"id\":\"R6\",\"item\":\"办理费用（S2）\",\"necessity\":\"required\",\"condition\":null,\"applicability\":\"applies\",\"status\":\"conflict\",\"matched_inventory_ids\":[],\"reason\":\"新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。\",\"evidence_refs\":[\"S1:L4\",\"S2:L4\"]}],\"actions\":[{\"id\":\"T1\",\"action\":\"携带身份证原件和手机电子证件照前往办理窗口，主动出示本人62周岁、本市户籍身份，请窗口按区里最新新通知确认办理资格与材料要求，避免被旧公告要求户口簿和纸质照片阻拦。\",\"priority\":\"blocking\",\"evidence_refs\":[\"S2:L3\"]},{\"id\":\"T2\",\"action\":\"若窗口仍要求户口簿或2寸纸质照片，立即询问是否可凭手机电子证件照办理、或现场补交，并确认费用按最新新通知免收工本费。\",\"priority\":\"high\",\"evidence_refs\":[\"S1:L3\",\"S2:L4\"]},{\"id\":\"T3\",\"action\":\"办理前再次核对最新区里新通知，以S2的60周岁以上、身份证原件即可、现场免费采集电子照片、免收工本费为准。\",\"priority\":\"normal\",\"evidence_refs\":[\"S2:L2\",\"S2:L3\",\"S2:L4\"]}],\"questions\":[\"办理资格和材料要求应以小区旧公告还是区里新通知为准？\",\"本次申领费用按新通知免收工本费，是否需要窗口额外确认？\",\"若按新通知办理，是否仍需要提交户口簿或纸质照片？\"],\"plain_language_summary_zh\":\"您62周岁、本市户籍，材料上身份证和电子证件照已具备，但新旧通知对年龄、材料、收费要求有冲突，需先确认以区里新通知为准再办理。\",\"plain_language_steps_zh\":[\"第1步：带上居民身份证原件和手机电子证件照，到敬老卡办理窗口出示本人身份信息。\",\"第2步：主动告诉窗口您62周岁、本市户籍，并请按区里最新新通知确认年龄、材料与收费要求，避免被旧公告的户口簿、纸质照片要求拦住。\",\"第3步：如果窗口仍要求户口簿或2寸纸质照片，就当场询问能否凭手机电子证件照办理，并确认首次申领免收工本费。\",\"第4步：按窗口最终确认的要求备齐材料完成申领，若仍有材料或收费疑问，直接向窗口工作人员进一步确认。\"],\"bilingual_summary_en\":\"\",\"bilingual_steps_en\":[]}",
+    "prompt_tokens": 2303,
+    "completion_tokens": 2566,
+    "total_tokens": 4869,
+    "wall_seconds": 56.457,
+    "tokens_per_sec": 45.45,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】老年人敬老卡（免费乘车卡）申领｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】62周岁本市户籍居民，本人持身份证和手机电子证件照前往办理，手上同时拿到了小区旧公告(S1)和区里新通知(S2)。\n【现有材料】\n- I01: 居民身份证原件（年龄62周岁，本市户籍）\n- I02: 手机电子证件照（无2寸纸质照片，未带户口簿）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"eligibility\", \"item\": \"办理年龄与户籍/常住范围\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"仅限年满65周岁及以上、本市户籍老年人办理\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"}, {\"id\": \"R2\", \"category\": \"eligibility\", \"item\": \"办理年龄与常住范围\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"年满60周岁及以上、常住老年人即可申领\", \"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"必备材料（S1）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"身份证原件、户口簿原件、近期2寸纸质彩色照片2张\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"必备材料（S2）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿\", \"source_id\": \"S2\", \"locator\": \"L3\", \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"}, {\"id\": \"R5\", \"category\": \"fee\", \"item\": \"办理费用（S1）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"首次办卡收取工本费20元\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"办理费用：首次办卡收取工本费20元。\"}, {\"id\": \"R6\", \"category\": \"fee\", \"item\": \"办理费用（S2）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"首次申领免收工本费\", \"source_id\": \"S2\", \"locator\": \"L4\", \"quote\": \"办理费用：首次申领免收工本费。\"}], \"multi_source_conflicts\": [{\"topic\": \"办理年龄与户籍/常住范围\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"}}, {\"topic\": \"必备材料\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L3\", \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"}}, {\"topic\": \"办理费用\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"办理费用：首次办卡收取工本费20元。\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L4\", \"quote\": \"办理费用：首次申领免收工本费。\"}}], \"unreadable_sections\": [], \"service_info_notes\": []}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "您62周岁、本市户籍，材料上身份证和电子证件照已具备，但新旧通知对年龄、材料、收费要求有冲突，需先确认以区里新通知为准再办理。",
+  "plain_language_steps_zh": [
+    "第1步：带上居民身份证原件和手机电子证件照，到敬老卡办理窗口出示本人身份信息。",
+    "第2步：主动告诉窗口您62周岁、本市户籍，并请按区里最新新通知确认年龄、材料与收费要求，避免被旧公告的户口簿、纸质照片要求拦住。",
+    "第3步：如果窗口仍要求户口簿或2寸纸质照片，就当场询问能否凭手机电子证件照办理，并确认首次申领免收工本费。",
+    "第4步：按窗口最终确认的要求备齐材料完成申领，若仍有材料或收费疑问，直接向窗口工作人员进一步确认。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "requirements[4].evidence must be a non-empty list",
+      "requirements[5].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "actions[1].evidence must be a non-empty list",
+      "actions[2].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 6,
+    "verbatim_hits": 6,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 18,
+    "verbatim_hits": 18,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 7,
+    "clause_survival_rate": 0.7143,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "65周岁",
+          "survived": true
+        },
+        {
+          "clause": "60周岁",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证原件",
+          "survived": true
+        },
+        {
+          "clause": "纸质",
+          "survived": true
+        },
+        {
+          "clause": "电子",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "2024",
+          "survived": false
+        },
+        {
+          "clause": "2026",
+          "survived": false
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "conflict",
+        "keywords": [
+          "65周岁",
+          "60周岁",
+          "纸质",
+          "电子",
+          "20元",
+          "免收"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 109.82,
+  "total_completion_tokens": 5079
+}

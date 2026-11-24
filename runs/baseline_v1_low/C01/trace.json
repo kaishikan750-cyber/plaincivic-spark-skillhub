@@ -1,0 +1,302 @@
+{
+  "mode": "baseline_v1",
+  "thinking_mode": "low",
+  "case_id": "C01",
+  "spark_call": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"申请人已基本具备首次申办工作类居留许可的核心材料，但照片不符合白底要求、体检报告不符合有效性和出具机构要求，需先补正后再办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"申请人已提供本人有效护照原件，有效期至2029-08-20，并含2026-11-01入境章（Z字签证），符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L3\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人有效护照或者其他国际旅行证件原件。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"I01\",\n          \"quote\": \"本人有效护照原件（有效期至2029-08-20，含2026-11-01入境章（Z字签证））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"conflict\",\n      \"matched_inventory_ids\": [\"I02\", \"I03\"],\n      \"reason\": \"申请表已打印填写并本人签署，符合形式要求；但现有照片为近期蓝底彩色免冠照片2张，不符合通知要求的“白底彩色免冠照片”，需更换为白底照片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L4\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"I02\",\n          \"quote\": \"外国人签证证件申请表（已打印填写并由本人签字）\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"I03\",\n          \"quote\": \"证件照片（近期蓝底彩色免冠照片2张（非白底））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"申请人已提供外国人工作许可证及单位在职证明函件原件，均为盖章原件，日期为2026-11-18，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L5\",\n          \"locator\": \"L5\",\n          \"quote\": \"【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"I04\",\n          \"quote\": \"外国人工作许可证及单位在职证明函（均为盖章原件，日期2026-11-18）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R04\",\n      \"item\": \"申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"拟申请2年期工作类居留许可\",\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I05\"],\n      \"reason\": \"申请人拟申请2年期居留许可，属于有效期1年以上情形，须提交条件材料；现有体检报告为海外诊所2026-03-10出具、距参考日期已超过8个月，且非当地卫生检疫部门或指定医疗机构原件，不符合6个月内有效及出具机构要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L6\",\n          \"locator\": \"L6\",\n          \"quote\": \"【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\"\n        },\n        {\n          \"source_id\": \"I05\",\n          \"locator\": \"I05\",\n          \"quote\": \"体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R05\",\n      \"item\": \"有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"存在随迁家属\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为单人首次申办，无随迁家属，该条件材料不适用。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L7\",\n          \"locator\": \"L7\",\n          \"quote\": \"【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"更换为符合要求的近期白底彩色免冠照片，并提交一张符合《出入境证件相片照相指引》标准的照片，用于填写申请表。\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L4\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"I03\",\n          \"quote\": \"证件照片（近期蓝底彩色免冠照片2张（非白底））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A02\",\n      \"action\": \"在拟居留地当地卫生检疫部门或指定医疗机构重新开具6个月内有效的《身体健康证明》原件，替换现有海外诊所体检报告复印件。\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L6\",\n          \"locator\": \"L6\",\n          \"quote\": \"【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\"\n        },\n        {\n          \"source_id\": \"I05\",\n          \"locator\": \"I05\",\n          \"quote\": \"体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A03\",\n      \"action\": \"确认申请时限：自2026-11-01入境之日起30日内向拟居留地公安机关出入境管理机构提出申请，当前参考日期为2026-11-24，仍可在时限内办理。\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L2\",\n          \"locator\": \"L2\",\n          \"quote\": \"【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。\"\n        },\n        {\n          \"source_id\": \"L9\",\n          \"locator\": \"L9\",\n          \"quote\": \"【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认基本材料齐全，包括本人有效护照原件、已填写签署的签证证件申请表、白底彩色免冠照片、工作许可及单位在职证明函件原件。\",\n    \"第二步：由于拟申请2年期居留许可，需补充当地卫生检疫部门或指定医疗机构出具的6个月内有效的《身体健康证明》原件，不能使用海外诊所已过期的体检报告复印件。\",\n    \"第三步：将照片更换为符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片，并提交一张。\",\n    \"第四步：由申请人本人现场办理，不可委托他人代办，需留存生物特征。\",\n    \"第五步：自2026-11-01入境之日起30日内完成申请，当前为2026-11-24，仍在时限内，但补正材料后应及时提交。\",\n    \"第六步：公安机关受理后，受理回执有效期自受理之日起不超过15个工作日，需关注受理进度。\"\n  ],\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm core materials are complete: original valid passport, fully filled and signed visa certificate application form, one recent white-back color portrait photo meeting the required standard, and original work permit and employer proof of employment documents.\",\n    \"Step 2: Because the application is for a 2-year residence permit, submit an original health certificate issued by the local public health quarantine authority or designated medical institution within the last 6 months; do not use the overseas clinic report copy that has expired.\",\n    \"Step 3: Replace the current blue-back photo with one recent white-back color portrait photo meeting the standards in the Exit and Entry Document Photo Guide, and submit only one such photo.\",\n    \"Step 4: First-time application must be made in person by the applicant and biometrics will be retained; it cannot be handled by another person.\",\n    \"Step 5: Complete the application within 30 days from entry on 2026-11-01; as of 2026-11-24, the deadline is still within time, but submit after completing the required corrections.\",\n    \"Step 6: After acceptance, the acceptance receipt validity shall not exceed 15 working days from acceptance, so monitor the processing progress.\"\n  ],\n  \"questions\": [\n    {\n      \"id\": \"Q01\",\n      \"question\": \"拟居留地公安机关出入境管理机构是哪个？需按该地要求确认申请地址、受理窗口及材料提交方式。\"\n    },\n    {\n      \"id\": \"Q02\",\n      \"question\": \"白底照片的具体规格（尺寸、像素、是否需现场拍摄）能否由申请人现场确认？当前现有蓝底照片需更换。\"\n    },\n    {\n      \"id\": \"Q03\",\n      \"question\": \"当地卫生检疫部门或指定医疗机构是否已提供可开具6个月内有效《身体健康证明》的渠道？需提前确认办理流程和所需材料。\"\n    }\n  ],\n  \"limitations\": [\n    \"本结论基于用户提供的材料、办事通知原文及参考日期2026-11-24作出，实际办理以拟居留地公安机关出入境管理机构现场要求为准。\",\n    \"体检报告的有效性判断以当地卫生检疫部门或指定医疗机构出具且距参考日期在6个月内为判断标准，具体有效期认定以现场核验为准。\",\n    \"照片是否符合《出入境证件相片照相指引》标准需以现场实际指引或指定照相机构要求为准，本结论仅识别现有蓝底照片不符合白底要求。\"\n  ]\n}",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，不要多余解释。需要处理政务办事助手场景。要基于给定材料、通知原文、用户情况，给出 overall_status, summary_zh, requirements, actions, plain_language_steps_zh, bilingual_steps_en, questions, limitations。\n\n我们需要仔细分析。\n\n用户：外籍在职工程师，单人首次申办（无随迁家属），2026-11-01持Z签证入境，拟申请2年期工作类居留许可，现场本人办理。\n\n参考日期 2026-11-24。\n\n通知原文：\nL1 事项名称 外国人工作类居留证件签发（首次申办）\nL2 申请时限：持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。\nL3 基本材料1 本人有效护照或其他国际旅行证件原件。\nL4 基本材料2 填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\nL5 基本材料3 外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。\nL6 条件材料1 申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\nL7 条件材料2 有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。\nL8 受理回执有效期自受理之日起不超过15个工作日。\nL9 首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。\n\n用户现有材料：\nI01 本人有效护照原件（有效期至2029-08-20，含2026-11-01入境章（Z字签证））\nI02 外国人签证证件申请表（已打印填写并由本人签字）\nI03 证件照片（近期蓝底彩色免冠照片2张（非白底））\nI04 外国人工作许可证及单位在职证明函（均为盖章原件，日期2026-11-18）\nI05 体检报告（海外诊所2026-03-10出具的",
+    "raw_content": "{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"申请人已基本具备首次申办工作类居留许可的核心材料，但照片不符合白底要求、体检报告不符合有效性和出具机构要求，需先补正后再办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"申请人已提供本人有效护照原件，有效期至2029-08-20，并含2026-11-01入境章（Z字签证），符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L3\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人有效护照或者其他国际旅行证件原件。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"I01\",\n          \"quote\": \"本人有效护照原件（有效期至2029-08-20，含2026-11-01入境章（Z字签证））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"conflict\",\n      \"matched_inventory_ids\": [\"I02\", \"I03\"],\n      \"reason\": \"申请表已打印填写并本人签署，符合形式要求；但现有照片为近期蓝底彩色免冠照片2张，不符合通知要求的“白底彩色免冠照片”，需更换为白底照片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L4\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"I02\",\n          \"quote\": \"外国人签证证件申请表（已打印填写并由本人签字）\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"I03\",\n          \"quote\": \"证件照片（近期蓝底彩色免冠照片2张（非白底））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"申请人已提供外国人工作许可证及单位在职证明函件原件，均为盖章原件，日期为2026-11-18，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L5\",\n          \"locator\": \"L5\",\n          \"quote\": \"【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"I04\",\n          \"quote\": \"外国人工作许可证及单位在职证明函（均为盖章原件，日期2026-11-18）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R04\",\n      \"item\": \"申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"拟申请2年期工作类居留许可\",\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I05\"],\n      \"reason\": \"申请人拟申请2年期居留许可，属于有效期1年以上情形，须提交条件材料；现有体检报告为海外诊所2026-03-10出具、距参考日期已超过8个月，且非当地卫生检疫部门或指定医疗机构原件，不符合6个月内有效及出具机构要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L6\",\n          \"locator\": \"L6\",\n          \"quote\": \"【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\"\n        },\n        {\n          \"source_id\": \"I05\",\n          \"locator\": \"I05\",\n          \"quote\": \"体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R05\",\n      \"item\": \"有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"存在随迁家属\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为单人首次申办，无随迁家属，该条件材料不适用。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L7\",\n          \"locator\": \"L7\",\n          \"quote\": \"【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"更换为符合要求的近期白底彩色免冠照片，并提交一张符合《出入境证件相片照相指引》标准的照片，用于填写申请表。\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L4\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"I03\",\n          \"quote\": \"证件照片（近期蓝底彩色免冠照片2张（非白底））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A02\",\n      \"action\": \"在拟居留地当地卫生检疫部门或指定医疗机构重新开具6个月内有效的《身体健康证明》原件，替换现有海外诊所体检报告复印件。\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L6\",\n          \"locator\": \"L6\",\n          \"quote\": \"【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\"\n        },\n        {\n          \"source_id\": \"I05\",\n          \"locator\": \"I05\",\n          \"quote\": \"体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A03\",\n      \"action\": \"确认申请时限：自2026-11-01入境之日起30日内向拟居留地公安机关出入境管理机构提出申请，当前参考日期为2026-11-24，仍可在时限内办理。\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"L2\",\n          \"locator\": \"L2\",\n          \"quote\": \"【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。\"\n        },\n        {\n          \"source_id\": \"L9\",\n          \"locator\": \"L9\",\n          \"quote\": \"【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认基本材料齐全，包括本人有效护照原件、已填写签署的签证证件申请表、白底彩色免冠照片、工作许可及单位在职证明函件原件。\",\n    \"第二步：由于拟申请2年期居留许可，需补充当地卫生检疫部门或指定医疗机构出具的6个月内有效的《身体健康证明》原件，不能使用海外诊所已过期的体检报告复印件。\",\n    \"第三步：将照片更换为符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片，并提交一张。\",\n    \"第四步：由申请人本人现场办理，不可委托他人代办，需留存生物特征。\",\n    \"第五步：自2026-11-01入境之日起30日内完成申请，当前为2026-11-24，仍在时限内，但补正材料后应及时提交。\",\n    \"第六步：公安机关受理后，受理回执有效期自受理之日起不超过15个工作日，需关注受理进度。\"\n  ],\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm core materials are complete: original valid passport, fully filled and signed visa certificate application form, one recent white-back color portrait photo meeting the required standard, and original work permit and employer proof of employment documents.\",\n    \"Step 2: Because the application is for a 2-year residence permit, submit an original health certificate issued by the local public health quarantine authority or designated medical institution within the last 6 months; do not use the overseas clinic report copy that has expired.\",\n    \"Step 3: Replace the current blue-back photo with one recent white-back color portrait photo meeting the standards in the Exit and Entry Document Photo Guide, and submit only one such photo.\",\n    \"Step 4: First-time application must be made in person by the applicant and biometrics will be retained; it cannot be handled by another person.\",\n    \"Step 5: Complete the application within 30 days from entry on 2026-11-01; as of 2026-11-24, the deadline is still within time, but submit after completing the required corrections.\",\n    \"Step 6: After acceptance, the acceptance receipt validity shall not exceed 15 working days from acceptance, so monitor the processing progress.\"\n  ],\n  \"questions\": [\n    {\n      \"id\": \"Q01\",\n      \"question\": \"拟居留地公安机关出入境管理机构是哪个？需按该地要求确认申请地址、受理窗口及材料提交方式。\"\n    },\n    {\n      \"id\": \"Q02\",\n      \"question\": \"白底照片的具体规格（尺寸、像素、是否需现场拍摄）能否由申请人现场确认？当前现有蓝底照片需更换。\"\n    },\n    {\n      \"id\": \"Q03\",\n      \"question\": \"当地卫生检疫部门或指定医疗机构是否已提供可开具6个月内有效《身体健康证明》的渠道？需提前确认办理流程和所需材料。\"\n    }\n  ],\n  \"limitations\": [\n    \"本结论基于用户提供的材料、办事通知原文及参考日期2026-11-24作出，实际办理以拟居留地公安机关出入境管理机构现场要求为准。\",\n    \"体检报告的有效性判断以当地卫生检疫部门或指定医疗机构出具且距参考日期在6个月内为判断标准，具体有效期认定以现场核验为准。\",\n    \"照片是否符合《出入境证件相片照相指引》标准需以现场实际指引或指定照相机构要求为准，本结论仅识别现有蓝底照片不符合白底要求。\"\n  ]\n}",
+    "prompt_tokens": 900,
+    "completion_tokens": 3402,
+    "total_tokens": 4302,
+    "wall_seconds": 70.276,
+    "tokens_per_sec": 48.41,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是政务办事助手。请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。"
+        },
+        {
+          "role": "user",
+          "content": "参考日期：2026-11-24\n事项：外国人工作类居留许可办理\n用户情况：外籍在职工程师，单人首次申办（无随迁家属），2026-11-01持Z签证入境，拟申请2年期工作类居留许可，现场本人办理。\n\n【办事通知原文】\n[S1] filename=nia_work_residence_permit_guide.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】外国人工作类居留证件签发（首次申办）\nL2: 【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。\nL3: 【基本材料1】本人有效护照或者其他国际旅行证件原件。\nL4: 【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。\nL5: 【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。\nL6: 【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。\nL7: 【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。\nL8: 【办理时限】公安机关出入境管理机构作出的受理回执有效期自受理之日起不超过15个工作日。\nL9: 【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。\n\n【用户现有材料】\n- I01: 本人有效护照原件（有效期至2029-08-20，含2026-11-01入境章（Z字签证））\n- I02: 外国人签证证件申请表（已打印填写并由本人签字）\n- I03: 证件照片（近期蓝底彩色免冠照片2张（非白底））\n- I04: 外国人工作许可证及单位在职证明函（均为盖章原件，日期2026-11-18）\n- I05: 体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））\n\n请输出 JSON：\n- overall_status: \"ready\" | \"not_ready\" | \"needs_confirmation\"\n- summary_zh: 一句话结论\n- requirements: 数组，每项含 id, item, necessity(\"required\"|\"conditional\"|\"optional\"), condition(无则为null), applicability(\"applies\"|\"not_applicable\"|\"unknown\"), status(\"ready\"|\"missing\"|\"expired\"|\"conflict\"|\"needs_confirmation\"|\"not_applicable\"), matched_inventory_ids, reason, evidence([{source_id, locator, quote}])\n- actions: 数组，每项含 id, action, priority(\"blocking\"|\"high\"|\"normal\"), evidence([{source_id, locator, quote}])\n- plain_language_steps_zh: 3-5条通俗分步指南（保留资格、材料规格与截止时限）\n- bilingual_steps_en: 同时提供英文对照步骤（bilingual_steps_en）。\n- questions: 待确认问题数组\n- limitations: 局限说明数组\n"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "parsed_ok": true,
+  "skillhub_strict": {
+    "valid": false,
+    "errors": [
+      "requirements[0].evidence[0] has unknown source_id: 'L3'",
+      "requirements[0].evidence[1] has unknown source_id: 'I01'",
+      "requirements[1].evidence[0] has unknown source_id: 'L4'",
+      "requirements[1].evidence[1] has unknown source_id: 'I02'",
+      "requirements[1].evidence[2] has unknown source_id: 'I03'",
+      "requirements[2].evidence[0] has unknown source_id: 'L5'",
+      "requirements[2].evidence[1] has unknown source_id: 'I04'",
+      "requirements[3].evidence[0] has unknown source_id: 'L6'",
+      "requirements[3].evidence[1] has unknown source_id: 'I05'",
+      "requirements[4].evidence[0] has unknown source_id: 'L7'",
+      "actions[0].evidence[0] has unknown source_id: 'L4'",
+      "actions[0].evidence[1] has unknown source_id: 'I03'",
+      "actions[1].evidence[0] has unknown source_id: 'L6'",
+      "actions[1].evidence[1] has unknown source_id: 'I05'",
+      "actions[2].evidence[0] has unknown source_id: 'L2'",
+      "actions[2].evidence[1] has unknown source_id: 'L9'",
+      "questions must be a list of non-empty strings"
+    ],
+    "warnings": [],
+    "exit_code": 1
+  },
+  "quote_check": {
+    "total_quotes": 16,
+    "verbatim_hits": 0,
+    "verbatim_rate": 0.0,
+    "misses": [
+      {
+        "section": "requirements",
+        "item_id": "R01",
+        "source_id": "L3",
+        "locator": "L3",
+        "quote": "【基本材料1】本人有效护照或者其他国际旅行证件原件。",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R01",
+        "source_id": "I01",
+        "locator": "I01",
+        "quote": "本人有效护照原件（有效期至2029-08-20，含2026-11-01入境章（Z字签证））",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R02",
+        "source_id": "L4",
+        "locator": "L4",
+        "quote": "【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R02",
+        "source_id": "I02",
+        "locator": "I02",
+        "quote": "外国人签证证件申请表（已打印填写并由本人签字）",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R02",
+        "source_id": "I03",
+        "locator": "I03",
+        "quote": "证件照片（近期蓝底彩色免冠照片2张（非白底））",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R03",
+        "source_id": "L5",
+        "locator": "L5",
+        "quote": "【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R03",
+        "source_id": "I04",
+        "locator": "I04",
+        "quote": "外国人工作许可证及单位在职证明函（均为盖章原件，日期2026-11-18）",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R04",
+        "source_id": "L6",
+        "locator": "L6",
+        "quote": "【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R04",
+        "source_id": "I05",
+        "locator": "I05",
+        "quote": "体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R05",
+        "source_id": "L7",
+        "locator": "L7",
+        "quote": "【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A01",
+        "source_id": "L4",
+        "locator": "L4",
+        "quote": "【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A01",
+        "source_id": "I03",
+        "locator": "I03",
+        "quote": "证件照片（近期蓝底彩色免冠照片2张（非白底））",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A02",
+        "source_id": "L6",
+        "locator": "L6",
+        "quote": "【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A02",
+        "source_id": "I05",
+        "locator": "I05",
+        "quote": "体检报告（海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件））",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A03",
+        "source_id": "L2",
+        "locator": "L2",
+        "quote": "【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A03",
+        "source_id": "L9",
+        "locator": "L9",
+        "quote": "【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。",
+        "actual_line": ""
+      }
+    ]
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 12,
+    "clause_total": 14,
+    "clause_survival_rate": 0.8571,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "1年以上",
+          "survived": true
+        },
+        {
+          "clause": "本人到场",
+          "survived": false
+        }
+      ],
+      "documents": [
+        {
+          "clause": "护照",
+          "survived": true
+        },
+        {
+          "clause": "白底",
+          "survived": true
+        },
+        {
+          "clause": "工作许可",
+          "survived": true
+        },
+        {
+          "clause": "6个月内",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "30日内",
+          "survived": true
+        },
+        {
+          "clause": "15个工作日",
+          "survived": true
+        }
+      ],
+      "bilingual_en": [
+        {
+          "clause": "30 days",
+          "survived": true
+        },
+        {
+          "clause": "15 working days",
+          "survived": true
+        },
+        {
+          "clause": "white",
+          "survived": true
+        },
+        {
+          "clause": "1 year",
+          "survived": false
+        },
+        {
+          "clause": "6 months",
+          "survived": true
+        },
+        {
+          "clause": "in person",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "expired_or_conflict",
+        "keywords": [
+          "身体健康证明",
+          "体检"
+        ],
+        "passed": true
+      },
+      {
+        "bucket": "conflict_or_missing",
+        "keywords": [
+          "白底",
+          "照片"
+        ],
+        "passed": true
+      },
+      {
+        "bucket": "not_applicable",
+        "keywords": [
+          "亲属关系",
+          "随迁家属"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  }
+}

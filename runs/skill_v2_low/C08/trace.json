@@ -1,0 +1,216 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "low",
+  "case_id": "C08",
+  "stage_a_spark": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"本人有效居民身份证原件（或社保卡原件）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"constraints\": \"原件（或电子残疾人证）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"收费说明\",\n      \"exact_text\": \"免收押金与工本费，盲文及有声读物免费邮寄上门。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\"\n    },\n    {\n      \"label\": \"开放时间/截止日期\",\n      \"exact_text\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\"\n    }\n  ]\n}",
+    "reasoning_content": "我们需要回答用户。需要输出合法 JSON 对象，根据任务。注意用户给的是 S1 全文？ 有 L1-L5，没有 S2、L7、L8 等。需要提取要求，跳过纯标题行（如【事项名称】），不要加入原文未写材料。每项 source_id locator quote 直接复制连续原文短句。extracted_requirements 提取资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性受理后审批工作日/收费标准/开放时间/不设截止日期记入 service_info_notes。若 S1 与 S2 冲突写入 multi_source_conflicts；若原文有扫描模糊/不可读段落写入 unreadable_sections，严禁猜测金额或条款。\n\n需要仔细解析原文：\nL1: 【事项名称】市公共图书馆无障碍阅读服务读者证办理（示范模拟指南）\nL2: 【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\nL3: 【基本材料】本人有效居民身份证原件（或社保卡原件）。\nL4: 【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\nL5: 【服务时间】全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\n\n用户要求输出 JSON 格式。需要提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。\n\n注意 L1 是事项名称，纯标题行，跳过。L2 费用说明：免收押金与工本费，盲文及有声读物免费邮寄上门。这个应该记入 service_info_notes 吗？ 用户说一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。L2 是收费说明，可算 service_info_notes? 但 extracted_requirements 也要提取费用？ category 有 fee。用户说 extracted_requirements 提取所有可核验的资格条件、申请截止/前置时限、",
+    "raw_content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"本人有效居民身份证原件（或社保卡原件）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"constraints\": \"原件（或电子残疾人证）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"收费说明\",\n      \"exact_text\": \"免收押金与工本费，盲文及有声读物免费邮寄上门。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\"\n    },\n    {\n      \"label\": \"开放时间/截止日期\",\n      \"exact_text\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\"\n    }\n  ]\n}",
+    "prompt_tokens": 923,
+    "completion_tokens": 951,
+    "total_tokens": 1874,
+    "wall_seconds": 20.304,
+    "tokens_per_sec": 46.84,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：公共图书馆无障碍借阅证办理（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=synthetic_accessible_library_guide.txt | date=2026-10-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】市公共图书馆无障碍阅读服务读者证办理（示范模拟指南）\nL2: 【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\nL3: 【基本材料】本人有效居民身份证原件（或社保卡原件）。\nL4: 【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\nL5: 【服务时间】全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 3584,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "document",
+        "item": "本人有效居民身份证原件（或社保卡原件）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "本人有效居民身份证原件（或社保卡原件）。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "《中华人民共和国残疾人证》原件（或电子残疾人证）",
+        "necessity": "conditional",
+        "condition": "申请“免费上门寄送盲文/有声读物”专项服务",
+        "constraints": "原件（或电子残疾人证）",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "收费说明",
+        "exact_text": "免收押金与工本费，盲文及有声读物免费邮寄上门。",
+        "source_id": "S1",
+        "locator": "L2"
+      },
+      {
+        "label": "开放时间/截止日期",
+        "exact_text": "全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。",
+        "source_id": "S1",
+        "locator": "L5"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。\nbilingual_summary_en: \"\"\nbilingual_steps_en: []\n\n需要判断 applicability：用户画像明确视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务。这符合 R2 条件，所以 applicability 对 requirements? 契约要求 applicability 仅限 applies/not_applicable/unknown。每个 requirement 的 applicability 应该基于用户画像是否适用该要求。R1 身份证是本人有效，视障读者也适用，applicability=\"applies\"。R2 申请免费上门寄送盲文/有声读物专项服务，用户明确申请，applicability=\"applies\"。或者如果 R2 的 condition 满足，applicability applies。需要判断整体状态。\n\n现有材料：I01 身份证原件有效期内，I02 电子残疾人证有效期内，视力残疾类别。R1 required, I01 matched. R2 conditional, I02 matched. 材料齐全。收费说明免费，开放时间全年常态化，不设报名截止日期。没有 missing/expired/conflict。所以整体状态 ready？需要检查是否有 needs_confirmation？用户画像明确持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。Stage A 已给出收费和截止日期，所以不需要确认。没有未读部分。因此 overall_status=\"ready\"。\n\n但是需要检查 R2 status：用户有电子残疾人证，条件满足，necessity conditional。applicability applies，status ready，matched_inventory_ids [\"I02\"]。R1 status ready，matched_inventory_ids [\"I01\"]。evidence_refs 引用 S1:L3? 需要按照 Stage A 的 source locator。R1 evidence_refs 可以是 [\"S1:L3\"]，R2 [\"S1:L4\"]。但 service_info_notes 有收费说明 L2，开放时间 L5，可能在 actions/plain_language_steps 引用。\n\nactions：可能有 T1 准备材料核验或确认？需要输出 actions 数组，至少一个 action。优先级 blocking/high/normal。比如 T1：现场提交前核对身份证和残疾人证原件/电子证有效性并确认免费上门服务资格，优先级 blocking，evidence_refs [\"S1:L2\",\"S1:L4\"]? 但 actions 契约可能要求 evidence_refs 引用来源行号。可以写 T1 为“提交前确认：核对居民身份证、残疾人证（电子证）有效，符合免费上门寄送盲文/有声读物资格；确认不收费且无报名截止日期。” priority blocking，evidence_refs [\"S1:L2\",\"S1:L4\"]。也可以加 T2 关于窗口时间？但整体材料已齐全，action 是出门前补救或准备动作。可以一个 action。\n\nquestions：无待澄清问题？用户明确申请，材料齐全，收费和截止日期已明确。所以 questions: []。\n\nplain_language_summary_zh：一句话大白话结论，如“您符合条件：持有效身份证和残疾人证，可免费申请上门寄送盲文和有声读物，不收费、无报名截止日期。” 需要包含资格条件、免费/收费标准、窗口时间及截止时限？契约要求 plain_language_steps_zh 步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。summary 是一句话大白话结论，可以包含主要结论。steps 需要 4-5条大白话易读步骤。\n\nplain_language_steps_zh 需要 4-5条：\n第1步：准备好本人有效居民身份证原件（或社保卡原件），并确认在有效期内。\n第2步：准备《中华人民共和国残疾人证》原件（或电子残疾人证），视力残疾类别，确认在有效期内。\n第3步：向图书馆申请“免费上门寄送盲文/有声读物”专项服务；该服务免收押金与工本费，盲文及有声读物免费邮寄上门。\n第4步：办理时间全年常态化开放（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期，可按预约安排办理。\n第5步：提交后按图书馆指引完成现场核验，领取相关办理凭证或确认服务安排。\n\n需要保留原件/复印件份数？这里没有复印件要求。照片规格、有效期天数？用户材料有效期内，没有具体照片规格要求。可以在步骤中提及“证件在有效期内”。窗口时间已包含。截止日期已包含“不设报名截止日期”。\n\nbilingual_summary_en: \"\" 契约说填 \"\"。\nbilingual_steps_en: [] 契约说填 []。\n\n需要确保 JSON 合法，不要额外文字。注意 requirements 中 condition 字段：R1 condition null，R2 condition 非空（条件：申请“免费上门寄送盲文/有声读物”专项服务）。necessity R1 required, R2 conditional。\n\napplicability 字段：每个 requirement 的 applicability 应该是 \"applies\" 还是 \"not_applicable\"? 根据用户画像，R1 身份证是必需，视障读者也适用；R2 条件满足，视障读者申请免费上门服务也适用。所以都 \"applies\"。\n\nstatus 字段：R1 ready, R2 ready。matched_inventory_ids: R1 [\"I01\"], R2 [\"I02\"]。evidence_refs: R1 [\"S1:L3\"], R2 [\"S1:L4\"]。reason 简明判定理由与日期计算：R1 用户已提供有效身份证原件，匹配材料 I01，无缺失/超期。R2 用户明确申请免费上门寄送盲文/有声读物，电子残疾人证有效期内且视力残疾类别，匹配 I02，无需额外确认。\n\n整体状态 ready。\n\nactions：至少一个 action。可以 T1 为 blocking：提交前核验身份证与残疾人证（电子证）有效，确认免费上门寄送盲文/有声读物资格及无收费、无截止日期限制。evidence_refs [\"S1:L2\",\"S1:L4\"]。或者 evidence_refs 引用 L2 收费说明和 L4 残疾人证要求。也可以引用 L5 开放时间。但 action 是准备动作，可以包含窗口时间？可能不需要。\n\nquestions: [] 因为无待澄清问题。\n\n需要确保没有多余字段？契约要求输出 JSON，包含字段 listed。可以包括 actions, questions, plain_language_summary_zh, plain_language_steps_zh, bilingual_summary_en, bilingual_steps_en。\n\n注意 plain_language_summary_zh 一句话大白话结论。可以写：“您已具备申请条件：持有效身份证和残疾人证，可免费申请上门寄送盲文与有声读物，不收费、不设报名截止日期。” 这符合一句话。\n\nplain_language_steps_zh 4-5条，必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。步骤中已包含：\n- 资格条件：视障读者申请免费上门寄送盲文/有声读物专项服务\n- 原件要求：居民身份证原件、残疾人证原件（或电子残疾人证）\n- 有效期：证件在有效期内\n- 免费/收费标准：免收押金与工本费，免费邮寄上门\n- 窗口时间：周二至周日 09:00-17:00，周一闭馆\n- 截止时限：不设报名截止日期\n- 复印件份数：无要求，可提“无额外复印件要求”吗？原文没有复印件要求，不需要强加。但契约说必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。如果原文无复印件份数/照片规格要求，可以不提？契约说“必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限”。可能意味着如果有这些要求则保留，如果没有则不提及。这里没有复印件份数、照片规格。可以忽略。\n\n步骤：\n1. 确认资格：作为视障读者申请“免费上门寄送盲文/有声读物”专项服务，需提供本人有效居民身份证原件（或社保卡原件），以及《中华人民共和国残疾人证》原件（或电子残疾人证），证件须在有效期内。\n2. 准备证件：备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内，无需额外复印件。\n3. 办理与收费：向图书馆提交申请，该专项服务免收押金与工本费，盲文及有声读物免费邮寄上门。\n4. 办理时间：全年常态化开放办理，周二至周日 09:00-17:00，周一闭馆；不设报名截止日期，可按预约安排办理。\n5. 完成核验：现场按指引提交证件申请，确认服务安排后即可办理。\n\n这有5条，符合4-5条。注意第1步已经包含资格条件和原件要求，第2步准备证件，第3步收费，第4步时间截止，第5步完成核验。可以。\n\n需要确保 plain_language_steps_zh 是数组，每个字符串以“第1步：”开头。可以。\n\nactions 中 action 字段要求“出门前补救或准备动作”。可以 T1: \"提交申请前，核对本人有效居民身份证原件、残疾人证（电子证）在有效期内，并确认免费上门寄送盲文/有声读物服务不收费、无报名截止日期。\" priority blocking。evidence_refs [\"S1:L2\",\"S1:L4\"]。也可以包含 L5 开放时间？但 action 是准备动作，可能不需要窗口时间。但 evidence_refs 可以引用相关来源。可以 [\"S1:L2\",\"S1:L4\"]。\n\n或者 actions 可以包含两个：T1 核验证件资格（blocking），T2 预约或确认办理时间（normal）。但用户希望确认是否收费及截止日期，Stage A 已给出，所以不需要。一个 action 足够。\n\n需要检查契约“一般性的审批工作日、收费/免收费、开放时间与‘不设报名截止日期’写入 plain_language_steps_zh（及英文步骤），不要作为空匹配项放进 requirements。” 我们的 requirements 中 service_info_notes 不在 requirements 中，所以没问题。\n\n需要检查整体状态铁律：有任一 missing/expired/conflict → not_ready；否则有 needs_confirmation → needs_confirmation；否则 ready。我们没有 missing/expired/conflict，没有 needs_confirmation，所以 ready。\n\napplicability 字段：注意整体 applicability？契约只要求每个 requirement 有 applicability。我们给 R1/R2 都 applies。可以。\n\n需要输出 JSON 合法。注意字符串中引号需要转义。中文引号没问题。JSON 中字符串使用双引号，内部双引号需转义。我们尽量用单引号？不，JSON 必须双引号。可以在内部使用中文引号“”避免冲突。条件 R2 condition 包含“免费上门寄送盲文/有声读物”专项服务，可以保留中文双引号？在 JSON 字符串中，中文双引号“”不是 JSON 语法字符，可以直接使用，不会冲突。但为了安全，可以使用中文引号。\n\n需要确保 no extra fields. 输出：\n\n{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供有效期内居民身份证原件，与 R1 原件要求匹配，无缺失或超期。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户明确申请免费上门寄送盲文/有声读物专项服务，已提供有效期内电子残疾人证（视力残疾类别），满足 R2 条件，无缺失或超期。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"提交申请前核对本人有效居民身份证原件、残疾人证（电子证）在有效期内，并确认免费上门寄送盲文/有声读物服务不收费、无报名截止日期。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L4\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"您已符合申请条件：持有效身份证和残疾人证，可免费申请上门寄送盲文与有声读物，不收费、不设报名截止日期。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：确认资格——作为视障读者申请“免费上门寄送盲文/有声读物”专项服务，需提供本人有效居民身份证原件（或社保卡原件），以及《中华人民共和国残疾人证》原件（或电子残疾人证），证件须在有效期内。\",\n    \"第2步：准备证件——备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内，无需额外复印件。\",\n    \"第3步：办理与收费——向图书馆提交申请，该专项服务免收押金与工本费，盲文及有声读物免费邮寄上门。\",\n    \"第4步：办理时间——全年常态化开放办理，周二至周日 09:00-17:00，周一闭馆；不设报名截止日期，可按预约安排办理。\",\n    \"第5步：完成核验——现场按指引提交证件申请，确认服务安排后即可办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}\n\n需要检查 plain_language_steps_zh 是否包含“原件/复印件份数”：我们写了“无需额外复印件”，原文没有复印件要求，但可以保留。是否违反“必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限”？原文无复印件份数，写“无需额外复印件”是合理的，但可能不是原文要求。契约说必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。如果原文没有复印件份数，不提更安全？但写了“无需额外复印件”可能算添加了信息。不过它明确是“无需额外复印件”，不是要求。可以改为“（无额外复印件要求）”？原文没有。为了严格，可以省略“无需额外复印件”。但契约要求保留原件/复印件份数，如果原文没有，可以不提。我倾向于省略“无需额外复印件”以避免编造。步骤第2步：准备证件——备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内。这样不包含复印件份数。可以。\n\n照片规格：原文无，不提。\n\n有效期天数：用户材料有效期内，但原文没有具体有效期天数。用户已提供有效期内，所以步骤中“确认在有效期内”即可。\n\n需要检查 R2 condition 非空，我们给了。\n\napplicability 字段：R1 applies，R2 applies。注意 R2 necessity conditional，用户画像明确申请，所以 applies。\n\n整体状态 ready。\n\n需要检查 actions 的 evidence_refs 是否合法：S1:L2 收费说明，S1:L4 残疾人证要求。可以。\n\nquestions: [] 因为无待澄清问题。用户希望确认是否收费以及有没有截止日期，Stage A 已给出，所以无需澄清。\n\nbilingual_summary_en 填 \"\"。bilingual_steps_en 填 []。\n\n注意 JSON 中 \"condition\": null 合法。字符串中的双引号需转义？我们使用中文双引号“”，不是 JSON 的 \"，所以安全。但 R2 condition 中“免费上门寄送盲文/有声读物”专项服务，中文双引号没问题。plain_language_steps_zh 中也有中文双引号，没问题。\n\n需要确保整体 JSON 没有多余文本。直接输出。\n\n但需要再仔细检查 Stage A 的 service_info_notes 是否需要在 requirements 中体现？契约说一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 plain_language_steps_zh（及英文步骤），不要作为空匹配项放进 requirements。所以我们没有把 service_info_notes 放进 requirements，正确。\n\n需要检查 actions 是否应该包含对收费和截止日期的确认？用户希望确认是否收费以及有没有截止日期，Stage A 已明确，所以 action 可以包括确认。我们 T1 包含“确认...不收费、无报名截止日期”。可以。\n\n需要检查 overall_status 是否应为 ready 而非 needs_confirmation。用户已提供身份证和电子残疾人证，材料齐全，条件满足。收费和截止日期已明确。所以 ready。\n\n需要检查 R1 的 status：用户有 I01 居民身份证原件有效期内，匹配。R2 有 I02 电子残疾人证有效期内，视力残疾类别，匹配。所以 ready。\n\n需要检查 applicability 是否可能 R1 not_applicable？用户是视障读者，申请免费上门寄送盲文/有声读物服务，R1 身份证是通用要求，applicability 应该是 applies。R2 条件满足，applicability applies。正确。\n\n需要",
+    "reasoning_content": "我们需要回答用户要求直接输出 JSON。需要执行 SkillHub 技能条件解析→材料比对→状态计算→无障碍改写。输入已经给了 Stage A 结果，需要基于它生成 JSON。必须遵守契约。需要仔细判断 applicability、status、overall_status等。\n\n首先理解案件：公共图书馆无障碍借阅证办理｜参考日期 2026-11-24｜模式 plain_zh\n用户画像：视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。\n现有材料：\n- I01: 居民身份证原件（有效期内）\n- I02: 电子残疾人证（有效期内，视力残疾类别）\nStage A 盲提结果：\nextracted_requirements:\nR1 document, item 本人有效居民身份证原件（或社保卡原件）, necessity required, condition null, constraints 原件, source S1 locator L3, quote \"本人有效居民身份证原件（或社保卡原件）。\"\nR2 document, item 《中华人民共和国残疾人证》原件（或电子残疾人证）, necessity conditional, condition 申请“免费上门寄送盲文/有声读物”专项服务, constraints 原件（或电子残疾人证）, source S1 L4, quote \"申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\nmulti_source_conflicts: []\nunreadable_sections: []\nservice_info_notes:\n- 收费说明 exact_text \"免收押金与工本费，盲文及有声读物免费邮寄上门。\" source S1 L2\n- 开放时间/截止日期 exact_text \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\" source S1 L5\n\n需要输出 JSON 包含 requirements 每个 requirement 条目：\nid, item, necessity, condition, applicability, status, matched_inventory_ids, reason, evidence_refs.\nactions: T1 etc.\nquestions: 最多3个待澄清问题，无则 []\nplain_language_summary_zh: 一句话大白话结论\nplain_language_steps_zh: 4-5条大白话易读步骤，保留资格条件、原件/复印件份数、照片",
+    "raw_content": "规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。\nbilingual_summary_en: \"\"\nbilingual_steps_en: []\n\n需要判断 applicability：用户画像明确视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务。这符合 R2 条件，所以 applicability 对 requirements? 契约要求 applicability 仅限 applies/not_applicable/unknown。每个 requirement 的 applicability 应该基于用户画像是否适用该要求。R1 身份证是本人有效，视障读者也适用，applicability=\"applies\"。R2 申请免费上门寄送盲文/有声读物专项服务，用户明确申请，applicability=\"applies\"。或者如果 R2 的 condition 满足，applicability applies。需要判断整体状态。\n\n现有材料：I01 身份证原件有效期内，I02 电子残疾人证有效期内，视力残疾类别。R1 required, I01 matched. R2 conditional, I02 matched. 材料齐全。收费说明免费，开放时间全年常态化，不设报名截止日期。没有 missing/expired/conflict。所以整体状态 ready？需要检查是否有 needs_confirmation？用户画像明确持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。Stage A 已给出收费和截止日期，所以不需要确认。没有未读部分。因此 overall_status=\"ready\"。\n\n但是需要检查 R2 status：用户有电子残疾人证，条件满足，necessity conditional。applicability applies，status ready，matched_inventory_ids [\"I02\"]。R1 status ready，matched_inventory_ids [\"I01\"]。evidence_refs 引用 S1:L3? 需要按照 Stage A 的 source locator。R1 evidence_refs 可以是 [\"S1:L3\"]，R2 [\"S1:L4\"]。但 service_info_notes 有收费说明 L2，开放时间 L5，可能在 actions/plain_language_steps 引用。\n\nactions：可能有 T1 准备材料核验或确认？需要输出 actions 数组，至少一个 action。优先级 blocking/high/normal。比如 T1：现场提交前核对身份证和残疾人证原件/电子证有效性并确认免费上门服务资格，优先级 blocking，evidence_refs [\"S1:L2\",\"S1:L4\"]? 但 actions 契约可能要求 evidence_refs 引用来源行号。可以写 T1 为“提交前确认：核对居民身份证、残疾人证（电子证）有效，符合免费上门寄送盲文/有声读物资格；确认不收费且无报名截止日期。” priority blocking，evidence_refs [\"S1:L2\",\"S1:L4\"]。也可以加 T2 关于窗口时间？但整体材料已齐全，action 是出门前补救或准备动作。可以一个 action。\n\nquestions：无待澄清问题？用户明确申请，材料齐全，收费和截止日期已明确。所以 questions: []。\n\nplain_language_summary_zh：一句话大白话结论，如“您符合条件：持有效身份证和残疾人证，可免费申请上门寄送盲文和有声读物，不收费、无报名截止日期。” 需要包含资格条件、免费/收费标准、窗口时间及截止时限？契约要求 plain_language_steps_zh 步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。summary 是一句话大白话结论，可以包含主要结论。steps 需要 4-5条大白话易读步骤。\n\nplain_language_steps_zh 需要 4-5条：\n第1步：准备好本人有效居民身份证原件（或社保卡原件），并确认在有效期内。\n第2步：准备《中华人民共和国残疾人证》原件（或电子残疾人证），视力残疾类别，确认在有效期内。\n第3步：向图书馆申请“免费上门寄送盲文/有声读物”专项服务；该服务免收押金与工本费，盲文及有声读物免费邮寄上门。\n第4步：办理时间全年常态化开放（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期，可按预约安排办理。\n第5步：提交后按图书馆指引完成现场核验，领取相关办理凭证或确认服务安排。\n\n需要保留原件/复印件份数？这里没有复印件要求。照片规格、有效期天数？用户材料有效期内，没有具体照片规格要求。可以在步骤中提及“证件在有效期内”。窗口时间已包含。截止日期已包含“不设报名截止日期”。\n\nbilingual_summary_en: \"\" 契约说填 \"\"。\nbilingual_steps_en: [] 契约说填 []。\n\n需要确保 JSON 合法，不要额外文字。注意 requirements 中 condition 字段：R1 condition null，R2 condition 非空（条件：申请“免费上门寄送盲文/有声读物”专项服务）。necessity R1 required, R2 conditional。\n\napplicability 字段：每个 requirement 的 applicability 应该是 \"applies\" 还是 \"not_applicable\"? 根据用户画像，R1 身份证是必需，视障读者也适用；R2 条件满足，视障读者申请免费上门服务也适用。所以都 \"applies\"。\n\nstatus 字段：R1 ready, R2 ready。matched_inventory_ids: R1 [\"I01\"], R2 [\"I02\"]。evidence_refs: R1 [\"S1:L3\"], R2 [\"S1:L4\"]。reason 简明判定理由与日期计算：R1 用户已提供有效身份证原件，匹配材料 I01，无缺失/超期。R2 用户明确申请免费上门寄送盲文/有声读物，电子残疾人证有效期内且视力残疾类别，匹配 I02，无需额外确认。\n\n整体状态 ready。\n\nactions：至少一个 action。可以 T1 为 blocking：提交前核验身份证与残疾人证（电子证）有效，确认免费上门寄送盲文/有声读物资格及无收费、无截止日期限制。evidence_refs [\"S1:L2\",\"S1:L4\"]。或者 evidence_refs 引用 L2 收费说明和 L4 残疾人证要求。也可以引用 L5 开放时间。但 action 是准备动作，可以包含窗口时间？可能不需要。\n\nquestions: [] 因为无待澄清问题。\n\n需要确保没有多余字段？契约要求输出 JSON，包含字段 listed。可以包括 actions, questions, plain_language_summary_zh, plain_language_steps_zh, bilingual_summary_en, bilingual_steps_en。\n\n注意 plain_language_summary_zh 一句话大白话结论。可以写：“您已具备申请条件：持有效身份证和残疾人证，可免费申请上门寄送盲文与有声读物，不收费、不设报名截止日期。” 这符合一句话。\n\nplain_language_steps_zh 4-5条，必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。步骤中已包含：\n- 资格条件：视障读者申请免费上门寄送盲文/有声读物专项服务\n- 原件要求：居民身份证原件、残疾人证原件（或电子残疾人证）\n- 有效期：证件在有效期内\n- 免费/收费标准：免收押金与工本费，免费邮寄上门\n- 窗口时间：周二至周日 09:00-17:00，周一闭馆\n- 截止时限：不设报名截止日期\n- 复印件份数：无要求，可提“无额外复印件要求”吗？原文没有复印件要求，不需要强加。但契约说必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。如果原文无复印件份数/照片规格要求，可以不提？契约说“必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限”。可能意味着如果有这些要求则保留，如果没有则不提及。这里没有复印件份数、照片规格。可以忽略。\n\n步骤：\n1. 确认资格：作为视障读者申请“免费上门寄送盲文/有声读物”专项服务，需提供本人有效居民身份证原件（或社保卡原件），以及《中华人民共和国残疾人证》原件（或电子残疾人证），证件须在有效期内。\n2. 准备证件：备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内，无需额外复印件。\n3. 办理与收费：向图书馆提交申请，该专项服务免收押金与工本费，盲文及有声读物免费邮寄上门。\n4. 办理时间：全年常态化开放办理，周二至周日 09:00-17:00，周一闭馆；不设报名截止日期，可按预约安排办理。\n5. 完成核验：现场按指引提交证件申请，确认服务安排后即可办理。\n\n这有5条，符合4-5条。注意第1步已经包含资格条件和原件要求，第2步准备证件，第3步收费，第4步时间截止，第5步完成核验。可以。\n\n需要确保 plain_language_steps_zh 是数组，每个字符串以“第1步：”开头。可以。\n\nactions 中 action 字段要求“出门前补救或准备动作”。可以 T1: \"提交申请前，核对本人有效居民身份证原件、残疾人证（电子证）在有效期内，并确认免费上门寄送盲文/有声读物服务不收费、无报名截止日期。\" priority blocking。evidence_refs [\"S1:L2\",\"S1:L4\"]。也可以包含 L5 开放时间？但 action 是准备动作，可能不需要窗口时间。但 evidence_refs 可以引用相关来源。可以 [\"S1:L2\",\"S1:L4\"]。\n\n或者 actions 可以包含两个：T1 核验证件资格（blocking），T2 预约或确认办理时间（normal）。但用户希望确认是否收费及截止日期，Stage A 已给出，所以不需要。一个 action 足够。\n\n需要检查契约“一般性的审批工作日、收费/免收费、开放时间与‘不设报名截止日期’写入 plain_language_steps_zh（及英文步骤），不要作为空匹配项放进 requirements。” 我们的 requirements 中 service_info_notes 不在 requirements 中，所以没问题。\n\n需要检查整体状态铁律：有任一 missing/expired/conflict → not_ready；否则有 needs_confirmation → needs_confirmation；否则 ready。我们没有 missing/expired/conflict，没有 needs_confirmation，所以 ready。\n\napplicability 字段：注意整体 applicability？契约只要求每个 requirement 有 applicability。我们给 R1/R2 都 applies。可以。\n\n需要输出 JSON 合法。注意字符串中引号需要转义。中文引号没问题。JSON 中字符串使用双引号，内部双引号需转义。我们尽量用单引号？不，JSON 必须双引号。可以在内部使用中文引号“”避免冲突。条件 R2 condition 包含“免费上门寄送盲文/有声读物”专项服务，可以保留中文双引号？在 JSON 字符串中，中文双引号“”不是 JSON 语法字符，可以直接使用，不会冲突。但为了安全，可以使用中文引号。\n\n需要确保 no extra fields. 输出：\n\n{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供有效期内居民身份证原件，与 R1 原件要求匹配，无缺失或超期。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户明确申请免费上门寄送盲文/有声读物专项服务，已提供有效期内电子残疾人证（视力残疾类别），满足 R2 条件，无缺失或超期。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"提交申请前核对本人有效居民身份证原件、残疾人证（电子证）在有效期内，并确认免费上门寄送盲文/有声读物服务不收费、无报名截止日期。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L4\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"您已符合申请条件：持有效身份证和残疾人证，可免费申请上门寄送盲文与有声读物，不收费、不设报名截止日期。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：确认资格——作为视障读者申请“免费上门寄送盲文/有声读物”专项服务，需提供本人有效居民身份证原件（或社保卡原件），以及《中华人民共和国残疾人证》原件（或电子残疾人证），证件须在有效期内。\",\n    \"第2步：准备证件——备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内，无需额外复印件。\",\n    \"第3步：办理与收费——向图书馆提交申请，该专项服务免收押金与工本费，盲文及有声读物免费邮寄上门。\",\n    \"第4步：办理时间——全年常态化开放办理，周二至周日 09:00-17:00，周一闭馆；不设报名截止日期，可按预约安排办理。\",\n    \"第5步：完成核验——现场按指引提交证件申请，确认服务安排后即可办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}\n\n需要检查 plain_language_steps_zh 是否包含“原件/复印件份数”：我们写了“无需额外复印件”，原文没有复印件要求，但可以保留。是否违反“必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限”？原文无复印件份数，写“无需额外复印件”是合理的，但可能不是原文要求。契约说必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。如果原文没有复印件份数，不提更安全？但写了“无需额外复印件”可能算添加了信息。不过它明确是“无需额外复印件”，不是要求。可以改为“（无额外复印件要求）”？原文没有。为了严格，可以省略“无需额外复印件”。但契约要求保留原件/复印件份数，如果原文没有，可以不提。我倾向于省略“无需额外复印件”以避免编造。步骤第2步：准备证件——备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内。这样不包含复印件份数。可以。\n\n照片规格：原文无，不提。\n\n有效期天数：用户材料有效期内，但原文没有具体有效期天数。用户已提供有效期内，所以步骤中“确认在有效期内”即可。\n\n需要检查 R2 condition 非空，我们给了。\n\napplicability 字段：R1 applies，R2 applies。注意 R2 necessity conditional，用户画像明确申请，所以 applies。\n\n整体状态 ready。\n\n需要检查 actions 的 evidence_refs 是否合法：S1:L2 收费说明，S1:L4 残疾人证要求。可以。\n\nquestions: [] 因为无待澄清问题。用户希望确认是否收费以及有没有截止日期，Stage A 已给出，所以无需澄清。\n\nbilingual_summary_en 填 \"\"。bilingual_steps_en 填 []。\n\n注意 JSON 中 \"condition\": null 合法。字符串中的双引号需转义？我们使用中文双引号“”，不是 JSON 的 \"，所以安全。但 R2 condition 中“免费上门寄送盲文/有声读物”专项服务，中文双引号没问题。plain_language_steps_zh 中也有中文双引号，没问题。\n\n需要确保整体 JSON 没有多余文本。直接输出。\n\n但需要再仔细检查 Stage A 的 service_info_notes 是否需要在 requirements 中体现？契约说一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 plain_language_steps_zh（及英文步骤），不要作为空匹配项放进 requirements。所以我们没有把 service_info_notes 放进 requirements，正确。\n\n需要检查 actions 是否应该包含对收费和截止日期的确认？用户希望确认是否收费以及有没有截止日期，Stage A 已明确，所以 action 可以包括确认。我们 T1 包含“确认...不收费、无报名截止日期”。可以。\n\n需要检查 overall_status 是否应为 ready 而非 needs_confirmation。用户已提供身份证和电子残疾人证，材料齐全，条件满足。收费和截止日期已明确。所以 ready。\n\n需要检查 R1 的 status：用户有 I01 居民身份证原件有效期内，匹配。R2 有 I02 电子残疾人证有效期内，视力残疾类别，匹配。所以 ready。\n\n需要检查 applicability 是否可能 R1 not_applicable？用户是视障读者，申请免费上门寄送盲文/有声读物服务，R1 身份证是通用要求，applicability 应该是 applies。R2 条件满足，applicability applies。正确。\n\n需要",
+    "prompt_tokens": 1772,
+    "completion_tokens": 4608,
+    "total_tokens": 6380,
+    "wall_seconds": 101.7,
+    "tokens_per_sec": 45.31,
+    "finish_reason": "length",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】公共图书馆无障碍借阅证办理｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。\n【现有材料】\n- I01: 居民身份证原件（有效期内）\n- I02: 电子残疾人证（有效期内，视力残疾类别）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"document\", \"item\": \"本人有效居民身份证原件（或社保卡原件）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"本人有效居民身份证原件（或社保卡原件）。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\", \"necessity\": \"conditional\", \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\", \"constraints\": \"原件（或电子残疾人证）\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"收费说明\", \"exact_text\": \"免收押金与工本费，盲文及有声读物免费邮寄上门。\", \"source_id\": \"S1\", \"locator\": \"L2\"}, {\"label\": \"开放时间/截止日期\", \"exact_text\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\", \"source_id\": \"S1\", \"locator\": \"L5\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 4608,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "plain_language_summary_zh": "您已符合申请条件：持有效身份证和残疾人证，可免费申请上门寄送盲文与有声读物，不收费、不设报名截止日期。",
+  "plain_language_steps_zh": [
+    "第1步：确认资格——作为视障读者申请“免费上门寄送盲文/有声读物”专项服务，需提供本人有效居民身份证原件（或社保卡原件），以及《中华人民共和国残疾人证》原件（或电子残疾人证），证件须在有效期内。",
+    "第2步：准备证件——备好居民身份证原件、残疾人证原件（或电子残疾人证），视力残疾类别，确认在有效期内，无需额外复印件。",
+    "第3步：办理与收费——向图书馆提交申请，该专项服务免收押金与工本费，盲文及有声读物免费邮寄上门。",
+    "第4步：办理时间——全年常态化开放办理，周二至周日 09:00-17:00，周一闭馆；不设报名截止日期，可按预约安排办理。",
+    "第5步：完成核验——现场按指引提交证件申请，确认服务安排后即可办理。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 2,
+    "verbatim_hits": 2,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 4,
+    "verbatim_hits": 4,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "ready",
+    "overall_actual": "ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "免收押金与工本费",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证",
+          "survived": true
+        },
+        {
+          "clause": "残疾人证",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "不设报名截止日期",
+          "survived": true
+        },
+        {
+          "clause": "09:00-17:00",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "ready",
+        "keywords": [
+          "身份证",
+          "残疾人证"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 122.004,
+  "total_completion_tokens": 5559
+}

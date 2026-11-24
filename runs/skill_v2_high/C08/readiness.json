@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "公共图书馆无障碍借阅证办理",
+    "reference_date": "2026-11-24",
+    "profile_summary": "视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "synthetic_accessible_library_guide.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-10-01",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "本人有效居民身份证原件（或社保卡原件）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已持有有效居民身份证原件，满足原件要求，且在有效期内，未超期。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料】本人有效居民身份证原件（或社保卡原件）。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "《中华人民共和国残疾人证》原件（或电子残疾人证）",
+      "necessity": "conditional",
+      "condition": "申请“免费上门寄送盲文/有声读物”专项服务",
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户申请免费上门寄送盲文与有声读物专项服务，已持有有效期内电子残疾人证（视力残疾类别），满足原件或电子证要求，未超期。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "携带有效居民身份证原件及电子残疾人证，到图书馆指定窗口办理免费上门寄送盲文与有声读物服务，办理时确认窗口开放时间（周二至周日09:00-17:00，周一闭馆）。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": [],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "居住证申领前置资格条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "居住登记2026-08-15距基准日2026-11-24约3个月零9天，不足半年，不满足申领前置资格；但已办理居住登记，资格条件未满足，存在状态冲突",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "本人居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已提供有效期内本人居民身份证原件，满足原件要求",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "申领人近期标准证件相片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "用户已提供近期标准证件相片纸质2张，满足相片要求",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "合法稳定住所证明或就业/在读证明",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [],
+      "reason": "用户仅有租房合同手机照片，无纸质租赁合同原件及复印件，也未提供劳动合同或在读证明原件及复印件，住所证明材料不齐全",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "补齐合法稳定住所证明：到租房处取得纸质房屋租赁合同原件，并复印1份，与身份证、居住登记凭证、标准相片一并携带前往办理窗口",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "确认居住登记是否满足半年要求：若居住登记未满半年，需先按居住登记管理规定完成后续登记，满足满半年条件后再申领居住证",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "当前居住登记自2026-08-15办理，距基准日2026-11-24仅约3个月零9天，未满半年，是否确认按当前居住登记状态办理，还是需先完成后续居住登记满足满半年要求？",
+    "租房合同仅有手机拍摄照片，是否可到租房方取得纸质租赁合同原件及1份复印件用于办理？"
+  ]
+}

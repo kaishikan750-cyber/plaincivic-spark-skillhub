@@ -1,0 +1,95 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申请提出时限",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "停留期限至2026-11-29，距基准日2026-11-24仅剩5天，已错过届满7日前（2026-11-22前）的提前申请期",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "本人有效护照或其他国际旅行证件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已持有本人有效护照原件，且护照注明停留期限至2026-11-29",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "《外国人签证证件申请表》及近期白底彩色免冠照片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已持有已签字的申请表及近期白底免冠彩照1张，符合材料规格",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "行程计划安排说明及旅行社证明函件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [],
+      "reason": "现有材料未包含与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），团体旅游还须提交旅行社证明函件",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "受理回执有效期",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "受理回执有效期自受理之日起不超过7个工作日，属一般办理时限，无需作为匹配项",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "立即准备行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需补充旅行社证明函件，以补齐缺失材料",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "尽快前往当地公安机关出入境管理机构办理延期申请，避免继续停留超期",
+      "priority": "high",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "本次延期申请属于个人旅游还是团体旅游？是否为团体旅游需额外提交旅行社证明函件。"
+  ]
+}

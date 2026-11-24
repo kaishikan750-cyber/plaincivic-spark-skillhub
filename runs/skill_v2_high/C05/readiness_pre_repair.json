@@ -1,0 +1,79 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "居住证申领前置资格（离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "2026-08-15办理居住登记，至2026-11-24仅约3个月零9天，不足半年以上，前置资格不满足。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "本人居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已有本人居民身份证原件且在有效期内。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "申领人近期标准证件相片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已有近期标准证件相片纸质2张，满足材料要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [
+        "I04"
+      ],
+      "reason": "仅有手机拍摄的租房合同照片，缺少纸质租赁合同原件及复印件1份，不满足住所证明要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "先核实居住登记是否满半年：若未满半年，需补办居住登记至满半年以上后再申请；同时现场补齐纸质租房合同原件及复印件1份。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2",
+        "S1:L5"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "当前居住登记自2026-08-15起是否已满半年？若未满，是否可先补办居住登记再申领？"
+  ]
+}

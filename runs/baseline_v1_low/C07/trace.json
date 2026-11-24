@@ -1,0 +1,124 @@
+{
+  "mode": "baseline_v1",
+  "thinking_mode": "low",
+  "case_id": "C07",
+  "spark_call": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"用户62周岁、本市户籍，已持身份证原件和手机电子证件照办理，符合区里2026年新通知的申领条件，材料基本齐备，现场可免费采集电子照片并免收工本费。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1-age\",\n      \"item\": \"申领年龄：年满60周岁及以上本市户籍老年人\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户年龄62周岁，满足区里2026年新通知要求的年满60周岁及以上条件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L2\",\n          \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2-identity\",\n      \"item\": \"居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已持有居民身份证原件，满足区里新通知要求的必备材料。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3-photo\",\n      \"item\": \"电子照片（现场可免费采集）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户已持有手机电子证件照，可满足电子照片要求；同时按区里新通知现场可免费采集，无需额外携带纸质照片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4-hukou\",\n      \"item\": \"户口簿原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"按区里2026年新通知，户口簿不是必备材料，用户未携带也不影响申领。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5-fee\",\n      \"item\": \"工本费\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"按区里2026年新通知，首次申领免收工本费，无需额外缴费。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L4\",\n          \"quote\": \"办理费用：首次申领免收工本费。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"按区里2026年新通知办理申领，携带身份证原件，使用手机电子证件照或现场免费采集电子照片即可，无需携带户口簿和纸质照片，首次申领免收工本费。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L2-L4\",\n          \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。办理费用：首次申领免收工本费。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"先确认资格：62周岁、本市户籍，符合区里2026年新通知的申领年龄条件。\",\n    \"携带材料：只带居民身份证原件和手机电子证件照；户口簿和纸质照片按新通知不需要携带。\",\n    \"现场办理：在办理点出示身份证原件和电子证件照，可现场免费采集电子照片，无需额外交钱。\",\n    \"完成申领：按现场工作人员指引提交材料并完成敬老卡申领，首次申领免收工本费。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"旧小区公告S1与区里新通知S2存在年龄、材料和费用差异，本次按更晚发布且用户提供的区里新通知S2为准办理。\",\n    \"电子照片使用手机电子证件照是否可直接通过现场核验，可能存在现场工作人员具体操作要求差异，建议按现场指引确认。\"\n  ]\n}",
+    "reasoning_content": "我们需要回答用户。需要输出合法 JSON 对象，不要多余解释或 Markdown 以外文字。需要按照要求构建 JSON。关键信息：参考日期 2026-11-24，事项老年人敬老卡申领，用户62周岁本市户籍，本人持身份证和手机电子证件照前往办理，手上同时拿到小区旧公告S1和区里新通知S2。\n\n需要判断办事状态。两个通知冲突：S1 2024年5月小区宣传栏，年龄仅限65+，材料需户口簿、纸质照片、工本费20元。S2 2026年9月区民政交通局联合通知，年龄年满60+，材料身份证原件即可，现场免费采集电子照片，无需纸质照片和户口簿，免工本费。参考日期 2026-11-24，S2 currentness user_provided_current 表示用户提供的当前通知。S1 currentness=user_provided_current? 它说 currentness=user_provided_current 但 date=2024-05-01 type synthetic_civic_notice。用户手上同时拿到小区旧公告和区里新通知。应该以最新/更权威的 S2 为准？需要判断是否 ready。用户62周岁，S2要求年满60即可，材料身份证原件即可，现场免费采集电子照片。用户已有身份证原件、手机电子证件照（无纸质照片，未带户口簿）。因此按 S2 办理，材料已满足：身份证原件有；电子照片有，但S2说现场免费采集电子照片，用户手上电子证件照是否可替代？S2说“现场免费采集电子照片，无需携带纸质照片及户口簿”。用户手机电子证件照可能可以现场使用/上传？需要确认？用户已有电子证件照，但S2要求现场免费采集电子照片。用户是否已具备电子照片？已有手机电子证件照。可能满足“电子照片”要求？但S2明确说现场免费采集，不是必须携带纸质照片。用户有电子证件照，应该可以。年龄62满足60+。本市户籍满足。办理费用免收。因此状态可能是 ready？但需要注意 S1 旧公告可能造成冲突，需要确认以哪个为准？用户手上同时拿到两个通知，S1是旧公告，S2是新",
+    "raw_content": "{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"用户62周岁、本市户籍，已持身份证原件和手机电子证件照办理，符合区里2026年新通知的申领条件，材料基本齐备，现场可免费采集电子照片并免收工本费。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1-age\",\n      \"item\": \"申领年龄：年满60周岁及以上本市户籍老年人\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户年龄62周岁，满足区里2026年新通知要求的年满60周岁及以上条件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L2\",\n          \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2-identity\",\n      \"item\": \"居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已持有居民身份证原件，满足区里新通知要求的必备材料。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3-photo\",\n      \"item\": \"电子照片（现场可免费采集）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户已持有手机电子证件照，可满足电子照片要求；同时按区里新通知现场可免费采集，无需额外携带纸质照片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4-hukou\",\n      \"item\": \"户口簿原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"按区里2026年新通知，户口簿不是必备材料，用户未携带也不影响申领。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L3\",\n          \"quote\": \"无需携带纸质照片及户口簿。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5-fee\",\n      \"item\": \"工本费\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"按区里2026年新通知，首次申领免收工本费，无需额外缴费。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L4\",\n          \"quote\": \"办理费用：首次申领免收工本费。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"按区里2026年新通知办理申领，携带身份证原件，使用手机电子证件照或现场免费采集电子照片即可，无需携带户口簿和纸质照片，首次申领免收工本费。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S2\",\n          \"locator\": \"L2-L4\",\n          \"quote\": \"办理年龄：年满60周岁及以上的常住老年人即可申领。必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。办理费用：首次申领免收工本费。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"先确认资格：62周岁、本市户籍，符合区里2026年新通知的申领年龄条件。\",\n    \"携带材料：只带居民身份证原件和手机电子证件照；户口簿和纸质照片按新通知不需要携带。\",\n    \"现场办理：在办理点出示身份证原件和电子证件照，可现场免费采集电子照片，无需额外交钱。\",\n    \"完成申领：按现场工作人员指引提交材料并完成敬老卡申领，首次申领免收工本费。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"旧小区公告S1与区里新通知S2存在年龄、材料和费用差异，本次按更晚发布且用户提供的区里新通知S2为准办理。\",\n    \"电子照片使用手机电子证件照是否可直接通过现场核验，可能存在现场工作人员具体操作要求差异，建议按现场指引确认。\"\n  ]\n}",
+    "prompt_tokens": 739,
+    "completion_tokens": 1838,
+    "total_tokens": 2577,
+    "wall_seconds": 37.909,
+    "tokens_per_sec": 48.48,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是政务办事助手。请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。"
+        },
+        {
+          "role": "user",
+          "content": "参考日期：2026-11-24\n事项：老年人敬老卡（免费乘车卡）申领\n用户情况：62周岁本市户籍居民，本人持身份证和手机电子证件照前往办理，手上同时拿到了小区旧公告(S1)和区里新通知(S2)。\n\n【办事通知原文】\n[S1] filename=community_poster_2024.txt | date=2024-05-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【小区宣传栏通知】老年人敬老卡办理须知（2024年5月张贴）\nL2: 办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。\nL3: 必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。\nL4: 办理费用：首次办卡收取工本费20元。\n\n[S2] filename=district_notice_2026.txt | date=2026-09-15 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【区民政与交通局联合通知】2026年敬老卡便民升级通知（2026年9月15日发布）\nL2: 办理年龄：年满60周岁及以上的常住老年人即可申领。\nL3: 必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。\nL4: 办理费用：首次申领免收工本费。\n\n【用户现有材料】\n- I01: 居民身份证原件（年龄62周岁，本市户籍）\n- I02: 手机电子证件照（无2寸纸质照片，未带户口簿）\n\n请输出 JSON：\n- overall_status: \"ready\" | \"not_ready\" | \"needs_confirmation\"\n- summary_zh: 一句话结论\n- requirements: 数组，每项含 id, item, necessity(\"required\"|\"conditional\"|\"optional\"), condition(无则为null), applicability(\"applies\"|\"not_applicable\"|\"unknown\"), status(\"ready\"|\"missing\"|\"expired\"|\"conflict\"|\"needs_confirmation\"|\"not_applicable\"), matched_inventory_ids, reason, evidence([{source_id, locator, quote}])\n- actions: 数组，每项含 id, action, priority(\"blocking\"|\"high\"|\"normal\"), evidence([{source_id, locator, quote}])\n- plain_language_steps_zh: 3-5条通俗分步指南（保留资格、材料规格与截止时限）\n- bilingual_steps_en: 无需英文，bilingual_steps_en 填 []。\n- questions: 待确认问题数组\n- limitations: 局限说明数组\n"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "parsed_ok": true,
+  "skillhub_strict": {
+    "valid": false,
+    "errors": [
+      "requirements[4].matched_inventory_ids must identify evidence for a ready item"
+    ],
+    "warnings": [],
+    "exit_code": 1
+  },
+  "quote_check": {
+    "total_quotes": 6,
+    "verbatim_hits": 5,
+    "verbatim_rate": 0.8333,
+    "misses": [
+      {
+        "section": "actions",
+        "item_id": "A1",
+        "source_id": "S2",
+        "locator": "L2-L4",
+        "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。办理费用：首次申领免收工本费。",
+        "actual_line": ""
+      }
+    ]
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "ready",
+    "overall_match": false,
+    "clause_survived": 5,
+    "clause_total": 7,
+    "clause_survival_rate": 0.7143,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "65周岁",
+          "survived": false
+        },
+        {
+          "clause": "60周岁",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证原件",
+          "survived": true
+        },
+        {
+          "clause": "纸质",
+          "survived": true
+        },
+        {
+          "clause": "电子",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "2024",
+          "survived": false
+        },
+        {
+          "clause": "2026",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "conflict",
+        "keywords": [
+          "65周岁",
+          "60周岁",
+          "纸质",
+          "电子",
+          "20元",
+          "免收"
+        ],
+        "passed": false
+      }
+    ],
+    "all_traps_passed": false
+  }
+}

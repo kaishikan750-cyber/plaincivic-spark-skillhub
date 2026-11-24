@@ -1,0 +1,103 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申报截止时间及逾期处理",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "基准日2026-11-24处于2026-11-01至2026-11-30 17:00申报期内，未超期；用户拟于2026-11-25提交，仍在截止日前。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "申报资格条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "用户为2026届外籍硕士毕业生，2026年6月毕业，毕业2年内；全日制本科及以上；已签订2年期劳动合同，满足1年以上；已正常缴纳社保2个月，符合资格条件。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "I01为硕士学位证及留服认证书扫描件，认证有效，满足境外学历认证书要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料2：有效期内劳动合同及社保缴费明细",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "I02为2年期劳动合同及社保缴费明细，正常在缴2个月，满足有效期内要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "基本材料3：经住建部门备案的房屋租赁合同",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "I03为住建部门备案房屋租赁合同，处于有效期内，满足备案要求。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "附件B：分学历与分区域补贴金额分级标准及特殊扣减条款（原文扫描严重模糊，文字与数字无法识别）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "Stage A发现S1:L7附件B原图扫描严重模糊，文字与数字无法识别；不能据此判定补贴金额或扣减条款，需用户补充清晰版本或人工确认。",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "向发文单位申请补充清晰的附件B扫描件，或提供人工核验的补贴金额与特殊扣减条款，以便完成申报前材料核验。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "附件B原文扫描严重模糊，无法识别分学历、分区域补贴金额分级标准及特殊扣减条款，是否可获取清晰版本或由人工提供对应内容？",
+    "用户拟于2026-11-25提交申报，是否确认该时间仍在2026-11-30 17:00截止前，并接受逾期系统关闭、不予补报的规则？"
+  ]
+}

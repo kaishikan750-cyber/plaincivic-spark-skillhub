@@ -1,0 +1,89 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申报截止及逾期处理",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "申报截止为2026年11月30日17:00，用户拟于2026-11-25提交，已超过截止日期，逾期系统自动关闭、不予补报。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "申请人资格条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "用户为2026届外籍硕士毕业生、已在本市签订2年劳动合同并缴纳社保2个月，符合毕业2年内、1年以上劳动合同及正常缴纳社会保险的资格条件。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料1：毕业证及学位证",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已持有硕士学位证及留服认证书扫描件，满足毕业证、学位证及境外学历认证书要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料2：劳动合同及社保缴费明细",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已持有2年期劳动合同及社保缴费明细，且正常在缴2个月，满足有效期内材料要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "基本材料3：房屋租赁合同",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已持有住建部门备案房屋租赁合同且处于有效期内，满足材料要求。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "立即调整申报时间，在2026年11月30日17:00截止前完成申报，避免逾期系统关闭；如已错过截止时间，需确认是否可补报或启动其他受理渠道。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "附件B（分学历与分区域补贴金额分级标准及特殊扣减条款）因扫描模糊无法识别，请提供可清晰阅读的附件B原文或官方清晰版，以便核对补贴金额与扣减条件。"
+  ]
+}

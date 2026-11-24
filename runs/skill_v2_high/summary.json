@@ -1,0 +1,17 @@
+{
+  "run_name": "skill_v2_high",
+  "cases": 10,
+  "overall_accuracy": 0.9,
+  "overall_match_count": "9/10",
+  "trap_pass_rate": 1.0,
+  "trap_pass_count": "10/10",
+  "clause_survival_rate": 0.9315,
+  "clause_survival_count": "68/73",
+  "pre_repair_strict_pass": "0/10",
+  "post_repair_strict_pass": "10/10",
+  "pre_repair_verbatim_rate": 1.0,
+  "post_repair_verbatim_rate": 1.0,
+  "avg_wall_seconds": 121.56,
+  "avg_completion_tokens": 5547.0,
+  "avg_tokens_per_sec": 45.63
+}

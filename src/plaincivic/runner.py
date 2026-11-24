@@ -51,7 +51,7 @@ def run_baseline_case(
     case_dir.mkdir(parents=True, exist_ok=True)
 
     msgs = build_baseline_v1_messages(case)
-    resp = client.chat(msgs, thinking_mode=thinking_mode, temperature=0.2, max_tokens=2048, seed=42)
+    resp = client.chat(msgs, thinking_mode=thinking_mode, max_tokens=5120, seed=42)
     parsed = extract_json_object(resp.content) or {}
 
     # Save raw un-repaired JSON to test whether Baseline v1 passes SkillHub --strict natively
@@ -120,17 +120,35 @@ def run_skill_v2_case(
 
     # Stage A: Blind extraction from source notices (SkillHub Rule #1)
     msgs_a = build_stage_a_extraction_messages(case)
-    max_tok_a = 1800 if thinking_mode == "none" else (2400 if thinking_mode == "low" else 3600)
-    resp_a = client.chat(msgs_a, thinking_mode=thinking_mode, temperature=0.2, max_tokens=max_tok_a, seed=42)
+    max_tok_a = 2048 if thinking_mode == "none" else (3584 if thinking_mode == "low" else 5120)
+    resp_a = client.chat(msgs_a, thinking_mode=thinking_mode, max_tokens=max_tok_a, seed=42)
     stage_a_json = extract_json_object(resp_a.content) or {"extracted_requirements": [], "multi_source_conflicts": [], "unreadable_sections": []}
 
     # Stage B: Condition resolution, reference-date arithmetic, inventory matching, plain-language & bilingual rewrite
     msgs_b = build_stage_b_readiness_and_rewrite_messages(case, stage_a_json)
-    max_tok_b = 2400 if thinking_mode == "none" else (3200 if thinking_mode == "low" else 4500)
-    resp_b = client.chat(msgs_b, thinking_mode=thinking_mode, temperature=0.2, max_tokens=max_tok_b, seed=42)
+    max_tok_b = 3072 if thinking_mode == "none" else (4608 if thinking_mode == "low" else 6144)
+    resp_b = client.chat(msgs_b, thinking_mode=thinking_mode, max_tokens=max_tok_b, seed=42)
     raw_stage_b = extract_json_object(resp_b.content) or {}
+    stage_b_retried = False
+    if not raw_stage_b:
+        # Honest fallback retry (e.g. if reasoning-budget cutoff emitted truncated prose instead of JSON)
+        stage_b_retried = True
+        resp_b = client.chat(msgs_b, thinking_mode="none", max_tokens=3072, seed=43)
+        raw_stage_b = extract_json_object(resp_b.content) or {}
 
-    # Measure raw pre-repair quote grounding & SkillHub strict validity (for honest reporting!)
+    # Measure raw pre-repair Stage A verbatim quote rate & Stage B strict validity honestly
+    stage_a_as_ev = {
+        "requirements": [
+            {
+                "id": r.get("id"),
+                "evidence": [{"source_id": r.get("source_id"), "locator": r.get("locator"), "quote": r.get("quote")}],
+            }
+            for r in (stage_a_json.get("extracted_requirements") or [])
+            if isinstance(r, dict)
+        ]
+    }
+    pre_quotes = check_verbatim_quotes(stage_a_as_ev, case)
+
     pre_repair_path = case_dir / "readiness_pre_repair.json"
     pre_repair_doc = {
         k: raw_stage_b.get(k)
@@ -139,7 +157,6 @@ def run_skill_v2_case(
     }
     pre_repair_path.write_text(json.dumps(pre_repair_doc, ensure_ascii=False, indent=2), encoding="utf-8")
     pre_strict = run_skillhub_strict_validator(pre_repair_path)
-    pre_quotes = check_verbatim_quotes(pre_repair_doc, case)
 
     # Stage C: Deterministic SkillHub contract repair & downgrade gate
     repaired_doc, repairs = normalize_and_repair_readiness(raw_stage_b, case, stage_a_json)
@@ -183,6 +200,7 @@ def run_skill_v2_case(
         "stage_a_parsed": stage_a_json,
         "stage_b_spark": resp_b.to_dict(),
         "stage_b_parsed_ok": bool(raw_stage_b),
+        "stage_b_retried_no_think": stage_b_retried,
         "plain_language_summary_zh": plain_zh_summary,
         "plain_language_steps_zh": plain_zh_steps,
         "bilingual_summary_en": bilingual_en_summary,
@@ -242,6 +260,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--mode", choices=["baseline_v1", "skill_v2"], required=True)
     parser.add_argument("--thinking", choices=["none", "low", "high"], default="low")
     parser.add_argument("--cases", default="", help="Comma-separated case IDs, e.g. C01,C04")
+    parser.add_argument("--resume", action="store_true", help="Reuse existing valid trace.json if present")
     args = parser.parse_args(argv)
 
     case_filter = {c.strip() for c in args.cases.split(",") if c.strip()} or None
@@ -258,6 +277,13 @@ def main(argv: list[str] | None = None) -> int:
     traces: list[dict[str, Any]] = []
     for case in cases:
         cid = case["case_id"]
+        existing_trace = out_dir / cid / "trace.json"
+        if args.resume and existing_trace.exists():
+            tr = json.loads(existing_trace.read_text(encoding="utf-8"))
+            if tr.get("parsed_ok") or tr.get("stage_b_parsed_ok"):
+                print(f"==> [RESUME] Reusing {run_name}/{cid}", flush=True)
+                traces.append(tr)
+                continue
         t0 = time.perf_counter()
         print(f"==> Running {run_name} on {cid} ({case['slug']}) ...", flush=True)
         if args.mode == "baseline_v1":

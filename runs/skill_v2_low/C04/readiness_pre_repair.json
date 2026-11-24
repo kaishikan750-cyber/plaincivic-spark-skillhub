@@ -1,0 +1,77 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "基本材料：有效身份证件或社会保障卡（或医保电子凭证）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已提供居民身份证与社会保障卡原件且均在有效期内，满足基本材料要求。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "基本材料：填写完整的《跨省异地就医备案表》",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已提供已填写基本信息的跨省异地就医备案表，满足基本材料要求；是否“填写完整”需按窗口要求核验，但当前材料已提交。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一",
+      "necessity": "conditional",
+      "condition": "异地长期居住人员",
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户仅说明计划前往外省子女处居住并看病，未说明是否已取得当地居住证/户籍、是否采用个人承诺制，无法判定该条件是否触发。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》",
+      "necessity": "conditional",
+      "condition": "异地转诊就医人员",
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户未说明是否属于医院转诊，无法判定该条件是否触发；若不属于转诊则无需提交转诊证明。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "向用户确认是否属于异地长期居住人员、是否已取得当地居住证或采用个人承诺制，以及是否属于医院转诊，以便确定是否需要补充条件材料。",
+      "priority": "high",
+      "evidence_refs": [
+        "S1:L4",
+        "S1:L5"
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "用户是否已取得外省当地居住证或户籍证明，或是否采用个人承诺制？",
+    "本次就医是否属于医院转诊？",
+    "《跨省异地就医备案表》是否按窗口要求填写完整（如就诊人、就医地、备案类型等关键信息）？"
+  ]
+}

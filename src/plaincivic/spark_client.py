@@ -121,13 +121,18 @@ class LocalSparkClient:
         self,
         messages: list[dict[str, str]],
         thinking_mode: str = "low",
-        temperature: float = 0.2,
-        top_p: float = 0.9,
+        temperature: float | None = None,
+        top_p: float = 0.95,
         max_tokens: int = 2048,
         seed: int = 42,
     ) -> SparkResponse:
         if thinking_mode not in {"none", "low", "high"}:
             raise ValueError(f"Unsupported thinking_mode: {thinking_mode}")
+
+        # Per Spark-X2.6-4B model card: thinking modes require higher sampling temperature
+        # (and light repetition/presence penalty) to prevent low-temperature CoT loops.
+        if temperature is None:
+            temperature = 0.2 if thinking_mode == "none" else 0.7
 
         chat_template_kwargs: dict[str, Any]
         if thinking_mode == "none":
@@ -142,6 +147,8 @@ class LocalSparkClient:
             "messages": messages,
             "temperature": temperature,
             "top_p": top_p,
+            "repeat_penalty": 1.08,
+            "presence_penalty": 0.4 if thinking_mode != "none" else 0.0,
             "max_tokens": max_tokens,
             "seed": seed,
             "chat_template_kwargs": chat_template_kwargs,

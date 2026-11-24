@@ -1,0 +1,262 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C03",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"换发资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"护照有效期不足6个月，或签证页即将使用完毕\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效期内的原普通护照原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件；有效期内的原普通护照\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】有效期内的原普通护照原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：本人有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件；本人有效居民身份证\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】本人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整；符合标准；含回执\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"未满16周岁的未成年人\",\n      \"constraints\": \"户口簿原件；监护人身份证原件；监护人陪同\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。\"\n    },\n    {\n      \"id\": \"R6\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"登记备案的国家工作人员\",\n      \"constraints\": \"按干部管理权限；单位出具的同意出境意见函\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限\",\n      \"exact_text\": \"公安机关出入境管理机构自受理之日起7至15个工作日内办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L8\"\n    }\n  ]\n}",
+    "reasoning_content": "我们需要回答用户。需要执行 SkillHub 技能第1步【先提取要求，再查看现有材料】。用户给了 S1 全文，没有 S2，要求输出合法 JSON 对象，简明直接，不要额外解释。需要提取 extracted_requirements，multi_source_conflicts，unreadable_sections，service_info_notes。\n\n需要仔细解析原文。\n\n事项：中国公民普通护照换发（参考日期：2026-11-24）\n\n登记来源全文只有 S1 filename=nia_ordinary_passport_renewal.txt ... L1-L8。\n\n要求：\n1. 看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. extracted_requirements 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。\n4. 若 S1 与 S2 互相冲突，写入 multi_source_conflicts 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 unreadable_sections，严禁猜测其中的金额或条款。\n\n输出 JSON。\n\n需要确定哪些是 extracted_requirements。资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件。一般性的受理后审批工作日/收费标准/开放时间/不设截止日期记入 service_info_notes。\n\n原文：\nL1 标题，跳过。\nL2 办理条件：护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。 -> eligibility condition.\nL3 基本材料1：有效期内的原普通护照原件。 -> document required.\nL4 基本材料2：本人有效居民身份证原件。 -> document required.\nL5 基本材料3：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。 -> document required.\nL6 条件材料1：未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。 -> conditional document.\nL7 条件材料2：登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。 -> conditional document.\nL8 办理时限：公安机关出入境管理机构自受理之日起7至15个工作日内办结。 -> service_info_notes? 原文是“办理时限”，属于一般性的受理后审批工作日，应记入 service_info_notes，而不是 extracted_requirements 的 deadline? 用户说明：一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。所以 L8 放入 service_info_notes exact_text 原文。可能不需要作为 extracted_requirements deadline。因为明确说办理时限（受理后7-15工作日）记入 service_info_notes。\n\n还有申请截止/前置时限？原文没有截止日期，只有办理时限。参考日期 2026-11-24 可能是参考日期，但这是用户提供的参考日期，不是原文要求？原文没有明确截止日期。不加入原文未写的材料。所以 deadline category? 没有申请截止/前置时限，除了 L8 是办理时限。应记入 service_info_notes。\n\n需要提取所有可核验的资格条件、必备/条件材料。可以包括：\nR1 eligibility: L2 办理条件.\nR2 document required: L3 基本材料1.\nR3 document required: L4 基本材料2.\nR4 document required: L5 基本材料3.\nR5 conditional document: L6 条件材料1.\nR6 conditional document: L7 条件材料2.\n\n是否把 L2 的资格条件也包含必要条件? 是的。\n\n注意“多源冲突项”只有 S1 与 S2，但 S2 不存在。原文只有一个 S1。所以 multi_source_conflicts 应为空数组 []？用户要求若 S1 与 S2 互相冲突，写入。这里没有 S2，所以不写。可以输出空数组。\n\nunreadable_sections：原文没有扫描模糊/不可读段落。所以空数组 []。\n\nservice_info_notes：L8 办理时限。也许只有一项。注意用户输出示例中 service_info_notes 为数组，每个对象 label exact_text source_id locator。需要 label 如 \"办理时限/费用/窗口时间\"。这里 label 可以写 \"办理时限\" 或统一 \"办理时限/费用/窗口时间\"? 用户说一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。可以 label 为 \"办理时限\"，exact_text 原文精确表述。需要 quote 是原文精确表述。原文 L8: \"公安机关出入境管理机构自受理之日起7至15个工作日内办结。\" 需要完整行内容？应该是直接复制该行的一段连续原文短句。L8 整行就是该内容。可以 quote 为该整句。source_id S1 locator L8。\n\n注意 extracted_requirements 中每个 item 需要 category，necessity，condition 仅 conditional 时填触发条件，否则 null，constraints 保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日），source_id locator quote。\n\n对于文档材料，constraints 可以保留原文硬限定。比如 L3: \"有效期内的原普通护照原件\" constraints 可以是 \"原件；有效期内的原普通护照\"。但原文本身是材料名称，其中“有效期内的”是硬限定？可以写 \"原件，且为有效期内的原普通护照\"。注意不要加入原文未写的材料。可以 quote 直接复制 L3 整行。constraints 可以提取硬限定。例如：\nR2:\ncategory document\nitem \"必备材料：有效期内的原普通护照原件\"\nnecessity required\ncondition null\nconstraints \"原件；有效期内的原普通护照\"\nsource_id S1 locator L3 quote \"【基本材料1】有效期内的",
+    "raw_content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"换发资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"护照有效期不足6个月，或签证页即将使用完毕\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效期内的原普通护照原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件；有效期内的原普通护照\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】有效期内的原普通护照原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：本人有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件；本人有效居民身份证\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】本人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整；符合标准；含回执\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"未满16周岁的未成年人\",\n      \"constraints\": \"户口簿原件；监护人身份证原件；监护人陪同\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。\"\n    },\n    {\n      \"id\": \"R6\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"登记备案的国家工作人员\",\n      \"constraints\": \"按干部管理权限；单位出具的同意出境意见函\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限\",\n      \"exact_text\": \"公安机关出入境管理机构自受理之日起7至15个工作日内办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L8\"\n    }\n  ]\n}",
+    "prompt_tokens": 959,
+    "completion_tokens": 2260,
+    "total_tokens": 3219,
+    "wall_seconds": 47.179,
+    "tokens_per_sec": 47.9,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：中国公民普通护照换发（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=nia_ordinary_passport_renewal.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】中国公民普通护照换发\nL2: 【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。\nL3: 【基本材料1】有效期内的原普通护照原件。\nL4: 【基本材料2】本人有效居民身份证原件。\nL5: 【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。\nL6: 【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。\nL7: 【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。\nL8: 【办理时限】公安机关出入境管理机构自受理之日起7至15个工作日内办结。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "eligibility",
+        "item": "换发资格条件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "护照有效期不足6个月，或签证页即将使用完毕",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "必备材料：有效期内的原普通护照原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件；有效期内的原普通护照",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【基本材料1】有效期内的原普通护照原件。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "必备材料：本人有效居民身份证原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件；本人有效居民身份证",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【基本材料2】本人有效居民身份证原件。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "填写完整；符合标准；含回执",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。"
+      },
+      {
+        "id": "R5",
+        "category": "document",
+        "item": "条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同",
+        "necessity": "conditional",
+        "condition": "未满16周岁的未成年人",
+        "constraints": "户口簿原件；监护人身份证原件；监护人陪同",
+        "source_id": "S1",
+        "locator": "L6",
+        "quote": "【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。"
+      },
+      {
+        "id": "R6",
+        "category": "document",
+        "item": "条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函",
+        "necessity": "conditional",
+        "condition": "登记备案的国家工作人员",
+        "constraints": "按干部管理权限；单位出具的同意出境意见函",
+        "source_id": "S1",
+        "locator": "L7",
+        "quote": "【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理时限",
+        "exact_text": "公安机关出入境管理机构自受理之日起7至15个工作日内办结。",
+        "source_id": "S1",
+        "locator": "L8"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"换发资格条件：护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户现持护照有效期至2027-03-10，距参考日2026-11-24约3.5个月，不足6个月，符合换发资格条件。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：有效期内的原普通护照原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已持有原普通护照原件I01，且该护照有效期至2027-03-10，仍在有效期内。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"必备材料：本人有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有本人有效居民身份证原件I02，长期有效。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有填写完整的申请表及出入境相片回执I03，符合现场照相合格要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"未满16周岁的未成年人\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为68岁成年人，不属于未满16周岁的未成年人，该条件材料不适用。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"登记备案的国家工作人员\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为原民营企业员工、非登记备案国家工作人员，该条件材料不适用。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"现场办理前确认材料齐全并带齐：原普通护照原件、本人有效居民身份证原件、已填写完整的出入境申请表及合格相片回执，按窗口要求提交换发申请。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"您符合普通护照换发条件，材料已齐，可直接到出入境窗口现场办理。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带好原普通护照原件、本人有效居民身份证原件、已填写完整的出入境申请表和合格相片回执，到出入境窗口现场办理。\",\n    \"第2步：向工作人员说明您要换发普通护照，并提交上述全部材料，确认材料符合要求。\",\n    \"第3步：按窗口提示完成受理登记，公安机关出入境管理机构自受理之日起7至15个工作日内办结。\",\n    \"第4步：办结后按提示领取新普通护照，原护照可按规定处理。\",\n    \"第5步：现场不设报名截止日期，请按窗口开放时间提前安排办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "reasoning_content": "我们需要回答用户要求直接输出 JSON。需要按照 SkillHub 技能流程，基于给定 Stage A 盲提结果和用户画像/现有材料，做条件解析→材料比对→状态计算→无障碍改写。必须严格遵循规则。需要思考并直接输出合法 JSON，不重复长引文？系统说自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数。但用户给的 JSON 模板包含 overall_status, requirements, actions, questions, plain_language_summary_zh, plain_language_steps_zh, bilingual_summary_en, bilingual_steps_en。需要输出这些字段。可能还需要 evidence_refs 等。注意系统说自动补全 case/sources/完整原文引文/limitations 契约字段，但用户模板没有这些，我们只输出模板字段即可？ 需要尽量符合。\n\n先解析案件：中国公民普通护照换发，参考日期 2026-11-24，模式 plain_zh。用户画像：68岁退休居民（原民营企业员工，非登记备案国家工作人员），本人现场办理普通护照换发，现持护照将于2027-03-10到期（剩余不足4个月）。现有材料：\nI01 原普通护照原件（有效期至2027-03-10（距2026-11-24约3.5个月，不足6个月））\nI02 居民身份证原件（长期有效）\nI03 申请表与出入境相片回执（已完成现场照相取得合格回执并填写申请表）\n\nStage A extracted_requirements R1-R6。R1 eligibility: 护照有效期不足6个月，或签证页即将使用完毕，可申请换发。用户护照剩余约3.5个月，不足6个月，符合资格。R2 必备原普通护照原件，I01 有。R3 身份证原件 I02 有。R4 申请表及符合标准相片回执 I03 有。R5 conditional 未满16周岁，不适用（用户68岁）。R6 conditional 登记备案国家工作人员，用户明确非登记备案国家工作人员，不适用。这些 conditional 应标 applicability? 需要判断 applicability 仅限 applies/not_applicable/unknown。对于 R5 和 R6，条件不满足，用户画像已明确排除？ R5 未满16周岁：用户68岁，不是未成年人，所以 not_applicable？ 但规则说用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ applicability=\"not_applicable\", status=\"not_applicable\"。R6 登记备案国家工作人员：用户明确非登记备案国家工作人员，所以 not_applicable, status not_applicable。R1 资格条件：用户护照剩余不足6个月，符合资格，applicability applies? 但 R1 是资格条件，不是身份排除。applicability 指是否适用该要求？ 对于资格要求，用户符合，应为 applies。R2/R3/R4 材料要求，有匹配，applicability applies，status ready。\n\n需要日期算术：现持护照有效期至2027-03-10，距2026-11-24约3.5个月，不足6个月。这符合 R1 条件。R1 status ready? 资格满足，是 applies/ready。R2 I01 原件，status ready，matched_inventory_ids [\"I01\"]。R3 I02，ready。R4 I03，ready。R5 conditional：用户68岁，不适用，status not_applicable，applicability not_applicable。R6 conditional：用户非国家工作人员，不适用，status not_applicable，applicability not_applicable。\n\n但注意 R1 中 condition null？ 规则说 necessity==\"conditional\" 必须有非空 condition，否则 condition=null。R1 necessity required，condition 可以 null。不需要给条件。R5/R6 已有 condition 非空。没问题。\n\n是否有 missing/expired/conflict？ 材料齐全，没有超期/缺失/冲突。注意 I01 是原护照有效期至2027-03-10，距参考日约3.5个月，不足6个月，但这是换发资格条件，不是超期。原护照本身有效期内，只是快到期，所以符合资格。没有 expired。I03 已完成照相回执，合格。没有 missing。所以整体状态 ready？ 但规则整体状态铁律：有任一 missing/expired/conflict → not_ready；否则 needs_confirmation → needs_confirmation；否则 ready。这里没有 missing/expired/conflict，也没有 needs_confirmation。所以 overall_status = ready。\n\n但需注意用户画像中“现持护照将于2027-03-10到期（剩余不足4个月）”。这是换发理由。没有未明确问题。所以 questions 空 []。\n\nActions: 需要提供出门前补救或准备动作？ 可能 T1 比如核对原护照有效期是否确实不足6个月并带齐原件、身份证、申请表和回执？ 优先级 blocking? 因为材料已具备，但资格条件满足，可能正常。可以有一个 action: 确认携带材料齐全：原护照原件、身份证原件、申请表及合格相片回执，按现场要求提交。优先级 high 或 normal。证据引用 S1:L4/L5? 用户模板 actions 示例 evidence_refs [\"S1:L6\"]。我们可以给 T1: 带齐并确认材料齐全，包括原护照原件、身份证原件、申请表及合格相片回执。priority high。evidence_refs [\"S1:L2\",\"S1:L4\",\"S1:L5\"]? 可能只需 S1:L4? 但最好引用材料要求。注意 evidence_refs 格式如 [\"S1:L4\"]。可以。\n\nPlain language steps_zh: 4-5条大白话易读步骤，适合老人大字与读屏朗读。必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。这里原文没有明确窗口时间、收费标准、截止时限？ Stage A 只有办理时限：公安机关出入境管理机构自受理之日起7至15个工作日内办",
+    "raw_content": "{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"换发资格条件：护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户现持护照有效期至2027-03-10，距参考日2026-11-24约3.5个月，不足6个月，符合换发资格条件。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：有效期内的原普通护照原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已持有原普通护照原件I01，且该护照有效期至2027-03-10，仍在有效期内。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"必备材料：本人有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有本人有效居民身份证原件I02，长期有效。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有填写完整的申请表及出入境相片回执I03，符合现场照相合格要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"未满16周岁的未成年人\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为68岁成年人，不属于未满16周岁的未成年人，该条件材料不适用。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"登记备案的国家工作人员\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为原民营企业员工、非登记备案国家工作人员，该条件材料不适用。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"现场办理前确认材料齐全并带齐：原普通护照原件、本人有效居民身份证原件、已填写完整的出入境申请表及合格相片回执，按窗口要求提交换发申请。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"您符合普通护照换发条件，材料已齐，可直接到出入境窗口现场办理。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带好原普通护照原件、本人有效居民身份证原件、已填写完整的出入境申请表和合格相片回执，到出入境窗口现场办理。\",\n    \"第2步：向工作人员说明您要换发普通护照，并提交上述全部材料，确认材料符合要求。\",\n    \"第3步：按窗口提示完成受理登记，公安机关出入境管理机构自受理之日起7至15个工作日内办结。\",\n    \"第4步：办结后按提示领取新普通护照，原护照可按规定处理。\",\n    \"第5步：现场不设报名截止日期，请按窗口开放时间提前安排办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "prompt_tokens": 2181,
+    "completion_tokens": 2559,
+    "total_tokens": 4740,
+    "wall_seconds": 55.757,
+    "tokens_per_sec": 45.9,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】中国公民普通护照换发｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】68岁退休居民（原民营企业员工，非登记备案国家工作人员），本人现场办理普通护照换发，现持护照将于2027-03-10到期（剩余不足4个月）。\n【现有材料】\n- I01: 原普通护照原件（有效期至2027-03-10（距2026-11-24约3.5个月，不足6个月））\n- I02: 居民身份证原件（长期有效）\n- I03: 申请表与出入境相片回执（已完成现场照相取得合格回执并填写申请表）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"eligibility\", \"item\": \"换发资格条件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"护照有效期不足6个月，或签证页即将使用完毕\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"必备材料：有效期内的原普通护照原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件；有效期内的原普通护照\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【基本材料1】有效期内的原普通护照原件。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"必备材料：本人有效居民身份证原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件；本人有效居民身份证\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【基本材料2】本人有效居民身份证原件。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"必备材料：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"填写完整；符合标准；含回执\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。\"}, {\"id\": \"R5\", \"category\": \"document\", \"item\": \"条件材料：未满16周岁的未成年人须提交户口簿及监护人身份证原件并由监护人陪同\", \"necessity\": \"conditional\", \"condition\": \"未满16周岁的未成年人\", \"constraints\": \"户口簿原件；监护人身份证原件；监护人陪同\", \"source_id\": \"S1\", \"locator\": \"L6\", \"quote\": \"【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。\"}, {\"id\": \"R6\", \"category\": \"document\", \"item\": \"条件材料：登记备案的国家工作人员须提交单位出具的同意出境意见函\", \"necessity\": \"conditional\", \"condition\": \"登记备案的国家工作人员\", \"constraints\": \"按干部管理权限；单位出具的同意出境意见函\", \"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理时限\", \"exact_text\": \"公安机关出入境管理机构自受理之日起7至15个工作日内办结。\", \"source_id\": \"S1\", \"locator\": \"L8\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "您符合普通护照换发条件，材料已齐，可直接到出入境窗口现场办理。",
+  "plain_language_steps_zh": [
+    "第1步：带好原普通护照原件、本人有效居民身份证原件、已填写完整的出入境申请表和合格相片回执，到出入境窗口现场办理。",
+    "第2步：向工作人员说明您要换发普通护照，并提交上述全部材料，确认材料符合要求。",
+    "第3步：按窗口提示完成受理登记，公安机关出入境管理机构自受理之日起7至15个工作日内办结。",
+    "第4步：办结后按提示领取新普通护照，原护照可按规定处理。",
+    "第5步：现场不设报名截止日期，请按窗口开放时间提前安排办理。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].matched_inventory_ids must identify evidence for a ready item",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "requirements[4].evidence must be a non-empty list",
+      "requirements[5].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 6,
+    "verbatim_hits": 6,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "R1: downgraded ready item without matched_inventory_ids -> needs_confirmation",
+    "overall_status: aligned 'ready' -> 'needs_confirmation' per SkillHub rule",
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 9,
+    "verbatim_hits": 9,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "ready",
+    "overall_actual": "needs_confirmation",
+    "overall_match": false,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "不足6个月",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "原普通护照",
+          "survived": true
+        },
+        {
+          "clause": "居民身份证",
+          "survived": true
+        },
+        {
+          "clause": "相片",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "7至15个工作日",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "not_applicable",
+        "keywords": [
+          "未满16周岁",
+          "国家工作人员"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 102.936,
+  "total_completion_tokens": 4819
+}

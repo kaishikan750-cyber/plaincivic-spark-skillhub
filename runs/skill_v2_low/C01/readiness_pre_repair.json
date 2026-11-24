@@ -1,0 +1,135 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申请时限",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "2026-11-01入境至2026-11-24为23天，23<=30，未超申请时限。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "本人有效护照或其他国际旅行证件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "I01为本人有效护照原件，有效期至2029-08-20，含2026-11-01入境章（Z字签证），符合要求。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "填写完整并签署的《外国人签证证件申请表》及符合标准的近期白底彩色免冠照片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [
+        "I02",
+        "I03"
+      ],
+      "reason": "I02已打印填写并签字，满足申请表；但I03为蓝底彩色免冠照片2张，不符合近期白底标准，照片规格冲突。",
+      "evidence_refs": [
+        "S1:L4",
+        "I03"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I04"
+      ],
+      "reason": "I04为盖章原件，日期2026-11-18，符合工作许可及单位证明要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "申请有效期1年以上居留证件的条件材料",
+      "necessity": "conditional",
+      "condition": "申请有效期1年以上居留证件",
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [
+        "I05"
+      ],
+      "reason": "申请人拟申请2年期居留许可，属有效期1年以上情形，但I05为海外诊所2026-03-10出具的英文体检报告复印件，超8个月且非当地卫生检疫部门或指定医疗机构原件，不满足6个月内有效身体健康证明要求。",
+      "evidence_refs": [
+        "S1:L6",
+        "I05"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "随迁家属申请时的亲属关系证明材料",
+      "necessity": "conditional",
+      "condition": "有随迁家属一同申请",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为单人首次申办，无随迁家属，该条件不适用。",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    },
+    {
+      "id": "R7",
+      "item": "受理回执有效期",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "受理回执有效期自受理之日起不超过15个工作日，属一般办理时限，无当前材料冲突，无需单独补件。",
+      "evidence_refs": [
+        "S1:L8"
+      ]
+    },
+    {
+      "id": "R8",
+      "item": "首次申请办理方式及生物特征留存要求",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "用户为首次申请且现场本人办理，符合本人到场并留存生物特征的办理方式要求。",
+      "evidence_refs": [
+        "S1:L9"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "现场更换为符合标准的近期白底彩色免冠照片，并补齐当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L4",
+        "S1:L6"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "I03为蓝底照片2张，是否可现场更换为白底照片？",
+    "I05的体检报告是否可由当地卫生检疫部门或指定医疗机构出具新的6个月内有效原件替代？"
+  ]
+}

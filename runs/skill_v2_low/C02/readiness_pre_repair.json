@@ -1,0 +1,84 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "要求名",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "停留期限至2026-11-29，距参考日2026-11-24仅剩5天，已错过“届满7日前”提前申请期（需于2026-11-22前申请）",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "要求名",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已有本人有效护照原件，且L字签证停留期限至2026-11-29与当前情形相符",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "要求名",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已有已签字的《外国人签证证件申请表》及近期白底免冠彩照1张，符合材料规格",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "要求名",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [],
+      "reason": "未提交与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），团体旅游还须提交旅行社证明函件",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "尽快向当地公安机关出入境管理机构补办延期申请，并同时补充提交与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），因已错过届满7日前提前申请期，需立即处理",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2",
+        "S1:L6"
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "现场确认是否属于团体旅游，若属于则补充提交旅行社证明函件",
+      "priority": "high",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "本次延期申请属于团体旅游吗？若属于，需额外提交旅行社证明函件。",
+    "后续行程计划安排说明是否已准备，含后续住宿预订或离境机票预订单。"
+  ]
+}

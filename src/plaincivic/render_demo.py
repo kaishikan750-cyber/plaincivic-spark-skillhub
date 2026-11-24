@@ -397,7 +397,7 @@ function renderMain() {
           ${(r.questions && r.questions.length) ? `<h3>待人工澄清问题</h3><ol>${r.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ol>` : ''}
         </div>
 
-        <div class="card">
+        <div class="card" id="card-trace">
           <h2>3. 完整执行证据链（Spark-X2.6-4B 原始输出 → Stage C 修复门禁）</h2>
           <p><strong>原文逐字引用命中率：</strong>${t.quote_check.verbatim_hits}/${t.quote_check.total_quotes} (${(t.quote_check.verbatim_rate*100).toFixed(1)}%) ｜ <strong>Stage C 自动护栏修复：</strong>${(t.stage_c_repairs||[]).length} 条</p>
           ${(t.stage_c_repairs && t.stage_c_repairs.length) ? `<ul>${t.stage_c_repairs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : '<p>零契约违规，无需修复。</p>'}
@@ -442,8 +442,8 @@ function renderSR() {
     t.bilingual_summary_en ? `English Verdict: ${t.bilingual_summary_en}` : '',
     ``,
     `一、分步办事指南：`,
-    ...(t.plain_language_steps_zh || []).map((s, i) => `  第${i+1}步：${s}`),
-    ...(t.bilingual_steps_en && t.bilingual_steps_en.length ? [``, `English Steps:`, ...t.bilingual_steps_en.map((s,i)=>`  Step ${i+1}: ${s}`)] : []),
+    ...(t.plain_language_steps_zh || []).map((s, i) => `  第${i+1}步：${s.replace(/^第\d+步[：:]\s*/, '')}`),
+    ...(t.bilingual_steps_en && t.bilingual_steps_en.length ? [``, `English Steps:`, ...t.bilingual_steps_en.map((s,i)=>`  Step ${i+1}: ${s.replace(/^Step\s*\d+[:：]\s*/i, '')}`)] : []),
     ``,
     `二、逐项材料核对结果：`,
     ...(r.requirements || []).map(req => `  - ${req.id} ${req.item}：状态=${req.status}；原因=${req.reason}；依据=${(req.evidence||[]).map(e=>e.source_id+':'+e.locator+'「'+e.quote+'」').join(' / ')}`),
@@ -455,7 +455,9 @@ function renderSR() {
 }
 
 function renderBench() {
-  const rows = (DATA.summaries || []).map(s => `<tr>
+  const rank = { baseline_v1_low: 0, skill_v2_none: 1, skill_v2_low: 2, skill_v2_high: 3 };
+  const ordered = [...(DATA.summaries || [])].sort((a, b) => (rank[a.run_name] ?? 9) - (rank[b.run_name] ?? 9));
+  const rows = ordered.map(s => `<tr>
     <td><strong>${esc(s.run_name)}</strong></td>
     <td>${esc(s.overall_match_count)} (${(s.overall_accuracy*100).toFixed(0)}%)</td>
     <td>${esc(s.trap_pass_count)} (${(s.trap_pass_rate*100).toFixed(0)}%)</td>
@@ -495,7 +497,26 @@ function render() {
   renderBench();
 }
 
-render();
+// Support URL query params for deterministic headless screenshots: ?case=C01&view=bilingual&hl=S1:L6&openTrace=1
+(function initFromQuery() {
+  const qs = new URLSearchParams(window.location.search);
+  const cParam = qs.get('case');
+  if (cParam) {
+    const idx = DATA.entries.findIndex(e => e.case.case_id === cParam);
+    if (idx >= 0) currentIdx = idx;
+  }
+  const hl = qs.get('hl');
+  if (hl) activeHighlight = hl;
+  const view = qs.get('view') || 'std';
+  setView(view);
+  if (qs.get('openTrace') === '1') {
+    document.querySelectorAll('#view-main details').forEach(d => d.setAttribute('open', 'open'));
+    const tc = document.getElementById('card-trace');
+    if (tc && tc.parentElement) {
+      tc.parentElement.prepend(tc);
+    }
+  }
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,281 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "none",
+  "case_id": "C02",
+  "stage_a_spark": {
+    "thinking_mode": "none",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申请提出时限\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"签证注明的停留期限届满7日前\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"本人有效护照或者其他国际旅行证件原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"《外国人签证证件申请表》及近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整并签署；近期白底彩色免冠照片1张\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"行程计划安排说明及旅行社证明函件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"deadline\",\n      \"item\": \"受理回执有效期\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"自受理之日起不超过7个工作日\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"受理回执有效期自受理之日起不超过7个工作日。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"受理回执有效期自受理之日起不超过7个工作日。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}",
+    "reasoning_content": "",
+    "raw_content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申请提出时限\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"签证注明的停留期限届满7日前\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"本人有效护照或者其他国际旅行证件原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"《外国人签证证件申请表》及近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整并签署；近期白底彩色免冠照片1张\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"行程计划安排说明及旅行社证明函件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"deadline\",\n      \"item\": \"受理回执有效期\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"自受理之日起不超过7个工作日\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"受理回执有效期自受理之日起不超过7个工作日。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"受理回执有效期自受理之日起不超过7个工作日。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}",
+    "prompt_tokens": 888,
+    "completion_tokens": 708,
+    "total_tokens": 1596,
+    "wall_seconds": 14.935,
+    "tokens_per_sec": 47.41,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：外国人L字签证停留期限延期（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=nia_visa_extension_guide.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】外国人申请延长签证停留期限（L字旅游签证）\nL2: 【申请时限】外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。\nL3: 【基本材料1】本人有效护照或者其他国际旅行证件原件。\nL4: 【基本材料2】填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。\nL5: 【基本材料3】与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。\nL6: 【办理时限】受理回执有效期自受理之日起不超过7个工作日。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.0,
+      "max_tokens": 2048,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "deadline",
+        "item": "申请提出时限",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "签证注明的停留期限届满7日前",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "本人有效护照或其他国际旅行证件原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "本人有效护照或者其他国际旅行证件原件。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "《外国人签证证件申请表》及近期白底彩色免冠照片",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "填写完整并签署；近期白底彩色免冠照片1张",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "行程计划安排说明及旅行社证明函件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。"
+      },
+      {
+        "id": "R5",
+        "category": "deadline",
+        "item": "受理回执有效期",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "自受理之日起不超过7个工作日",
+        "source_id": "S1",
+        "locator": "L6",
+        "quote": "受理回执有效期自受理之日起不超过7个工作日。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理时限/费用/窗口时间",
+        "exact_text": "受理回执有效期自受理之日起不超过7个工作日。",
+        "source_id": "S1",
+        "locator": "L6"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "none",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申请提出时限\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"停留期限至2026-11-29，距基准日2026-11-24仅剩5天，已错过届满7日前（2026-11-22前）的提前申请期\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已持有本人有效护照原件，且护照注明停留期限至2026-11-29\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"《外国人签证证件申请表》及近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有已签字的申请表及近期白底免冠彩照1张，符合材料规格\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"行程计划安排说明及旅行社证明函件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"现有材料未包含与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），团体旅游还须提交旅行社证明函件\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"受理回执有效期\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"受理回执有效期自受理之日起不超过7个工作日，属一般办理时限，无需作为匹配项\",\n      \"evidence_refs\": [\"S1:L6\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"立即准备行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需补充旅行社证明函件，以补齐缺失材料\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"T2\",\n      \"action\": \"尽快前往当地公安机关出入境管理机构办理延期申请，避免继续停留超期\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"questions\": [\n    \"本次延期申请属于个人旅游还是团体旅游？是否为团体旅游需额外提交旅行社证明函件。\"\n  ],\n  \"plain_language_summary_zh\": \"当前停留仅剩5天已错过延期申请时限，且缺少行程安排材料，暂时无法完成延期办理，需尽快补齐材料并申请。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：立即准备与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需提交旅行社证明函件，补齐缺失材料。\",\n    \"第2步：携带本人有效护照原件、已签字的《外国人签证证件申请表》及近期白底免冠彩照1张，尽快前往当地公安机关出入境管理机构办理停留期限延期申请。\",\n    \"第3步：按受理要求提交材料，注意受理回执有效期自受理之日起不超过7个工作日，及时获取受理回执。\",\n    \"第4步：若延期申请未在时限内完成，需及时与出入境管理机构沟通，避免停留期限超期产生相关影响。\"\n  ],\n  \"bilingual_summary_en\": \"The current stay has only 5 days remaining and the early application period for extension has already passed, and the itinerary arrangement material is missing, so the extension cannot be completed for now. You need to prepare the missing materials and apply promptly.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Immediately prepare the itinerary arrangement explanation related to the application (including subsequent accommodation bookings or pre-ordered departure flight tickets); if it is a group tour, also submit the travel agency certificate.\",\n    \"Step 2: Bring your valid passport original, the signed Foreigner Visa Document Application Form, and 1 recent white-background bareheaded color photo, and go to the local public security exit-entry administration to apply for the visa stay period extension promptly.\",\n    \"Step 3: Submit the materials as required by the acceptance, note that the validity of the acceptance receipt is no more than 7 working days from the date of acceptance, and obtain the acceptance receipt in time.\",\n    \"Step 4: If the extension application is not completed within the deadline, you need to communicate with the exit-entry administration in a timely manner to avoid relevant impacts from exceeding the stay period.\"\n  ]\n}",
+    "reasoning_content": "",
+    "raw_content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申请提出时限\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"停留期限至2026-11-29，距基准日2026-11-24仅剩5天，已错过届满7日前（2026-11-22前）的提前申请期\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"本人有效护照或其他国际旅行证件原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已持有本人有效护照原件，且护照注明停留期限至2026-11-29\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"《外国人签证证件申请表》及近期白底彩色免冠照片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有已签字的申请表及近期白底免冠彩照1张，符合材料规格\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"行程计划安排说明及旅行社证明函件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"现有材料未包含与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），团体旅游还须提交旅行社证明函件\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"受理回执有效期\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"受理回执有效期自受理之日起不超过7个工作日，属一般办理时限，无需作为匹配项\",\n      \"evidence_refs\": [\"S1:L6\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"立即准备行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需补充旅行社证明函件，以补齐缺失材料\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"T2\",\n      \"action\": \"尽快前往当地公安机关出入境管理机构办理延期申请，避免继续停留超期\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"questions\": [\n    \"本次延期申请属于个人旅游还是团体旅游？是否为团体旅游需额外提交旅行社证明函件。\"\n  ],\n  \"plain_language_summary_zh\": \"当前停留仅剩5天已错过延期申请时限，且缺少行程安排材料，暂时无法完成延期办理，需尽快补齐材料并申请。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：立即准备与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需提交旅行社证明函件，补齐缺失材料。\",\n    \"第2步：携带本人有效护照原件、已签字的《外国人签证证件申请表》及近期白底免冠彩照1张，尽快前往当地公安机关出入境管理机构办理停留期限延期申请。\",\n    \"第3步：按受理要求提交材料，注意受理回执有效期自受理之日起不超过7个工作日，及时获取受理回执。\",\n    \"第4步：若延期申请未在时限内完成，需及时与出入境管理机构沟通，避免停留期限超期产生相关影响。\"\n  ],\n  \"bilingual_summary_en\": \"The current stay has only 5 days remaining and the early application period for extension has already passed, and the itinerary arrangement material is missing, so the extension cannot be completed for now. You need to prepare the missing materials and apply promptly.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Immediately prepare the itinerary arrangement explanation related to the application (including subsequent accommodation bookings or pre-ordered departure flight tickets); if it is a group tour, also submit the travel agency certificate.\",\n    \"Step 2: Bring your valid passport original, the signed Foreigner Visa Document Application Form, and 1 recent white-background bareheaded color photo, and go to the local public security exit-entry administration to apply for the visa stay period extension promptly.\",\n    \"Step 3: Submit the materials as required by the acceptance, note that the validity of the acceptance receipt is no more than 7 working days from the date of acceptance, and obtain the acceptance receipt in time.\",\n    \"Step 4: If the extension application is not completed within the deadline, you need to communicate with the exit-entry administration in a timely manner to avoid relevant impacts from exceeding the stay period.\"\n  ]\n}",
+    "prompt_tokens": 2100,
+    "completion_tokens": 1323,
+    "total_tokens": 3423,
+    "wall_seconds": 29.551,
+    "tokens_per_sec": 44.77,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中英双语无障碍改写】：输出 4-5 条中文易读步骤 `plain_language_steps_zh` 和 4-5 条完整英文对照步骤 `bilingual_steps_en` + `bilingual_summary_en`。无论用户当前是否已满足某项条件，中文步骤与英文步骤中都必须完整保留原文所有关键资格门槛（如 1年以上 / over 1 year、毕业2年内 / within 2 years、本人到场 / in person）、材料规格（如 护照/passport、白底/white background、6个月内/within 6 months、行程安排/itinerary）和全部时限（如 入境30日内/within 30 days、届满7日前/7 days before expiry、15个工作日/15 working days、7个工作日/7 working days、2026年11月30日17:00/2026-11-30 17:00、附件B不可读/unreadable Annex B），严禁省略！"
+        },
+        {
+          "role": "user",
+          "content": "【案件】外国人L字签证停留期限延期｜参考日期：2026-11-24｜模式：bilingual\n【用户画像】外籍个人游客，持L字签证，当前停留期限至2026-11-29（距参考日2026-11-24仅剩5天），本人到场申请延期。\n【现有材料】\n- I01: 本人有效护照原件（L字签证停留期限至2026-11-29）\n- I02: 外国人签证证件申请表与白底彩照（已签字，附近期白底免冠彩照1张）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"deadline\", \"item\": \"申请提出时限\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"签证注明的停留期限届满7日前\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"本人有效护照或其他国际旅行证件原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"本人有效护照或者其他国际旅行证件原件。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"《外国人签证证件申请表》及近期白底彩色免冠照片\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"填写完整并签署；近期白底彩色免冠照片1张\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"行程计划安排说明及旅行社证明函件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。\"}, {\"id\": \"R5\", \"category\": \"deadline\", \"item\": \"受理回执有效期\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"自受理之日起不超过7个工作日\", \"source_id\": \"S1\", \"locator\": \"L6\", \"quote\": \"受理回执有效期自受理之日起不超过7个工作日。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"受理回执有效期自受理之日起不超过7个工作日。\", \"source_id\": \"S1\", \"locator\": \"L6\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.0,
+      "max_tokens": 3072,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "plain_language_summary_zh": "当前停留仅剩5天已错过延期申请时限，且缺少行程安排材料，暂时无法完成延期办理，需尽快补齐材料并申请。",
+  "plain_language_steps_zh": [
+    "第1步：立即准备与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单），若为团体旅游还需提交旅行社证明函件，补齐缺失材料。",
+    "第2步：携带本人有效护照原件、已签字的《外国人签证证件申请表》及近期白底免冠彩照1张，尽快前往当地公安机关出入境管理机构办理停留期限延期申请。",
+    "第3步：按受理要求提交材料，注意受理回执有效期自受理之日起不超过7个工作日，及时获取受理回执。",
+    "第4步：若延期申请未在时限内完成，需及时与出入境管理机构沟通，避免停留期限超期产生相关影响。"
+  ],
+  "bilingual_summary_en": "The current stay has only 5 days remaining and the early application period for extension has already passed, and the itinerary arrangement material is missing, so the extension cannot be completed for now. You need to prepare the missing materials and apply promptly.",
+  "bilingual_steps_en": [
+    "Step 1: Immediately prepare the itinerary arrangement explanation related to the application (including subsequent accommodation bookings or pre-ordered departure flight tickets); if it is a group tour, also submit the travel agency certificate.",
+    "Step 2: Bring your valid passport original, the signed Foreigner Visa Document Application Form, and 1 recent white-background bareheaded color photo, and go to the local public security exit-entry administration to apply for the visa stay period extension promptly.",
+    "Step 3: Submit the materials as required by the acceptance, note that the validity of the acceptance receipt is no more than 7 working days from the date of acceptance, and obtain the acceptance receipt in time.",
+    "Step 4: If the extension application is not completed within the deadline, you need to communicate with the exit-entry administration in a timely manner to avoid relevant impacts from exceeding the stay period."
+  ],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "requirements[4].matched_inventory_ids must identify evidence for a ready item",
+      "requirements[4].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "actions[1].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 5,
+    "verbatim_hits": 5,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "R5: downgraded ready item without matched_inventory_ids -> needs_confirmation",
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 7,
+    "verbatim_hits": 7,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 8,
+    "clause_total": 10,
+    "clause_survival_rate": 0.8,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "L字",
+          "survived": false
+        }
+      ],
+      "documents": [
+        {
+          "clause": "护照",
+          "survived": true
+        },
+        {
+          "clause": "申请表",
+          "survived": true
+        },
+        {
+          "clause": "行程",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "7日前",
+          "survived": true
+        },
+        {
+          "clause": "7个工作日",
+          "survived": true
+        }
+      ],
+      "bilingual_en": [
+        {
+          "clause": "7 days",
+          "survived": false
+        },
+        {
+          "clause": "7 working days",
+          "survived": true
+        },
+        {
+          "clause": "passport",
+          "survived": true
+        },
+        {
+          "clause": "itinerary",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "missing",
+        "keywords": [
+          "行程",
+          "机票",
+          "住宿"
+        ],
+        "passed": true
+      },
+      {
+        "bucket": "expired_or_conflict",
+        "keywords": [
+          "7日前"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 44.486,
+  "total_completion_tokens": 2031
+}

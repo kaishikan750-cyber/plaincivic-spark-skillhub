@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "住房公积金租房提取",
+    "reference_date": "2026-11-24",
+    "profile_summary": "未婚单身职工，已连续足额缴存住房公积金8个月，在缴存城市名下无自有住房，本人携带证件办理。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "synthetic_housing_fund_rent_guide.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-10-15",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "cond-condition",
+      "item": "在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已连续足额缴存住房公积金8个月，且在本市无自有住房，满足办理条件。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。"
+        },
+        {
+          "source_id": "I01",
+          "locator": null,
+          "quote": "公积金缴存与无房记录（连续足额缴存8个月，本市无自有住房）"
+        }
+      ]
+    },
+    {
+      "id": "mat-1",
+      "item": "申请人有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已携带有效期内居民身份证原件，材料满足。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】申请人有效居民身份证原件。"
+        },
+        {
+          "source_id": "I02",
+          "locator": null,
+          "quote": "居民身份证原件（有效期内）"
+        }
+      ]
+    },
+    {
+      "id": "mat-2",
+      "item": "申请人本人名下I类银行借记卡原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "用户已提供本人I类银行借记卡原件且状态正常，材料满足。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】申请人本人名下I类银行借记卡原件。"
+        },
+        {
+          "source_id": "I03",
+          "locator": null,
+          "quote": "本人I类银行借记卡原件（状态正常）"
+        }
+      ]
+    },
+    {
+      "id": "mat-1c",
+      "item": "结婚证原件及配偶身份证复印件",
+      "necessity": "conditional",
+      "condition": "已婚申请人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为未婚单身职工，不适用已婚申请人的条件材料。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "act-1",
+      "action": "携带有效居民身份证原件、本人I类银行借记卡原件及公积金缴存与无房记录，到办理窗口提交申请。",
+      "priority": "normal",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。"
+        }
+      ]
+    },
+    {
+      "id": "act-2",
+      "action": "审核通过后，资金将在3个工作日内划转至指定银行卡，无需缴纳手续费。",
+      "priority": "normal",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "审核通过后3个工作日内资金划转至指定银行卡；免收手续费。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": [],
+  "limitations": [
+    "该结论基于用户当前提供的材料和条件信息，最终以办理窗口核验结果为准。",
+    "办理时限为审核通过后3个工作日内资金划转，实际到账时间可能受窗口审核进度影响。"
+  ]
+}

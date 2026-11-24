@@ -126,8 +126,17 @@ def normalize_and_repair_readiness(
         "limitations": [],
     }
 
-    def fix_evidence(ev_list: Any, label: str) -> list[dict[str, str]]:
+    def fix_evidence(ev_list: Any, refs_list: Any, label: str) -> list[dict[str, str]]:
         fixed: list[dict[str, str]] = []
+        # Hydrate compact evidence_refs like ["S1:L6", "S2:L2"] deterministically to exact verbatim lines
+        if isinstance(refs_list, list) and refs_list and not ev_list:
+            for ref in refs_list:
+                m = re.match(r"^\s*(S\d+)\s*:\s*(L\d+)\s*$", str(ref))
+                if m and (m.group(1), m.group(2)) in line_map:
+                    sid, loc = m.group(1), m.group(2)
+                    fixed.append({"source_id": sid, "locator": loc, "quote": line_map[(sid, loc)]})
+            if fixed:
+                return fixed
         if isinstance(ev_list, list):
             for ev in ev_list:
                 if not isinstance(ev, dict):
@@ -205,7 +214,11 @@ def normalize_and_repair_readiness(
             status = "needs_confirmation"
 
         # Enforce SkillHub applicability <-> status invariants
-        if applicability == "unknown" and status != "needs_confirmation":
+        # Preserve multi-source/format conflicts (conflict applies to the case; do not silence into needs_confirmation)
+        if status == "conflict" and applicability == "unknown":
+            repairs.append(f"{rid}: aligned applicability='applies' to preserve explicit status='conflict'")
+            applicability = "applies"
+        elif applicability == "unknown" and status != "needs_confirmation":
             repairs.append(f"{rid}: enforced status='needs_confirmation' for applicability='unknown'")
             status = "needs_confirmation"
         elif applicability == "not_applicable" and status != "not_applicable":
@@ -220,11 +233,23 @@ def normalize_and_repair_readiness(
             matches = []
         matches = [str(m).strip() for m in matches if str(m).strip() in valid_inv_ids]
         if status == "ready" and not matches:
-            repairs.append(f"{rid}: downgraded ready item without matched_inventory_ids -> needs_confirmation")
-            status = "needs_confirmation"
+            # Check if reason explicitly cites an existing inventory ID (e.g., I01) or directly matches a verified inventory item
+            reason_raw = str(req.get("reason") or "")
+            cited_ids = [iid for iid in sorted(valid_inv_ids) if iid in reason_raw]
+            if not cited_ids:
+                for inv in case["inventory"]:
+                    if any(tok in reason_raw for tok in (inv["name"], inv["name"][:4]) if len(tok) >= 2):
+                        cited_ids.append(inv["id"])
+                        break
+            if cited_ids:
+                matches = cited_ids
+                repairs.append(f"{rid}: linked ready item to explicitly cited inventory {matches}")
+            else:
+                repairs.append(f"{rid}: downgraded ready item without matched_inventory_ids -> needs_confirmation")
+                status = "needs_confirmation"
 
         reason = str(req.get("reason") or "需对照原文与现有材料复核。").strip()
-        evidence = fix_evidence(req.get("evidence"), rid)
+        evidence = fix_evidence(req.get("evidence"), req.get("evidence_refs"), rid)
 
         doc["requirements"].append(
             {
@@ -261,7 +286,7 @@ def normalize_and_repair_readiness(
                     "status": "needs_confirmation",
                     "matched_inventory_ids": [],
                     "reason": "来源存在模糊/不可读关键段落，依 SkillHub 输入门禁第3条禁止猜测其数值或条款，整体状态至少降级为待确认。",
-                    "evidence": fix_evidence([u0], rid),
+                    "evidence": fix_evidence([u0], None, rid),
                 }
             )
             repairs.append(f"{rid}: enforced SkillHub unreadable-section gate -> needs_confirmation")
@@ -303,7 +328,7 @@ def normalize_and_repair_readiness(
                 "id": tid,
                 "action": action_text,
                 "priority": priority,
-                "evidence": fix_evidence(act.get("evidence"), tid),
+                "evidence": fix_evidence(act.get("evidence"), act.get("evidence_refs"), tid),
             }
         )
 
@@ -391,9 +416,15 @@ def audit_clause_survival(
             variants.append(c_low.replace("working days", "business days"))
             variants.append(c_low.replace("working days", "workdays"))
         if c_low == "1 year":
-            variants.extend(["one year", "over 1 year", "more than 1 year"])
+            variants.extend(["one year", "1-year", "over 1 year", "more than 1 year"])
         if c_low == "2 years":
-            variants.extend(["two years", "within 2 years"])
+            variants.extend(["two years", "2-year", "within 2 years"])
+        if c_low == "6 months":
+            variants.extend(["6-month", "six months", "six-month"])
+        if c_low == "30 days":
+            variants.extend(["30-day", "thirty days"])
+        if c_low == "7 days":
+            variants.extend(["7-day", "seven days"])
         if c_low == "unreadable":
             variants.extend(["illegible", "blurry", "cannot be read", "unclear"])
         hit = any(v in en_corpus for v in variants)

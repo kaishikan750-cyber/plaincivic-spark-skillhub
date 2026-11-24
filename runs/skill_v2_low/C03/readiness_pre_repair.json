@@ -1,0 +1,100 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "要求名",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁退休居民、非登记备案国家工作人员，非未成年人，符合普通护照换发资格条件，办理条件适用性不涉及额外限制。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "基本材料1",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "not_applicable",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已携带原普通护照原件，有效期至2027-03-10，距参考日2026-11-24约3.5个月，未超6个月，满足换发材料要求。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料2",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "not_applicable",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已携带本人有效居民身份证原件，满足基本材料要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料3",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "not_applicable",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "用户已完成现场照相并取得合格回执，并填写《中国公民出入境证件申请表》，满足相片及申请表要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "条件材料1",
+      "necessity": "conditional",
+      "condition": "未满16周岁的未成年人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁成年人，不满足未成年人条件，该条件材料不适用。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "条件材料2",
+      "necessity": "conditional",
+      "condition": "登记备案的国家工作人员",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为原民营企业员工、非登记备案国家工作人员，不满足该条件材料要求，该条件材料不适用。",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "携带原护照、身份证、已填写并带合格回执的申请表到出入境窗口现场办理换发。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": []
+}

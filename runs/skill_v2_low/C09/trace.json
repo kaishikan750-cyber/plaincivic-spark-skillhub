@@ -1,0 +1,242 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "low",
+  "case_id": "C09",
+  "stage_a_spark": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月28日16:00前；至街道服务中心3号窗口提交；逾期不予受理\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件及复印件2份\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】儿童户口簿原件及复印件2份。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"社区医院出具；30日内有效；原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"constraints\": \"监护人亲笔签字的《授权委托书》原件；代办人身份证原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理窗口\",\n      \"exact_text\": \"至街道服务中心3号窗口提交\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\"\n    }\n  ]\n}\n```",
+    "reasoning_content": "我们需要回答用户。需要执行 SkillHub 技能第1步【先提取要求，再查看现有材料】。用户给了原文，只有 S1 一个来源，没有 S2。需要输出合法 JSON 对象，不要额外解释。需要按格式提取要求。注意系统说 thinking_effort=low，但这是用户指令？ 我们只需输出 JSON。\n\n需要解析原文：\n\n事项：社区青少年公益托管班线下报名（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=synthetic_youth_program_notice.txt | date=2026-11-10 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】社区寒假青少年公益托管班线下报名须知（示范模拟通知）\nL2: 【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。\nL3: 【基本材料1】儿童户口簿原件及复印件2份。\nL4: 【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。\nL5: 【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。\n\n输出 JSON 结构。\n\n需要提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。\n\n这里没有 S2，所以 multi_source_conflicts 应为空数组？ 用户格式有该字段，应该给 []。 unreadable_sections 空数组。 service_info_notes 可能包含窗口信息？ L2 有“至街道服务中心3号窗口提交”这是办理地点/窗口，但不是审批工作日/费用/开放时间/不设截止日期。但 service_info_notes 的 label 是“办理时限/费用/窗口时间”，可以记录窗口时间？ 原文没有具体开放时间，只有截止和窗口。 或许把 L2 的窗口信息放进 service_info_notes? 用户说一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service",
+    "raw_content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月28日16:00前；至街道服务中心3号窗口提交；逾期不予受理\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件及复印件2份\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】儿童户口簿原件及复印件2份。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"社区医院出具；30日内有效；原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"constraints\": \"监护人亲笔签字的《授权委托书》原件；代办人身份证原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理窗口\",\n      \"exact_text\": \"至街道服务中心3号窗口提交\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\"\n    }\n  ]\n}\n```",
+    "prompt_tokens": 909,
+    "completion_tokens": 1118,
+    "total_tokens": 2027,
+    "wall_seconds": 23.789,
+    "tokens_per_sec": 47.0,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：社区青少年公益托管班线下报名（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=synthetic_youth_program_notice.txt | date=2026-11-10 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】社区寒假青少年公益托管班线下报名须知（示范模拟通知）\nL2: 【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。\nL3: 【基本材料1】儿童户口簿原件及复印件2份。\nL4: 【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。\nL5: 【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 3584,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "deadline",
+        "item": "报名提交截止时间",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "2026年11月28日16:00前；至街道服务中心3号窗口提交；逾期不予受理",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "儿童户口簿材料",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件及复印件2份",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【基本材料1】儿童户口簿原件及复印件2份。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "儿童健康体检单材料",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "社区医院出具；30日内有效；原件",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "代办授权及身份证材料",
+        "necessity": "conditional",
+        "condition": "非监护人本人代办",
+        "constraints": "监护人亲笔签字的《授权委托书》原件；代办人身份证原件",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理窗口",
+        "exact_text": "至街道服务中心3号窗口提交",
+        "source_id": "S1",
+        "locator": "L2"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"截止时间为2026-11-28 16:00前，参考日2026-11-24未超期。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"原件及复印件需2份，现有原件1本、复印件仅1份，少1份复印件，材料不齐全。\",\n      \"evidence_refs\": [\"S1:L3\", \"I01\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"体检单开具日期2026-10-01，距参考日2026-11-24已54天，超过30日有效期，材料已超期。\",\n      \"evidence_refs\": [\"S1:L4\", \"I02\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"爷爷为代办人，已带代办人身份证原件，但未带父母签字的授权委托书原件，条件材料不齐全。\",\n      \"evidence_refs\": [\"S1:L5\", \"I03\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出门前补齐儿童户口簿复印件1份、重新开具30日内有效的儿童健康体检单原件、准备父母亲笔签字的授权委托书原件，并携带代办人爷爷身份证原件到街道服务中心3号窗口提交。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"儿童户口簿原件是否确认为原件且复印件仅缺1份？请现场补充后提交。\"\n  ],\n  \"plain_language_summary_zh\": \"目前材料有缺口且健康体检单已超期，需补齐复印件、换有效体检单、补父母签字授权委托书后才能正常报名。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带齐儿童户口簿原件及2份复印件、社区医院出具的30日内有效儿童健康体检单原件、爷爷身份证原件，以及父母亲笔签字的授权委托书原件。\",\n    \"第2步：到街道服务中心3号窗口提交全部材料，报名截止时间为2026年11月28日16:00前，逾期不予受理。\",\n    \"第3步：若体检单已超过30日有效期，需现场更换为30日内有效的新体检单后再提交。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}</think>{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"截止时间为2026-11-28 16:00前，参考日2026-11-24未超期。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"原件及复印件需2份，现有原件1本、复印件仅1份，少1份复印件，材料不齐全。\",\n      \"evidence_refs\": [\"S1:L3\", \"I01\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"体检单开具日期2026-10-01，距参考日2026-11-24已54天，超过30日有效期，材料已超期。\",\n      \"evidence_refs\": [\"S1:L4\", \"I02\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"爷爷为代办人，已带代办人身份证原件，但未带父母签字的授权委托书原件，条件材料不齐全。\",\n      \"evidence_refs\": [\"S1:L5\", \"I03\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出门前补齐儿童户口簿复印件1份、重新开具30日内有效的儿童健康体检单原件、准备父母亲笔签字的授权委托书原件，并携带代办人爷爷身份证原件到街道服务中心3号窗口提交。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"儿童户口簿原件是否确认为原件且复印件仅缺1份？请现场补充后提交。\"\n  ],\n  \"plain_language_summary_zh\": \"目前材料有缺口且健康体检单已超期，需补齐复印件、换有效体检单、补父母签字授权委托书后才能正常报名。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带齐儿童户口簿原件及2份复印件、社区医院出具的30日内有效儿童健康体检单原件、爷爷身份证原件，以及父母亲笔签字的授权委托书原件。\",\n    \"第2步：到街道服务中心3号窗口提交全部材料，报名截止时间为2026年11月28日16:00前，逾期不予受理。\",\n    \"第3步：若体检单已超过30日有效期，需现场更换为30日内有效的新体检单后再提交。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "reasoning_content": "我们需要回答用户要求直接输出 JSON。需要执行 SkillHub 技能条件解析→材料比对→状态计算→无障碍改写。注意用户给出 Stage A 盲提结果，需要基于此生成最终 JSON。需要严格按契约。\n\n先理解案件：社区青少年公益托管班线下报名，参考日期 2026-11-24，模式 plain_zh。用户画像：孩子的爷爷（非法定监护人）代父母现场为8岁孙子办理报名，参考日期2026-11-24。现有材料：\n- I01: 儿童户口簿原件及复印件（原件1本，但仅复印了1份（少1份））\n- I02: 儿童健康体检单原件（开具日期2026-10-01（距2026-11-24已54天，超过30日有效期））\n- I03: 代办人（爷爷）身份证原件（有效期内，但未带父母签字的授权委托书）\n\nStage A extracted requirements:\nR1 deadline 报名提交截止时间 required condition null constraints \"2026年11月28日16:00前；至街道服务中心3号窗口提交；逾期不予受理\" source S1 L2 quote.\nR2 document 儿童户口簿材料 required condition null constraints \"原件及复印件2份\" source S1 L3.\nR3 document 儿童健康体检单材料 required condition null constraints \"社区医院出具；30日内有效；原件\" source S1 L4.\nR4 conditional 代办授权及身份证材料 necessity conditional condition \"非监护人本人代办\" constraints \"监护人亲笔签字的《授权委托书》原件；代办人身份证原件\" source S1 L5 quote.\n\nmulti_source_conflicts empty, unreadable_sections empty, service_info_notes: 办理窗口 至街道服务中心3号窗口提交 S1 L2.\n\nNeed calculate statuses per requirement with date arithmetic. Base date 2026-11-24.\n\nR1 deadline: 2026年11月28日16:00前。参考日期 11-24，截止11-28，未超期？ 11-24 to 11-28 is 4 days, <=?",
+    "raw_content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"截止时间为2026-11-28 16:00前，参考日2026-11-24未超期。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"原件及复印件需2份，现有原件1本、复印件仅1份，少1份复印件，材料不齐全。\",\n      \"evidence_refs\": [\"S1:L3\", \"I01\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"体检单开具日期2026-10-01，距参考日2026-11-24已54天，超过30日有效期，材料已超期。\",\n      \"evidence_refs\": [\"S1:L4\", \"I02\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"爷爷为代办人，已带代办人身份证原件，但未带父母签字的授权委托书原件，条件材料不齐全。\",\n      \"evidence_refs\": [\"S1:L5\", \"I03\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出门前补齐儿童户口簿复印件1份、重新开具30日内有效的儿童健康体检单原件、准备父母亲笔签字的授权委托书原件，并携带代办人爷爷身份证原件到街道服务中心3号窗口提交。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"儿童户口簿原件是否确认为原件且复印件仅缺1份？请现场补充后提交。\"\n  ],\n  \"plain_language_summary_zh\": \"目前材料有缺口且健康体检单已超期，需补齐复印件、换有效体检单、补父母签字授权委托书后才能正常报名。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带齐儿童户口簿原件及2份复印件、社区医院出具的30日内有效儿童健康体检单原件、爷爷身份证原件，以及父母亲笔签字的授权委托书原件。\",\n    \"第2步：到街道服务中心3号窗口提交全部材料，报名截止时间为2026年11月28日16:00前，逾期不予受理。\",\n    \"第3步：若体检单已超过30日有效期，需现场更换为30日内有效的新体检单后再提交。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}</think>{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"报名提交截止时间\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"截止时间为2026-11-28 16:00前，参考日2026-11-24未超期。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"儿童户口簿材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"原件及复印件需2份，现有原件1本、复印件仅1份，少1份复印件，材料不齐全。\",\n      \"evidence_refs\": [\"S1:L3\", \"I01\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"儿童健康体检单材料\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"expired\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"体检单开具日期2026-10-01，距参考日2026-11-24已54天，超过30日有效期，材料已超期。\",\n      \"evidence_refs\": [\"S1:L4\", \"I02\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"代办授权及身份证材料\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"非监护人本人代办\",\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"爷爷为代办人，已带代办人身份证原件，但未带父母签字的授权委托书原件，条件材料不齐全。\",\n      \"evidence_refs\": [\"S1:L5\", \"I03\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出门前补齐儿童户口簿复印件1份、重新开具30日内有效的儿童健康体检单原件、准备父母亲笔签字的授权委托书原件，并携带代办人爷爷身份证原件到街道服务中心3号窗口提交。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"儿童户口簿原件是否确认为原件且复印件仅缺1份？请现场补充后提交。\"\n  ],\n  \"plain_language_summary_zh\": \"目前材料有缺口且健康体检单已超期，需补齐复印件、换有效体检单、补父母签字授权委托书后才能正常报名。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带齐儿童户口簿原件及2份复印件、社区医院出具的30日内有效儿童健康体检单原件、爷爷身份证原件，以及父母亲笔签字的授权委托书原件。\",\n    \"第2步：到街道服务中心3号窗口提交全部材料，报名截止时间为2026年11月28日16:00前，逾期不予受理。\",\n    \"第3步：若体检单已超过30日有效期，需现场更换为30日内有效的新体检单后再提交。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "prompt_tokens": 1974,
+    "completion_tokens": 2351,
+    "total_tokens": 4325,
+    "wall_seconds": 52.818,
+    "tokens_per_sec": 44.51,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】社区青少年公益托管班线下报名｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】孩子的爷爷（非法定监护人）代父母现场为8岁孙子办理报名，参考日期2026-11-24。\n【现有材料】\n- I01: 儿童户口簿原件及复印件（原件1本，但仅复印了1份（少1份））\n- I02: 儿童健康体检单原件（开具日期2026-10-01（距2026-11-24已54天，超过30日有效期））\n- I03: 代办人（爷爷）身份证原件（有效期内，但未带父母签字的授权委托书）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"deadline\", \"item\": \"报名提交截止时间\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"2026年11月28日16:00前；至街道服务中心3号窗口提交；逾期不予受理\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"儿童户口簿材料\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件及复印件2份\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【基本材料1】儿童户口簿原件及复印件2份。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"儿童健康体检单材料\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"社区医院出具；30日内有效；原件\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"代办授权及身份证材料\", \"necessity\": \"conditional\", \"condition\": \"非监护人本人代办\", \"constraints\": \"监护人亲笔签字的《授权委托书》原件；代办人身份证原件\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理窗口\", \"exact_text\": \"至街道服务中心3号窗口提交\", \"source_id\": \"S1\", \"locator\": \"L2\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 4608,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "plain_language_summary_zh": "目前材料有缺口且健康体检单已超期，需补齐复印件、换有效体检单、补父母签字授权委托书后才能正常报名。",
+  "plain_language_steps_zh": [
+    "第1步：带齐儿童户口簿原件及2份复印件、社区医院出具的30日内有效儿童健康体检单原件、爷爷身份证原件，以及父母亲笔签字的授权委托书原件。",
+    "第2步：到街道服务中心3号窗口提交全部材料，报名截止时间为2026年11月28日16:00前，逾期不予受理。",
+    "第3步：若体检单已超过30日有效期，需现场更换为30日内有效的新体检单后再提交。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].matched_inventory_ids must identify evidence for a ready item",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 4,
+    "verbatim_hits": 4,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "R1: downgraded ready item without matched_inventory_ids -> needs_confirmation",
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 8,
+    "verbatim_hits": 8,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 4,
+    "clause_total": 5,
+    "clause_survival_rate": 0.8,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "非监护人本人代办",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "复印件2份",
+          "survived": false
+        },
+        {
+          "clause": "30日内",
+          "survived": true
+        },
+        {
+          "clause": "授权委托书",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "2026年11月28日16:00",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "expired",
+        "keywords": [
+          "体检单",
+          "30日"
+        ],
+        "passed": true
+      },
+      {
+        "bucket": "missing_or_conflict",
+        "keywords": [
+          "复印件2份",
+          "授权委托书"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 76.607,
+  "total_completion_tokens": 3469
+}

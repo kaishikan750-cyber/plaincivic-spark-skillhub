@@ -1,0 +1,105 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申报资格条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01",
+        "I02"
+      ],
+      "reason": "用户为2026届外籍硕士毕业生，毕业2年内，已签订2年劳动合同并正常缴纳社保2个月，符合资格条件。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "申报截止时限",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "申报期2026-11-01至2026-11-30 17:00，基准日2026-11-24处于期内，未超期。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "必备材料：毕业证及学位证",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已提供硕士学位证及留服认证书扫描件，境外学历认证书齐全，符合材料要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "必备材料：劳动合同及社保缴费明细",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已提供2年期劳动合同及社保缴费明细，材料在有效期内，符合要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "必备材料：房屋租赁合同",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已提供经住建部门备案的房屋租赁合同，处于有效期内，符合要求。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "附件B补贴金额分级标准及特殊扣减条款",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "附件B原图扫描严重模糊，文字与数字无法识别，无法核验补贴金额分级及特殊扣减条款，需补充清晰版本后确认。",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "补充清晰版附件B扫描件，核验补贴金额分级标准及特殊扣减条款后再提交申报",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "附件B补贴金额分级标准及特殊扣减条款的清晰扫描件能否补充提供？"
+  ]
+}

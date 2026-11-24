@@ -1,0 +1,80 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "报名截止时间及提交要求",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "截止时间为2026-11-28 16:00，距基准日2026-11-24仅剩4天，未超过7天提前申请期，已错过提前申请窗口，与提交要求冲突。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "儿童户口簿材料要求",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "户口簿原件及复印件要求2份，现有仅复印1份，少1份，材料不齐全。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "儿童健康体检单材料要求",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "体检单开具日期2026-10-01，距基准日2026-11-24为54天，超过30日有效期，已超期。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "非本人代办的材料要求",
+      "necessity": "conditional",
+      "condition": "非监护人本人代办",
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "爷爷作为代办人，需监护人亲笔签字的《授权委托书》原件及代办人身份证原件，现有仅代办人身份证，缺授权委托书原件。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "补齐少1份户口簿复印件、重新开具30日内有效的儿童健康体检单、准备监护人亲笔签字的授权委托书原件，再前往街道服务中心3号窗口提交报名材料",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2",
+        "S1:L3",
+        "S1:L4",
+        "S1:L5"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "是否可重新开具30日内有效的儿童健康体检单？",
+    "是否可补充监护人亲笔签字的《授权委托书》原件？"
+  ]
+}

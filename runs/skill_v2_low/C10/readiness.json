@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "高校毕业生租房补贴申报",
+    "reference_date": "2026-11-24",
+    "profile_summary": "2026届外籍硕士毕业生，已在本市签订2年劳动合同并缴纳社保2个月，持有学位认证与备案租房合同，拟于2026-11-25提交申报。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "synthetic_graduate_subsidy_bilingual.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-11-01",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申报截止及逾期处理",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "申报截止为2026年11月30日17:00，用户拟于2026-11-25提交，已超过截止日期，逾期系统自动关闭、不予补报。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "申请人资格条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户为2026届外籍硕士毕业生、已在本市签订2年劳动合同并缴纳社保2个月，符合毕业2年内、1年以上劳动合同及正常缴纳社会保险的资格条件。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料1：毕业证及学位证",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已持有硕士学位证及留服认证书扫描件，满足毕业证、学位证及境外学历认证书要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料2：劳动合同及社保缴费明细",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已持有2年期劳动合同及社保缴费明细，且正常在缴2个月，满足有效期内材料要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料2】有效期内劳动合同及社保缴费明细。"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "基本材料3：房屋租赁合同",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已持有住建部门备案房屋租赁合同且处于有效期内，满足材料要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "【基本材料3】经住建部门备案的房屋租赁合同。"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "附件/关键段落可读性核验（原文扫描模糊不可读）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "来源存在模糊/不可读关键段落，依 SkillHub 输入门禁第3条禁止猜测其数值或条款，整体状态至少降级为待确认。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L7",
+          "quote": "【附件说明】[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "立即调整申报时间，在2026年11月30日17:00截止前完成申报，避免逾期系统关闭；如已错过截止时间，需确认是否可补报或启动其他受理渠道。",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "附件B（分学历与分区域补贴金额分级标准及特殊扣减条款）因扫描模糊无法识别，请提供可清晰阅读的附件B原文或官方清晰版，以便核对补贴金额与扣减条件。"
+  ],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "外国人L字签证停留期限延期",
+    "reference_date": "2026-11-24",
+    "profile_summary": "外籍个人游客，持L字签证，当前停留期限至2026-11-29（距参考日2026-11-24仅剩5天），本人到场申请延期。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_visa_extension_guide.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "申请时限",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "停留期限至2026-11-29，届满7日前应于2026-11-22前申请；参考日2026-11-24已晚于该时限，当前仅剩5天，已错过提前申请期。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申请时限】外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "本人有效护照或者其他国际旅行证件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已提供本人有效护照原件，L字签证停留期限至2026-11-29。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】本人有效护照或者其他国际旅行证件原件。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已提供已签字的签证申请表及1张近期白底彩照，符合材料规格。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】填写完整并签署的《外国人签证证件申请表》及近期白底彩色免冠照片1张。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [],
+      "reason": "现有材料中未提供与申请事由相关的行程计划安排说明，也未提供后续住宿预订或离境机票预订单。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "团体旅游须提交旅行社证明函件",
+      "necessity": "conditional",
+      "condition": "团体旅游",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户画像为外籍个人游客，非团体旅游，该条件不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "立即咨询当地公安机关出入境管理机构：当前停留期限已至2026-11-29，已错过届满7日前的申请时限，确认是否仍可提交延期申请；同时准备与申请事由相关的行程计划安排说明、后续住宿预订或离境机票预订单，补齐R4缺失材料。",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申请时限】外国人申请延长签证停留期限，应当在签证注明的停留期限届满7日前向当地公安机关出入境管理机构提出申请。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】与申请事由相关的行程计划安排说明（含后续住宿预订或离境机票预订单）；团体旅游还须提交旅行社证明函件。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "当前停留期限至2026-11-29，已超过届满7日前（2026-11-22）的申请时限，是否仍可提交延期申请？",
+    "请确认是否已有与申请事由相关的行程计划安排说明、后续住宿预订或离境机票预订单，用于补齐缺失材料？"
+  ],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

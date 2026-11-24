@@ -1,0 +1,17 @@
+{
+  "run_name": "skill_v2_none",
+  "cases": 10,
+  "overall_accuracy": 0.7,
+  "overall_match_count": "7/10",
+  "trap_pass_rate": 1.0,
+  "trap_pass_count": "10/10",
+  "clause_survival_rate": 0.863,
+  "clause_survival_count": "63/73",
+  "pre_repair_strict_pass": "0/10",
+  "post_repair_strict_pass": "10/10",
+  "pre_repair_verbatim_rate": 1.0,
+  "post_repair_verbatim_rate": 1.0,
+  "avg_wall_seconds": 44.35,
+  "avg_completion_tokens": 1995.3,
+  "avg_tokens_per_sec": 44.99
+}

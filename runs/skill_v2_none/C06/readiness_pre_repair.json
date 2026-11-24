@@ -1,0 +1,74 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "连续足额缴存及无自有住房条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已连续足额缴存8个月、本市无自有住房，满足连续缴存满3个月及无房要求，2026-11-01至2026-11-24为23天，未超期。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已携带有效期内居民身份证原件，满足原件要求。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "本人名下I类银行借记卡原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "用户已携带状态正常的本人I类银行借记卡原件，满足原件要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "结婚证原件及配偶身份证复印件",
+      "necessity": "conditional",
+      "condition": "已婚申请人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为未婚单身职工，不满足已婚申请人条件，该条件不适用。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "按窗口开放时间携带已备齐的身份证、本人I类银行借记卡原件及公积金缴存无房记录，到公积金办理窗口提交申请。",
+      "priority": "normal",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": []
+}

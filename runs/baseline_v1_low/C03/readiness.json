@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "中国公民普通护照换发",
+    "reference_date": "2026-11-24",
+    "profile_summary": "68岁退休居民（原民营企业员工，非登记备案国家工作人员），本人现场办理普通护照换发，现持护照将于2027-03-10到期（剩余不足4个月）。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_ordinary_passport_renewal.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "您现持护照将于2027-03-10到期，距参考日期2026-11-24约3.5个月，不足6个月，符合换发条件。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。"
+        },
+        {
+          "source_id": "I01",
+          "locator": "材料说明",
+          "quote": "原普通护照原件（有效期至2027-03-10（距2026-11-24约3.5个月，不足6个月））"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "有效期内的原普通护照原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已提供原普通护照原件，且护照在有效期内（有效期至2027-03-10）。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】有效期内的原普通护照原件。"
+        },
+        {
+          "source_id": "I01",
+          "locator": "材料说明",
+          "quote": "原普通护照原件（有效期至2027-03-10（距2026-11-24约3.5个月，不足6个月））"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "本人有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已提供本人有效居民身份证原件，长期有效。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】本人有效居民身份证原件。"
+        },
+        {
+          "source_id": "I02",
+          "locator": "材料说明",
+          "quote": "居民身份证原件（长期有效）"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已完成现场照相并取得合格回执，并填写申请表，材料规格符合要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。"
+        },
+        {
+          "source_id": "I03",
+          "locator": "材料说明",
+          "quote": "申请表与出入境相片回执（已完成现场照相取得合格回执并填写申请表）"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同",
+      "necessity": "conditional",
+      "condition": "用户为未满16周岁的未成年人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁退休居民，不属于未满16周岁的未成年人，该条件不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。"
+        },
+        {
+          "source_id": "用户情况",
+          "locator": "用户情况",
+          "quote": "68岁退休居民（原民营企业员工，非登记备案国家工作人员）"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函",
+      "necessity": "conditional",
+      "condition": "用户为登记备案的国家工作人员",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为非登记备案国家工作人员，该条件不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L7",
+          "quote": "【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。"
+        },
+        {
+          "source_id": "用户情况",
+          "locator": "用户情况",
+          "quote": "非登记备案国家工作人员"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "A1",
+      "action": "携带原普通护照原件、本人有效居民身份证原件、填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片回执，到公安机关出入境管理机构现场办理普通护照换发。",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3-L5",
+          "quote": "【基本材料1】有效期内的原普通护照原件。【基本材料2】本人有效居民身份证原件。【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。"
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "action": "现场办理时确认护照有效期不足6个月、申请材料齐全，由公安机关出入境管理机构受理并按规定办理。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": [],
+  "limitations": [
+    "本结论基于参考日期2026-11-24及用户提供的材料情况判断，实际办理时以公安机关出入境管理机构现场核验为准。",
+    "若现场再次确认护照有效期、身份证状态或相片回执符合要求后，仍需按现场要求完成提交和受理。"
+  ]
+}

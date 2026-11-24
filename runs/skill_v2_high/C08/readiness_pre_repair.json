@@ -1,0 +1,46 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "本人有效居民身份证原件（或社保卡原件）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已持有有效居民身份证原件，满足原件要求，且在有效期内，未超期。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "《中华人民共和国残疾人证》原件（或电子残疾人证）",
+      "necessity": "conditional",
+      "condition": "申请“免费上门寄送盲文/有声读物”专项服务",
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户申请免费上门寄送盲文与有声读物专项服务，已持有有效期内电子残疾人证（视力残疾类别），满足原件或电子证要求，未超期。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "携带有效居民身份证原件及电子残疾人证，到图书馆指定窗口办理免费上门寄送盲文与有声读物服务，办理时确认窗口开放时间（周二至周日09:00-17:00，周一闭馆）。",
+      "priority": "high",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": []
+}

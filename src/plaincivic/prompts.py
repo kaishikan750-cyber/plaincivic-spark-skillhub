@@ -25,15 +25,14 @@ def format_inventory_block(inventory: list[dict[str, Any]]) -> str:
 
 
 def build_baseline_v1_messages(case: dict[str, Any]) -> list[dict[str, str]]:
-    """Baseline v1: naive single-pass prompt WITHOUT SkillHub extraction-first separation or strict contract."""
+    """Baseline v1: direct single-pass prompt WITHOUT SkillHub extraction-first split or strict validator."""
     bilingual_hint = (
-        "同时提供英文双语版本（bilingual_steps_en）。"
+        "同时提供英文对照步骤（bilingual_steps_en）。"
         if case.get("mode") == "bilingual"
-        else "无需英文翻译，bilingual_steps_en 留空数组 []。"
+        else "无需英文，bilingual_steps_en 填 []。"
     )
     sys_msg = (
-        "你是一个政务办事助手。请阅读办事通知和用户现有材料，帮用户简化办事指南并判断是否可以去办理。"
-        "请只输出一个合法 JSON 对象，不要附加额外解释。"
+        "你是政务办事助手。请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。"
     )
     user_msg = f"""参考日期：{case['reference_date']}
 事项：{case['service']}
@@ -45,13 +44,13 @@ def build_baseline_v1_messages(case: dict[str, Any]) -> list[dict[str, str]]:
 【用户现有材料】
 {format_inventory_block(case['inventory'])}
 
-请输出 JSON，包含字段：
+请输出 JSON：
 - overall_status: "ready" | "not_ready" | "needs_confirmation"
 - summary_zh: 一句话结论
-- requirements: 数组，每项含 id, item, necessity("required"|"conditional"|"optional"), condition(无则为null), applicability("applies"|"not_applicable"|"unknown"), status("ready"|"missing"|"expired"|"conflict"|"needs_confirmation"|"not_applicable"), matched_inventory_ids(数组), reason, evidence([{{source_id, locator, quote}}])
+- requirements: 数组，每项含 id, item, necessity("required"|"conditional"|"optional"), condition(无则为null), applicability("applies"|"not_applicable"|"unknown"), status("ready"|"missing"|"expired"|"conflict"|"needs_confirmation"|"not_applicable"), matched_inventory_ids, reason, evidence([{{source_id, locator, quote}}])
 - actions: 数组，每项含 id, action, priority("blocking"|"high"|"normal"), evidence([{{source_id, locator, quote}}])
-- plain_language_steps_zh: 通俗易懂的分步办事指南数组（保留资格条件、材料规格与截止时限）
-- bilingual_steps_en: 英文对照步骤数组（{bilingual_hint}）
+- plain_language_steps_zh: 3-5条通俗分步指南（保留资格、材料规格与截止时限）
+- bilingual_steps_en: {bilingual_hint}
 - questions: 待确认问题数组
 - limitations: 局限说明数组
 """
@@ -62,53 +61,43 @@ def build_baseline_v1_messages(case: dict[str, Any]) -> list[dict[str, str]]:
 
 
 def build_stage_a_extraction_messages(case: dict[str, Any]) -> list[dict[str, str]]:
-    """SkillHub Stage A (Rule #1): Extract requirements strictly from source notices BEFORE seeing user inventory."""
-    sys_msg = """你正在严格执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 的第 1 步【先提取要求，再查看现有材料】。
-核心铁律（违反即判错）：
-1. 你此刻看不到用户现有材料，只能依据下方通知原文逐条提取正式要求，严禁加入通知未写出的“常见材料”。
-2. 每条要求必须附带来自原文的精确 source_id（如 "S1"）、locator（精确行号，如 "L4"）和 verbatim_quote（必须是从该行逐字复制的连续原文片段，严禁改写或拼凑）。
-3. 清晰区分：
-   - eligibility（办理条件/前置资格/年龄/居住时长/有效期门槛）
-   - document（必备材料/条件材料，务必保留原件、复印件份数、照片底色、有效期天数等限定）
-   - deadline（申请截止日期、提前天数、入境后天数、办理时限、受理窗口时间；若原文写明“不设报名截止日期”，必须原样保留，绝不捏造日期）
-   - fee（收费或免收费条款）
-4. 若同一事项存在多份来源（如 S1 和 S2）且要求互相冲突，必须在 conflicts 数组中并列写出双方 source_id、locator 和原文摘录，严禁自行裁定以哪份为准。
-5. 若原文出现截断、模糊、扫描无法识别的附件/段落，必须记入 unreadable_sections，严禁猜测其中的数字或条件。
-6. 仅输出一个严格合法的 JSON 对象，不要输出 Markdown 代码块之外的任何文字。"""
+    """SkillHub Stage A (Rule #1): Blind extraction from source notices BEFORE seeing user inventory."""
+    sys_msg = """你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。
+请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：
+1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。
+2. 每项必须给出精确 source_id（如 "S1"）、locator（行号如 "L4"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。
+3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。
+4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。
+5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"""
 
-    user_msg = f"""事项名称：{case['service']}
-参考日期：{case['reference_date']}
+    user_msg = f"""事项：{case['service']}（参考日期：{case['reference_date']}）
 
 【登记来源全文】
 {format_sources_block(case['sources'])}
 
-请严格输出以下 JSON 结构：
+输出 JSON：
 {{
   "extracted_requirements": [
     {{
       "id": "R1",
       "category": "eligibility" | "document" | "deadline" | "fee" | "unreadable",
-      "item": "原文材料、资格条件或时限要求名称",
+      "item": "精炼要求名",
       "necessity": "required" | "conditional" | "optional",
-      "condition": "仅当 necessity 为 conditional 时填写完整触发条件；否则必须为 null",
-      "constraints": "保留原文关键限定（如原件/复印件2份/白底/6个月内有效/入境30日内/届满7日前/15个工作日等）",
-      "evidence": [
-        {{"source_id": "S1", "locator": "L1", "quote": "必须逐字复制自对应行的连续子串"}}
-      ]
+      "condition": "仅 conditional 时填触发条件，否则 null",
+      "constraints": "保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）",
+      "source_id": "S1",
+      "locator": "L2",
+      "quote": "直接逐字复制自该行的原文片段"
     }}
   ],
   "multi_source_conflicts": [
-    {{
-      "topic": "冲突主题（如办理年龄/照片要求/费用）",
-      "side_a": {{"source_id": "S1", "locator": "L2", "quote": "原文逐字摘录"}},
-      "side_b": {{"source_id": "S2", "locator": "L2", "quote": "原文逐字摘录"}}
-    }}
+    {{"topic": "冲突项", "side_a": {{"source_id": "S1", "locator": "L2", "quote": "原文"}}, "side_b": {{"source_id": "S2", "locator": "L2", "quote": "原文"}}}}
   ],
   "unreadable_sections": [
-    {{"source_id": "S1", "locator": "L7", "quote": "原文不可读描述的逐字摘录"}}
+    {{"source_id": "S1", "locator": "L7", "quote": "原文不可读摘录"}}
   ],
-  "key_deadlines_and_fees": [
-    {{"label": "时限或费用说明", "exact_text": "原文精确表述", "source_id": "S1", "locator": "L2"}}
+  "service_info_notes": [
+    {{"label": "办理时限/费用/窗口时间", "exact_text": "原文精确表述", "source_id": "S1", "locator": "L8"}}
   ]
 }}"""
     return [
@@ -121,103 +110,63 @@ def build_stage_b_readiness_and_rewrite_messages(
     case: dict[str, Any],
     stage_a_json: dict[str, Any],
 ) -> list[dict[str, str]]:
-    """SkillHub Stage B (Rules #2-#5): Condition resolution, date arithmetic, inventory matching, and plain-language/bilingual rewrite."""
+    """SkillHub Stage B (Rules #2-#5): Compact readiness evaluation & accessible/bilingual rewrite."""
     is_bilingual = case.get("mode") == "bilingual"
-    bilingual_instruction = (
-        """7. 【双语无障碍改写（Bilingual ZH/EN）】：
-   - 必须同时输出 `plain_language_steps_zh`（中文大白话易读步骤，每步简短清晰、适合老人/读屏软件）和 `bilingual_steps_en`（精准英文对照步骤，面向外籍办事人）。
-   - 所有关键资格门槛（如 1 year / 6 months / in person / 2 years）、材料硬限定（original / white background / 2 copies / health certificate within 6 months）和精确截止日期/时限（within 30 days / 7 days before expiry / 15 working days / 2026-11-30 17:00 / unreadable Annex B）必须在英文版与中文大白话版中 100% 存活，绝不允许被省略或模糊化！"""
+    bilingual_rule = (
+        "7. 【中英双语无障碍改写】：输出 4-5 条中文易读步骤 `plain_language_steps_zh` 和 4-5 条完整英文对照步骤 `bilingual_steps_en` + `bilingual_summary_en`。无论用户当前是否已满足某项条件，中文步骤与英文步骤中都必须完整保留原文所有关键资格门槛（如 1年以上 / over 1 year、毕业2年内 / within 2 years、本人到场 / in person）、材料规格（如 护照/passport、白底/white background、6个月内/within 6 months、行程安排/itinerary）和全部时限（如 入境30日内/within 30 days、届满7日前/7 days before expiry、15个工作日/15 working days、7个工作日/7 working days、2026年11月30日17:00/2026-11-30 17:00、附件B不可读/unreadable Annex B），严禁省略！"
         if is_bilingual
-        else """7. 【中文无障碍易读改写（Plain-Language Accessible ZH）】：
-   - 输出 `plain_language_steps_zh`（每步一句话讲清“干什么、带什么、何时办、哪里有坑”，适合长辈大字阅读与读屏软件线性朗读）。
-   - 所有资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费条款及截止时间（含“不设报名截止日期”）必须在改写中 100% 保留原文数值与限定，严禁为了通俗而删掉硬条件！
-   - `bilingual_steps_en` 置为空数组 `[]`。"""
+        else "7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
     )
 
-    sys_msg = f"""你正在严格执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 的第 2–5 步【条件解析 → 对照现有材料 → 计算整体状态 → 生成可核验无障碍指南】。
-严格契约规则（对应官方 scripts/validate_readiness.py --strict）：
-1. 【不替用户猜身份】：每项要求的 `applicability` 只能是 `"applies"`、`"not_applicable"` 或 `"unknown"`。
-   - 只有用户画像明确满足条件时才标 `"applies"`；
-   - 明确排除时（如单身不适用“已婚”、退休民营企业员工不适用“登记备案国家工作人员”、单人申请不适用“随迁家属”、成年人不适用“未满16周岁”）必须标 `"applicability": "not_applicable"` 且 `"status": "not_applicable"`；
-   - 用户画像未说明关键身份或选择时，**严禁猜测**，必须标 `"applicability": "unknown"` 且 `"status": "needs_confirmation"`！
-2. 【契约约束】：
-   - 若 `necessity == "conditional"`，`condition` 必须是非空字符串；若 `necessity` 为 `"required"` 或 `"optional"`，`condition` 必须为 `null`！
-   - 若 `status == "ready"`，`matched_inventory_ids` 必须至少包含一个现有材料 ID（如 `["I01"]`）。
-   - 若仅有手机照片而原文要求“原件”，或复印件份数不足，或照片底色不符，必须标 `"missing"` 或 `"conflict"`，绝不能标 `"ready"`！
-   - 所有日期/期限必须以参考日期 `{case['reference_date']}` 为基准列出明确计算过程（例如 2026-03-10 至 2026-11-24 已超 8 个月 > 6 个月 → `expired`；2026-10-01 至 2026-11-24 已 54 天 > 30 日 → `expired`；2026-08-15 至 2026-11-24 仅约 3 个月 < 半年 → `conflict`；2026-11-29 距 2026-11-24 仅剩 5 天 < 提前 7 日 → `conflict` 或 `expired`）。
-3. 【多源冲突】：若 Stage A 发现多份来源（S1 vs S2）冲突，必须在对应 requirement 中标 `"status": "conflict"`，并在 `evidence` 中同时保留 S1 与 S2 双方原文摘录，严禁擅自选一边！
-4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须为其建立一条 `status: "needs_confirmation"` 的 requirement（说明不可读部分并禁止编造内容），整体状态至少为 `needs_confirmation`！
-5. 【整体状态算法（铁律）】：
-   - 只要任一适用要求为 `"missing"`、`"expired"` 或 `"conflict"` → `overall_status` 必须为 `"not_ready"`；
-   - 否则只要至少一项为 `"needs_confirmation"` → `overall_status` 必须为 `"needs_confirmation"`；
-   - 否则全部适用项均为 `"ready"` → `overall_status` 必须为 `"ready"`。
-6. 【原文证据保真】：所有 `evidence` 中的 `source_id`、`locator`、`quote` 必须直接沿用 Stage A 或原文逐字片段，绝不篡改。
-{bilingual_instruction}
-8. 仅输出一个严格合法的 JSON 对象，不要输出任何额外解释。"""
+    sys_msg = f"""你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。
+请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：
+1. 【不替用户猜身份】：`applicability` 仅限 `"applies"` / `"not_applicable"` / `"unknown"`。
+   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability="not_applicable"`, `status="not_applicable"`。
+   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability="unknown"`, `status="needs_confirmation"`！
+2. 【严格日期算术与状态区分】（基准日 `{case['reference_date']}`）：
+   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；
+   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `"expired"` 或 `"conflict"`）；
+   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `"expired"`（不要标 missing！）；
+   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `"conflict"`；
+   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `"missing"` 或 `"conflict"`。
+3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `"status": "conflict"` 且 `evidence_refs` 同时引用双方行号（如 `["S1:L2", "S2:L2"]`），严禁自行选边！
+4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status="needs_confirmation"` 的条目，禁止编造金额或条款。
+5. 【契约硬约束】：`necessity=="conditional"` 必须有非空 `condition`，否则 `condition=null`；`status=="ready"` 必须填写至少一个 `matched_inventory_ids`（如 `["I01"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。
+6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `"not_ready"`；否则有 `needs_confirmation` → `"needs_confirmation"`；否则 → `"ready"`。
+{bilingual_rule}"""
 
-    user_msg = f"""【案件上下文】
-- 事项名称：{case['service']}
-- 参考日期：{case['reference_date']}
-- 用户画像：{case['profile_summary']}
-- 语言模式：{case['mode']}
-
-【用户现有材料清单】
+    user_msg = f"""【案件】{case['service']}｜参考日期：{case['reference_date']}｜模式：{case['mode']}
+【用户画像】{case['profile_summary']}
+【现有材料】
 {format_inventory_block(case['inventory'])}
 
-【Stage A 已从通知原文提取的要求（盲提结果）】
-{json.dumps(stage_a_json, ensure_ascii=False, indent=2)}
+【Stage A 盲提结果】
+{json.dumps(stage_a_json, ensure_ascii=False)}
 
-【原始登记来源（仅供复核原文逐字引用）】
-{format_sources_block(case['sources'])}
-
-请严格输出符合 SkillHub 输出契约（schema_version 1.0）的 JSON：
+请直接输出 JSON：
 {{
-  "schema_version": "1.0",
-  "case": {{
-    "service": "{case['service']}",
-    "reference_date": "{case['reference_date']}",
-    "profile_summary": "{case['profile_summary']}"
-  }},
-  "sources": {json.dumps([{k: s[k] for k in ("id", "filename", "source_type", "source_date", "currentness")} for s in case["sources"]], ensure_ascii=False)},
+  "overall_status": "ready" | "not_ready" | "needs_confirmation",
   "requirements": [
     {{
       "id": "R1",
-      "item": "要求名称",
+      "item": "要求名",
       "necessity": "required" | "conditional" | "optional",
       "condition": null,
       "applicability": "applies" | "not_applicable" | "unknown",
       "status": "ready" | "missing" | "expired" | "conflict" | "needs_confirmation" | "not_applicable",
       "matched_inventory_ids": ["I01"],
-      "reason": "清晰判定理由（日期项必须写出基准日期与计算结果）",
-      "evidence": [
-        {{"source_id": "S1", "locator": "L1", "quote": "原文逐字片段"}}
-      ]
+      "reason": "简明判定理由与日期计算",
+      "evidence_refs": ["S1:L2"]
     }}
   ],
   "actions": [
-    {{
-      "id": "T1",
-      "action": "具体可执行的补救或出门前准备动作",
-      "priority": "blocking" | "high" | "normal",
-      "evidence": [
-        {{"source_id": "S1", "locator": "L1", "quote": "原文逐字片段"}}
-      ]
-    }}
+    {{"id": "T1", "action": "出门前补救或准备动作", "priority": "blocking" | "high" | "normal", "evidence_refs": ["S1:L6"]}}
   ],
-  "overall_status": "ready" | "not_ready" | "needs_confirmation",
-  "questions": ["若有待确认项，列出最多5个明确澄清问题；无则 []"],
-  "limitations": [
-    "本核验基于用户于 {case['reference_date']} 提供的文本，不代表最终官方最新修订，请以当地政务网或现场窗口审核为准。",
-    "本工具全程只读且离线运行，不代办预约或提交，最终受理结果由受理机构工作人员现场审核决定。"
-  ],
-  "plain_language_summary_zh": "一句话大白话结论（让长辈或办事人一眼看懂能不能出门、差什么）",
-  "plain_language_steps_zh": [
-    "第1步：……（保留精确资格、材料份数/原件与时限）"
-  ],
-  "bilingual_summary_en": "One-sentence plain English verdict (empty string if plain_zh mode)",
-  "bilingual_steps_en": [
-    "Step 1: ... (preserve exact eligibility, document format, and deadlines; empty list if plain_zh mode)"
-  ]
+  "questions": ["最多3个待澄清问题，无则 []"],
+  "plain_language_summary_zh": "一句话大白话结论",
+  "plain_language_steps_zh": ["第1步：...", "第2步：..."],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": []
 }}"""
     return [
         {"role": "system", "content": sys_msg},

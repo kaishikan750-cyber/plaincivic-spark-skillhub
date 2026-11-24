@@ -1,0 +1,91 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "居住证申领前置资格条件",
+      "necessity": "required",
+      "condition": "公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一",
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户2026-08-15办理居住登记，至2026-11-24仅3个月零9天（约103天），未满半年（180天），不满足前置资格；同时无合法稳定就业、稳定住所或连续就读证明，资格条件与现有材料冲突。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "基本材料1：本人居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已提供本人居民身份证原件，且有效期内，满足要求。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料2：申领人近期标准证件相片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已提供近期标准证件相片纸质2张，满足要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料3：合法稳定住所证明或劳动合同/在读证明",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "missing",
+      "matched_inventory_ids": [],
+      "reason": "仅有手机拍摄的租房合同照片，无纸质原件及复印件，未提供合法稳定住所证明或劳动合同/在读证明原件及复印件1份，材料不完整。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "办理时限：自受理之日起15日内制作发放居住证，交通不便地区最长不超过30日",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "该为一般性办理时限，无需作为空匹配项放入requirements，已在plain_language_steps_zh中说明。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "尽快补足居住登记满半年以上及合法稳定住所证明/劳动合同或在读证明原件及复印件，满足申领资格与材料要求后再前往窗口办理。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2",
+        "S1:L5"
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "用户是否已具备合法稳定就业、稳定住所或连续就读证明？若不具备，是否可先办理居住登记满半年后再申领？",
+    "租房合同照片是否可补充纸质租赁合同原件及复印件1份？"
+  ]
+}

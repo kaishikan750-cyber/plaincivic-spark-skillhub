@@ -1,32 +1,30 @@
-"""One-command launcher that verifies local Spark-X2.6-4B GGUF + llama-server, runs all ablations, and renders demo."""
+"""One-command launcher that runs all 4 ablations with exact llama-server --reasoning-budget controls and renders demo."""
 
 from __future__ import annotations
 
-import hashlib
 import json
+import os
 import subprocess
 import sys
 import time
-import urllib.request
 import zipfile
 from pathlib import Path
+
+import requests
 
 ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
 RUNTIME = Path(r"D:\tools\spark-runtime")
 VULKAN_ZIP = RUNTIME / "llama-b12671-bin-win-vulkan-x64.zip"
 VULKAN_DIR = RUNTIME / "llama-b12671-vulkan"
 GGUF_PATH = RUNTIME / "models" / "XHToken--Spark-X2.6-4B-GGUF" / "Spark-X2.6-4B-Q4_K_M.gguf"
-EXPECTED_GGUF_BYTES = 3543441312
-EXPECTED_GGUF_SHA256 = "91cb2811aebb47ac916aa619d27d4cdd7f4143106b7917accb8ead4cd7f5cbd9"
 
 
 def find_llama_server() -> Path | None:
     if VULKAN_ZIP.exists() and not any(VULKAN_DIR.rglob("llama-server.exe")):
         VULKAN_DIR.mkdir(parents=True, exist_ok=True)
-        print(f"Extracting {VULKAN_ZIP} -> {VULKAN_DIR} ...", flush=True)
         with zipfile.ZipFile(VULKAN_ZIP, "r") as zf:
             zf.extractall(VULKAN_DIR)
-    for d in (VULKAN_DIR, RUNTIME / "llama-b12671-cuda12.4", RUNTIME):
+    for d in (VULKAN_DIR, RUNTIME):
         if d.exists():
             hit = next(d.rglob("llama-server.exe"), None)
             if hit:
@@ -34,49 +32,32 @@ def find_llama_server() -> Path | None:
     return None
 
 
-def find_gguf() -> Path | None:
-    if GGUF_PATH.exists():
-        return GGUF_PATH
-    for p in RUNTIME.rglob("Spark-X2.6-4B*.gguf"):
-        if p.stat().st_size > 1_000_000_000:
-            return p
-    return None
-
-
 def wait_for_health(url: str, timeout: int = 90) -> bool:
-    import requests
-
     s = requests.Session()
     s.trust_env = False
     deadline = time.time() + timeout
     while time.time() < deadline:
         try:
-            r = s.get(f"{url}/health", timeout=3)
-            if r.status_code == 200:
+            if s.get(f"{url}/health", timeout=3).status_code == 200:
                 return True
         except Exception:
             pass
-        time.sleep(1.5)
+        time.sleep(1.0)
     return False
 
 
-def main() -> int:
-    server_exe = find_llama_server()
-    gguf = find_gguf()
-    if not server_exe:
-        print(f"[MISSING] llama-server.exe not found under {RUNTIME}. Place {VULKAN_ZIP.name} in {RUNTIME}.")
-        return 1
-    if not gguf:
-        print(f"[MISSING] Spark-X2.6-4B GGUF not found under {RUNTIME}. Place it at {GGUF_PATH}.")
-        return 1
-
-    print(f"[OK] llama-server: {server_exe}", flush=True)
-    print(f"[OK] GGUF model:   {gguf} ({gguf.stat().st_size} bytes)", flush=True)
-
-    # Start llama-server on GPU (-ngl 99) with jinja chat template enabled
-    port = 8080
+def run_with_server(
+    server_exe: Path,
+    gguf: Path,
+    mode: str,
+    thinking: str,
+    reasoning_budget: int,
+    port: int,
+    cases_arg: str = "",
+    resume: bool = True,
+) -> int:
     base_url = f"http://127.0.0.1:{port}"
-    log_path = ROOT / "runs" / "llama_server.log"
+    log_path = ROOT / "runs" / f"llama_server_{mode}_{thinking}.log"
     log_path.parent.mkdir(parents=True, exist_ok=True)
     log_f = open(log_path, "w", encoding="utf-8")
 
@@ -86,46 +67,35 @@ def main() -> int:
         "-ngl", "99",
         "-c", "16384",
         "--jinja",
+        "--reasoning", "off" if thinking == "none" else "on",
+        "--reasoning-budget", str(reasoning_budget),
         "--host", "127.0.0.1",
         "--port", str(port),
     ]
-    print(f"[START] {' '.join(cmd)}", flush=True)
+    if thinking in {"low", "high"}:
+        cmd.extend(["--reasoning-effort", thinking])
+
+    print(f"\n================ STARTING {mode} (thinking={thinking}, budget={reasoning_budget}) ================", flush=True)
     proc = subprocess.Popen(cmd, stdout=log_f, stderr=subprocess.STDOUT)
     try:
-        if not wait_for_health(base_url, timeout=120):
-            print("[ERROR] llama-server did not become healthy within 120s. Check runs/llama_server.log")
+        if not wait_for_health(base_url, timeout=90):
+            print(f"[ERROR] llama-server failed to start for {mode}/{thinking}", flush=True)
             return 2
-        print("[READY] llama-server is healthy!", flush=True)
 
-        env = dict(**__import__("os").environ)
+        env = dict(os.environ)
         env["PYTHONPATH"] = str(ROOT / "src")
-
-        runs = [
-            ("baseline_v1", "low"),
-            ("skill_v2", "none"),
-            ("skill_v2", "low"),
-            ("skill_v2", "high"),
+        runner_cmd = [
+            sys.executable, "-m", "plaincivic.runner",
+            "--base-url", base_url,
+            "--mode", mode,
+            "--thinking", thinking,
         ]
-        for mode, thinking in runs:
-            print(f"\n================ RUNNING {mode} (thinking={thinking}) ================", flush=True)
-            rc = subprocess.run(
-                [sys.executable, "-m", "plaincivic.runner", "--base-url", base_url, "--mode", mode, "--thinking", thinking],
-                cwd=str(ROOT),
-                env=env,
-                check=False,
-            ).returncode
-            if rc != 0:
-                print(f"[WARN] Run {mode}/{thinking} exited with {rc}", flush=True)
+        if cases_arg:
+            runner_cmd.extend(["--cases", cases_arg])
+        if resume:
+            runner_cmd.append("--resume")
 
-        # Render interactive HTML demo using skill_v2_low (or high)
-        subprocess.run(
-            [sys.executable, "-m", "plaincivic.render_demo", "skill_v2_low"],
-            cwd=str(ROOT),
-            env=env,
-            check=True,
-        )
-        print("\n[ALL DONE] Benchmarks finished and demo/index.html rendered!", flush=True)
-        return 0
+        return subprocess.run(runner_cmd, cwd=str(ROOT), env=env, check=False).returncode
     finally:
         proc.terminate()
         try:
@@ -133,6 +103,60 @@ def main() -> int:
         except Exception:
             proc.kill()
         log_f.close()
+        time.sleep(1.5)
+
+
+def main() -> int:
+    server_exe = find_llama_server()
+    if not server_exe or not GGUF_PATH.exists():
+        print("[ERROR] Missing llama-server.exe or Spark-X2.6-4B-Q4_K_M.gguf")
+        return 1
+
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cases", default="", help="Comma-separated case IDs")
+    parser.add_argument("--only", default="", help="Comma-separated run names e.g. skill_v2_low,skill_v2_none")
+    parser.add_argument("--no-resume", action="store_true")
+    args = parser.parse_args()
+
+    cases_arg = args.cases
+    resume = not args.no_resume
+    only_set = {x.strip() for x in args.only.split(",") if x.strip()}
+
+    plan = [
+        ("baseline_v1", "low", 512, 8084),
+        ("skill_v2", "none", 0, 8085),
+        ("skill_v2", "low", 512, 8086),
+        ("skill_v2", "high", 1400, 8087),
+    ]
+
+    for mode, thinking, budget, port in plan:
+        rname = f"{mode}_{thinking}"
+        if only_set and rname not in only_set:
+            continue
+        rc = run_with_server(server_exe, GGUF_PATH, mode, thinking, budget, port, cases_arg=cases_arg, resume=resume)
+        if rc != 0:
+            print(f"[WARN] {rname} returned {rc}", flush=True)
+
+    # Render interactive HTML demo using best skill_v2 run (skill_v2_high or skill_v2_low)
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(ROOT / "src")
+    best_run = "skill_v2_high"
+    # Pick highest accuracy run automatically if summaries exist
+    scores = []
+    for cand in ("skill_v2_high", "skill_v2_low", "skill_v2_none"):
+        sp = ROOT / "runs" / cand / "summary.json"
+        if sp.exists():
+            sd = json.loads(sp.read_text(encoding="utf-8"))
+            scores.append(((sd.get("overall_accuracy", 0), sd.get("trap_pass_rate", 0), sd.get("clause_survival_rate", 0)), cand))
+    if scores:
+        scores.sort(reverse=True)
+        best_run = scores[0][1]
+    print(f"\n[DEMO] Rendering demo/index.html from best run: {best_run}", flush=True)
+    subprocess.run([sys.executable, "-m", "plaincivic.render_demo", best_run], cwd=str(ROOT), env=env, check=True)
+    print("[ALL DONE]", flush=True)
+    return 0
 
 
 if __name__ == "__main__":

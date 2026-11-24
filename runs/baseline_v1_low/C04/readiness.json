@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "跨省异地就医直接结算备案",
+    "reference_date": "2026-11-24",
+    "profile_summary": "71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，但未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "cross_province_medical_filing.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R01",
+      "item": "有效身份证件或社会保障卡（或医保电子凭证）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已提供在有效期的居民身份证与社会保障卡原件。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。"
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "item": "填写完整的《跨省异地就医备案表》",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "用户已提供已填写基本信息的备案表，但需确认是否完整。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料2】填写完整的《跨省异地就医备案表》。"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "item": "异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一",
+      "necessity": "conditional",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "是否属于异地长期居住尚未确认，若属于该情形则需补充上述材料之一，目前未提供对应材料。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "item": "异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》",
+      "necessity": "conditional",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "是否属于医院转诊就医尚未确认，若属于该情形则需补充转诊证明，目前未提供对应材料。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "A01",
+      "action": "确认是否属于异地长期居住或医院转诊就医，以确定需补充的条件材料。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "action": "如属于异地长期居住，补充异地户籍证明、居住证、单位派驻证明或个人承诺书之一。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "action": "如属于医院转诊就医，补充具有转诊资质的定点医疗机构开具的《转诊转院证明》。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "action": "确认备案表信息填写完整后，按线上或线下渠道办理备案。",
+      "priority": "normal",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料2】填写完整的《跨省异地就医备案表》。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "您是否已取得当地居住证、户籍证明、单位派驻证明或个人承诺书？",
+    "本次就医是否属于医院转诊就医？",
+    "备案表是否已填写完整并确认无误？"
+  ],
+  "limitations": [
+    "当前仅能依据用户已提供的材料和未说明情况判断，不能替代对实际居住状态、转诊资格及材料完整性的现场核验。",
+    "若后续确认属于特定条件情形，还需按对应条件材料要求补充材料后方可办理。"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "跨省异地就医直接结算备案",
+    "reference_date": "2026-11-24",
+    "profile_summary": "71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，但未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "cross_province_medical_filing.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "必备材料：有效身份证件或社会保障卡（或医保电子凭证）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "用户已提供居民身份证与社会保障卡原件，且均在有效期内，满足必备材料要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "必备材料：填写完整的《跨省异地就医备案表》",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已提供跨省异地就医备案表且已填写基本信息，但无法确认是否填写完整，需用户确认。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料2】填写完整的《跨省异地就医备案表》。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一",
+      "necessity": "conditional",
+      "condition": "异地长期居住人员",
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户未说明是否属于异地长期居住人员，也未提供居住证、户籍证明等对应材料，无法确认该条件材料是否适用及满足。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》",
+      "necessity": "conditional",
+      "condition": "异地转诊就医人员",
+      "applicability": "unknown",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户未说明是否属于医院转诊就医人员，也未提供转诊证明，无法确认该条件材料是否适用及满足。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "请用户确认备案表是否填写完整，并补充是否属于异地长期居住或转诊就医人员，以及是否已取得居住证/户籍证明或采用个人承诺、是否已有转诊证明。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料2】填写完整的《跨省异地就医备案表》。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "《跨省异地就医备案表》是否已填写完整？",
+    "用户是否属于异地长期居住人员，是否需要提交居住证、户籍证明、单位派驻证明或个人承诺书之一？",
+    "用户是否属于医院转诊就医人员，是否需要提交具有转诊资质的定点医疗机构开具的转诊转院证明？"
+  ],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

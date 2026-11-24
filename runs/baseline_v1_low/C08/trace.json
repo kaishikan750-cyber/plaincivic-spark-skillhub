@@ -1,0 +1,103 @@
+{
+  "mode": "baseline_v1",
+  "thinking_mode": "low",
+  "case_id": "C08",
+  "spark_call": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"您已具备办理该免费上门寄送盲文与有声读物服务的材料，该服务免收押金与工本费，且不设报名截止日期；可于周二至周日 09:00-17:00 办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户持有有效期内居民身份证原件，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料】本人有效居民身份证原件（或社保卡原件）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户申请该专项服务，且持有有效期内电子残疾人证（视力残疾类别），符合条件材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"费用与截止日期确认\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"通知明确该专项服务免收押金与工本费、盲文及有声读物免费邮寄上门，且不设报名截止日期。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\"\n        },\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"按现有材料于服务时间办理无障碍阅读服务读者证办理，申请免费上门寄送盲文与有声读物服务。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认您已持有有效身份证原件和有效电子残疾人证，材料已满足办理条件。\",\n    \"第二步：该服务为免费上门寄送盲文与有声读物，免收押金与工本费。\",\n    \"第三步：办理时间为周二至周日 09:00-17:00，周一闭馆，不设报名截止日期。\",\n    \"第四步：按通知要求提交相关材料，申请免费上门寄送服务即可。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"本结论基于所提供办事通知及用户现有材料判断，实际办理以图书馆现场要求为准。\",\n    \"通知中的“电子残疾人证”与“残疾人证原件”并列，用户当前为电子残疾人证，如现场需原件可提前准备原件。\"\n  ]\n}</think>{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"您已具备办理该免费上门寄送盲文与有声读物服务的材料，该服务免收押金与工本费，且不设报名截止日期；可于周二至周日 09:00-17:00 办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户持有有效期内居民身份证原件，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料】本人有效居民身份证原件（或社保卡原件）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户申请该专项服务，且持有有效期内电子残疾人证（视力残疾类别），符合条件材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"费用与截止日期确认\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"通知明确该专项服务免收押金与工本费、盲文及有声读物免费邮寄上门，且不设报名截止日期。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\"\n        },\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"按现有材料于服务时间办理无障碍阅读服务读者证办理，申请免费上门寄送盲文与有声读物服务。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认您已持有有效身份证原件和有效电子残疾人证，材料已满足办理条件。\",\n    \"第二步：该服务为免费上门寄送盲文与有声读物，免收押金与工本费。\",\n    \"第三步：办理时间为周二至周日 09:00-17:00，周一闭馆，不设报名截止日期。\",\n    \"第四步：按通知要求提交相关材料，申请免费上门寄送服务即可。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"本结论基于所提供办事通知及用户现有材料判断，实际办理以图书馆现场要求为准。\",\n    \"通知中的“电子残疾人证”与“残疾人证原件”并列，用户当前为电子残疾人证，如现场需原件可提前准备原件。\"\n  ]\n}",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，不要多余解释。需要按照给定 schema。需要理解业务。\n\n用户：视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。\n\n参考日期：2026-11-24。\n\n通知原文 L1-L5。事项名称是市公共图书馆无障碍阅读服务读者证办理（示范模拟指南）。费用说明免收押金与工本费，盲文及有声读物免费邮寄上门。基本材料：本人有效居民身份证原件（或社保卡原件）。条件材料：申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。服务时间：全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\n\n用户现有材料 I01 身份证原件有效期内；I02 电子残疾人证有效期内，视力残疾类别。\n\n需要判断 overall_status。用户已满足材料？对于该专项服务，条件材料是残疾人证原件或电子残疾人证，用户有电子残疾人证有效期内。基本材料身份证原件有效期内。所以 ready？但注意通知中基本材料要求身份证原件（或社保卡原件），用户有身份证原件，满足。条件材料要求残疾人证原件（或电子残疾人证），用户有电子残疾人证，满足。费用免费，无截止日期。服务时间：参考日期 2026-11-24 是周二？ Let's check: 2026-11-24 weekday? Need maybe service time. 2026-11-24 is Tuesday? Let's calculate: 2026-11-24. 2026 Jan 1 Thursday? 2024 leap Jan1 Monday, 2025 Jan1 Wednesday, 2026 Jan1 Thursday. Nov 24 day of year: Jan31+Feb28+Mar31+Apr30+May31+Jun30+Jul31+Aug31+Sep30+Oct31+Nov24 = 31+28=59, +31=90, +30=12",
+    "raw_content": "{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"您已具备办理该免费上门寄送盲文与有声读物服务的材料，该服务免收押金与工本费，且不设报名截止日期；可于周二至周日 09:00-17:00 办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户持有有效期内居民身份证原件，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料】本人有效居民身份证原件（或社保卡原件）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户申请该专项服务，且持有有效期内电子残疾人证（视力残疾类别），符合条件材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"费用与截止日期确认\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"通知明确该专项服务免收押金与工本费、盲文及有声读物免费邮寄上门，且不设报名截止日期。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\"\n        },\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"按现有材料于服务时间办理无障碍阅读服务读者证办理，申请免费上门寄送盲文与有声读物服务。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认您已持有有效身份证原件和有效电子残疾人证，材料已满足办理条件。\",\n    \"第二步：该服务为免费上门寄送盲文与有声读物，免收押金与工本费。\",\n    \"第三步：办理时间为周二至周日 09:00-17:00，周一闭馆，不设报名截止日期。\",\n    \"第四步：按通知要求提交相关材料，申请免费上门寄送服务即可。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"本结论基于所提供办事通知及用户现有材料判断，实际办理以图书馆现场要求为准。\",\n    \"通知中的“电子残疾人证”与“残疾人证原件”并列，用户当前为电子残疾人证，如现场需原件可提前准备原件。\"\n  ]\n}</think>{\n  \"overall_status\": \"ready\",\n  \"summary_zh\": \"您已具备办理该免费上门寄送盲文与有声读物服务的材料，该服务免收押金与工本费，且不设报名截止日期；可于周二至周日 09:00-17:00 办理。\",\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"item\": \"本人有效居民身份证原件（或社保卡原件）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户持有有效期内居民身份证原件，符合基本材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料】本人有效居民身份证原件（或社保卡原件）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R02\",\n      \"item\": \"《中华人民共和国残疾人证》原件（或电子残疾人证）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"申请“免费上门寄送盲文/有声读物”专项服务\",\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"用户申请该专项服务，且持有有效期内电子残疾人证（视力残疾类别），符合条件材料要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R03\",\n      \"item\": \"费用与截止日期确认\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"通知明确该专项服务免收押金与工本费、盲文及有声读物免费邮寄上门，且不设报名截止日期。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\"\n        },\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A01\",\n      \"action\": \"按现有材料于服务时间办理无障碍阅读服务读者证办理，申请免费上门寄送盲文与有声读物服务。\",\n      \"priority\": \"normal\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认您已持有有效身份证原件和有效电子残疾人证，材料已满足办理条件。\",\n    \"第二步：该服务为免费上门寄送盲文与有声读物，免收押金与工本费。\",\n    \"第三步：办理时间为周二至周日 09:00-17:00，周一闭馆，不设报名截止日期。\",\n    \"第四步：按通知要求提交相关材料，申请免费上门寄送服务即可。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [],\n  \"limitations\": [\n    \"本结论基于所提供办事通知及用户现有材料判断，实际办理以图书馆现场要求为准。\",\n    \"通知中的“电子残疾人证”与“残疾人证原件”并列，用户当前为电子残疾人证，如现场需原件可提前准备原件。\"\n  ]\n}",
+    "prompt_tokens": 629,
+    "completion_tokens": 2579,
+    "total_tokens": 3208,
+    "wall_seconds": 52.98,
+    "tokens_per_sec": 48.68,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是政务办事助手。请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。"
+        },
+        {
+          "role": "user",
+          "content": "参考日期：2026-11-24\n事项：公共图书馆无障碍借阅证办理\n用户情况：视障读者，本人持身份证及残疾人证申请免费上门寄送盲文与有声读物服务，希望确认是否收费以及有没有截止日期。\n\n【办事通知原文】\n[S1] filename=synthetic_accessible_library_guide.txt | date=2026-10-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】市公共图书馆无障碍阅读服务读者证办理（示范模拟指南）\nL2: 【费用说明】免收押金与工本费，盲文及有声读物免费邮寄上门。\nL3: 【基本材料】本人有效居民身份证原件（或社保卡原件）。\nL4: 【条件材料】申请“免费上门寄送盲文/有声读物”专项服务的读者，须出示《中华人民共和国残疾人证》原件（或电子残疾人证）。\nL5: 【服务时间】全年常态化开放办理（周二至周日 09:00-17:00，周一闭馆），不设报名截止日期。\n\n【用户现有材料】\n- I01: 居民身份证原件（有效期内）\n- I02: 电子残疾人证（有效期内，视力残疾类别）\n\n请输出 JSON：\n- overall_status: \"ready\" | \"not_ready\" | \"needs_confirmation\"\n- summary_zh: 一句话结论\n- requirements: 数组，每项含 id, item, necessity(\"required\"|\"conditional\"|\"optional\"), condition(无则为null), applicability(\"applies\"|\"not_applicable\"|\"unknown\"), status(\"ready\"|\"missing\"|\"expired\"|\"conflict\"|\"needs_confirmation\"|\"not_applicable\"), matched_inventory_ids, reason, evidence([{source_id, locator, quote}])\n- actions: 数组，每项含 id, action, priority(\"blocking\"|\"high\"|\"normal\"), evidence([{source_id, locator, quote}])\n- plain_language_steps_zh: 3-5条通俗分步指南（保留资格、材料规格与截止时限）\n- bilingual_steps_en: 无需英文，bilingual_steps_en 填 []。\n- questions: 待确认问题数组\n- limitations: 局限说明数组\n"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "parsed_ok": true,
+  "skillhub_strict": {
+    "valid": false,
+    "errors": [
+      "requirements[2].matched_inventory_ids must identify evidence for a ready item"
+    ],
+    "warnings": [],
+    "exit_code": 1
+  },
+  "quote_check": {
+    "total_quotes": 5,
+    "verbatim_hits": 5,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "ready",
+    "overall_actual": "ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "免收押金与工本费",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证",
+          "survived": true
+        },
+        {
+          "clause": "残疾人证",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "不设报名截止日期",
+          "survived": true
+        },
+        {
+          "clause": "09:00-17:00",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "ready",
+        "keywords": [
+          "身份证",
+          "残疾人证"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  }
+}

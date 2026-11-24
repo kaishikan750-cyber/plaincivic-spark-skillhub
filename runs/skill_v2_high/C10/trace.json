@@ -1,0 +1,283 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C10",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"扫描件；境外学历须附教育部留学服务中心认证书\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效期内\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料2】有效期内劳动合同及社保缴费明细。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"经住建部门备案\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【基本材料3】经住建部门备案的房屋租赁合同。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [\n    {\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\"\n    }\n  ],\n  \"service_info_notes\": []\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"扫描件；境外学历须附教育部留学服务中心认证书\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效期内\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料2】有效期内劳动合同及社保缴费明细。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"经住建部门备案\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【基本材料3】经住建部门备案的房屋租赁合同。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [\n    {\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\"\n    }\n  ],\n  \"service_info_notes\": []\n}\n```",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，不要额外解释。需要从给定原文提取要求。我们只能看到 S1，没有 S2？用户输入包含【登记来源全文】只有 [S1] ... L1-L7。没有 S2。需要遵守规则：每项必须给出 source_id、locator、quote。提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的受理后审批工作日/收费标准/开放时间/不设截止日期记入 service_info_notes。若 S1 与 S2 互相冲突，写入 multi_source_conflicts 并列双方，严禁自行选边。这里没有 S2，所以 multi_source_conflicts 可能为空数组？需要判断。用户说若 S1 与 S2 互相冲突，写入... 这里没有 S2，不能虚构。应该输出空数组 []。\n\n需要解析内容：\n\nL1 事项名称，但规则说跳过纯标题行（如“【事项名称】”）？ \"先提取要求，再查看现有材料。请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\" 所以 L1 是纯标题行，不应该作为 requirement。但 L1 可能作为来源标识？不，要求提取 requirements，跳过纯标题行。L1 是【事项名称】，应跳过。\n\nL2 申报截止：2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。这是 deadline requirement。category deadline，necessity required? 截止是必备条件？资格条件中申请截止时限是硬限定，necessity 可以是 required。condition null。constraints 保留原文硬限定。quote 直接逐字复制自该行原文片段。应该引用 L2 整行？ quote 直接复制自该行的一段连续原文短句，切勿改写。可以 quote \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\" 但规则说 quote 直接逐字复制自该行的原文片段，可以选片段。最好完整 L2 内容？L2 整行是：【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。但 quote 是原文片段，可以包含字段标签？用户示例中 quote 是“直接逐字复制自该行的原文片段”。通常可以复制整行，包括【申报截止】？ 最好 quote 为 L2 的实质内容，不要包含字段名？ 但必须直接复制，不能改写。可以复制整行： \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\" 这样是直接逐字复制该行。可以。\n\nL3 资格条件：毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。category eligibility，necessity required? 资格条件为必备。condition null。constraints 保留原文硬限定：毕业2年内、全日制本科及以上、在本市用人单位签订1年以上劳动合同、正常缴纳社会保险。quote 直接复制整行： \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\" 可以。\n\nL4 基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。category document，necessity required? 必备材料。constraints 原文硬限定：扫描件；境外学历须附教育部留学服务中心认证书。condition null（除非条件性？这里括号是条件，但材料本身是必备的，括号条件可能是 conditional？ 规则：condition 仅 conditional 时填触发条件，否则 null。这个材料有“境外学历须附...”属于条件性附件，但材料本身是必备。可以 categorize document necessity required，constraints 包含原文硬限定。condition 可以填 \"境外学历\" 吗？ condition 是仅 conditional 时填触发条件，否则 null。这里材料1本身是必备的，括号内是附加条件，可能属于 conditional 附加条件。但更安全：necessity required, condition null，constraints 包含原文硬限定。或者把材料1作为 required，constraints 包含 \"境外学历须附教育部留学服务中心认证书\" 作为硬限定。可以。\n\nL5 基本材料2：有效期内劳动合同及社保缴费明细。category document，necessity required，constraints \"有效期内\"？ quote 整行 \"【基本材料2】有效期内劳动合同及社保缴费明细。\"\n\nL6 基本材料3：经住建部门备案的房屋租赁合同。category document，necessity required，constraints \"经住建部门备案\"。quote 整行。\n\nL7 附件说明：[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]。这是不可读附件。category unreadable? 规则 category 有 eligibility | document | deadline | fee | unreadable。所以 category unreadable，necessity? 可能是 optional? 原文是附件说明，不是必备材料？附件B 可能是附件说明，但内容不可读。需要记录 unreadable_sections。在 extracted_requirements 中也可以包含一项 category unreadable，necessity optional? 但规则要求提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的... 记入 service_info_notes。不可读附件应写入 unreadable_sections。是否也要在 extracted_requirements 中记录？用户 JSON 结构有 extracted_requirements 和 unreadable_sections 分开。所以不可读附件放在 unreadable_sections，不放在 extracted_requirements？ 但规则说“提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件”可能要求不可读附件也在 extracted",
+    "raw_content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"扫描件；境外学历须附教育部留学服务中心认证书\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效期内\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料2】有效期内劳动合同及社保缴费明细。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"经住建部门备案\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【基本材料3】经住建部门备案的房屋租赁合同。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [\n    {\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\"\n    }\n  ],\n  \"service_info_notes\": []\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"deadline\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"eligibility\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"扫描件；境外学历须附教育部留学服务中心认证书\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效期内\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料2】有效期内劳动合同及社保缴费明细。\"\n    },\n    {\n      \"id\": \"R5\",\n      \"category\": \"document\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"经住建部门备案\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\",\n      \"quote\": \"【基本材料3】经住建部门备案的房屋租赁合同。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [\n    {\n      \"source_id\": \"S1\",\n      \"locator\": \"L7\",\n      \"quote\": \"[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\"\n    }\n  ],\n  \"service_info_notes\": []\n}\n```",
+    "prompt_tokens": 974,
+    "completion_tokens": 2921,
+    "total_tokens": 3895,
+    "wall_seconds": 65.498,
+    "tokens_per_sec": 44.6,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：高校毕业生租房补贴申报（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=synthetic_graduate_subsidy_bilingual.txt | date=2026-11-01 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】2026年度高校毕业生租房补贴申报公告（示范模拟公告）\nL2: 【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\nL3: 【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\nL4: 【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\nL5: 【基本材料2】有效期内劳动合同及社保缴费明细。\nL6: 【基本材料3】经住建部门备案的房屋租赁合同。\nL7: 【附件说明】[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "deadline",
+        "item": "申报截止时间及逾期处理",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。"
+      },
+      {
+        "id": "R2",
+        "category": "eligibility",
+        "item": "申报资格条件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "扫描件；境外学历须附教育部留学服务中心认证书",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "基本材料2：有效期内劳动合同及社保缴费明细",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "有效期内",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【基本材料2】有效期内劳动合同及社保缴费明细。"
+      },
+      {
+        "id": "R5",
+        "category": "document",
+        "item": "基本材料3：经住建部门备案的房屋租赁合同",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "经住建部门备案",
+        "source_id": "S1",
+        "locator": "L6",
+        "quote": "【基本材料3】经住建部门备案的房屋租赁合同。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [
+      {
+        "source_id": "S1",
+        "locator": "L7",
+        "quote": "[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]"
+      }
+    ],
+    "service_info_notes": []
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"基准日2026-11-24处于2026-11-01至2026-11-30 17:00申报期内，未超期；用户拟于2026-11-25提交，仍在截止日前。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为2026届外籍硕士毕业生，2026年6月毕业，毕业2年内；全日制本科及以上；已签订2年期劳动合同，满足1年以上；已正常缴纳社保2个月，符合资格条件。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"I01为硕士学位证及留服认证书扫描件，认证有效，满足境外学历认证书要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"I02为2年期劳动合同及社保缴费明细，正常在缴2个月，满足有效期内要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"I03为住建部门备案房屋租赁合同，处于有效期内，满足备案要求。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"附件B：分学历与分区域补贴金额分级标准及特殊扣减条款（原文扫描严重模糊，文字与数字无法识别）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"Stage A发现S1:L7附件B原图扫描严重模糊，文字与数字无法识别；不能据此判定补贴金额或扣减条款，需用户补充清晰版本或人工确认。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"向发文单位申请补充清晰的附件B扫描件，或提供人工核验的补贴金额与特殊扣减条款，以便完成申报前材料核验。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"questions\": [\n    \"附件B原文扫描严重模糊，无法识别分学历、分区域补贴金额分级标准及特殊扣减条款，是否可获取清晰版本或由人工提供对应内容？\",\n    \"用户拟于2026-11-25提交申报，是否确认该时间仍在2026-11-30 17:00截止前，并接受逾期系统关闭、不予补报的规则？\"\n  ],\n  \"plain_language_summary_zh\": \"申报材料基本齐全且资格符合，但附件B补贴金额与扣减条款因扫描模糊无法核验，需补充清晰版本后才能完成申报准备。\",\n  \"plain_language_steps_zh\": [\n    \"第一步：确认申报资格：你是2026届外籍硕士毕业生，毕业在2年内，已签订1年以上劳动合同并正常缴纳社保，符合申报资格。\",\n    \"第二步：核对申报截止时间：申报期为2026年11月1日至2026年11月30日17:00，逾期系统自动关闭且不予补报；拟于2026-11-25提交仍在截止前。\",\n    \"第三步：确认已备齐核心材料：硕士学位证及留服认证书扫描件、2年期劳动合同及社保缴费明细、经住建部门备案的房屋租赁合同均有效。\",\n    \"第四步：处理无法识别的附件B：因附件B扫描模糊，补贴金额分级标准及特殊扣减条款无法核验，需补充清晰版本或人工确认后再提交。\",\n    \"第五步：提交申报前最终核验：在附件B内容补齐后，按系统要求提交申报，确保材料完整、时限合规。\"\n  ],\n  \"bilingual_summary_en\": \"The application materials and eligibility are largely complete, but Annex B is scanned too poorly to verify the subsidy amount tiers and special deduction clauses, so clear supplementary version or manual confirmation is needed before final submission.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm eligibility: you are a 2026 graduation-year foreign master's graduate, graduated within 2 years, have signed a 1+ year labor contract in the city and paid social insurance normally, meeting the application eligibility.\",\n    \"Step 2: Confirm the deadline: the application period is 2026-11-01 to 2026-11-30 17:00; after that the system automatically closes and no supplementary application is allowed. Submitting on 2026-11-25 is still before the deadline.\",\n    \"Step 3: Confirm core materials are ready: the master's degree certificate and MOE overseas education recognition certificate scan, the 2-year labor contract and social insurance payment details, and the housing lease contract filed with the housing authority are all valid.\",\n    \"Step 4: Handle the unreadable Annex B: because Annex B is scanned too poorly, its subsidy amount tiers and special deduction clauses cannot be verified. Obtain a clear version or manual confirmation before submitting.\",\n    \"Step 5: Do a final verification before submission: after completing Annex B, submit the application according to the system requirements to ensure materials are complete and the deadline is respected.\"\n  ]\n}</think>{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"基准日2026-11-24处于2026-11-01至2026-11-30 17:00申报期内，未超期；用户拟于2026-11-25提交，仍在截止日前。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为2026届外籍硕士毕业生，2026年6月毕业，毕业2年内；全日制本科及以上；已签订2年期劳动合同，满足1年以上；已正常缴纳社保2个月，符合资格条件。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"I01为硕士学位证及留服认证书扫描件，认证有效，满足境外学历认证书要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"I02为2年期劳动合同及社保缴费明细，正常在缴2个月，满足有效期内要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"I03为住建部门备案房屋租赁合同，处于有效期内，满足备案要求。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"附件B：分学历与分区域补贴金额分级标准及特殊扣减条款（原文扫描严重模糊，文字与数字无法识别）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"Stage A发现S1:L7附件B原图扫描严重模糊，文字与数字无法识别；不能据此判定补贴金额或扣减条款，需用户补充清晰版本或人工确认。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"向发文单位申请补充清晰的附件B扫描件，或提供人工核验的补贴金额与特殊扣减条款，以便完成申报前材料核验。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"questions\": [\n    \"附件B原文扫描严重模糊，无法识别分学历、分区域补贴金额分级标准及特殊扣减条款，是否可获取清晰版本或由人工提供对应内容？\",\n    \"用户拟于2026-11-25提交申报，是否确认该时间仍在2026-11-30 17:00截止前，并接受逾期系统关闭、不予补报的规则？\"\n  ],\n  \"plain_language_summary_zh\": \"申报材料基本齐全且资格符合，但附件B补贴金额与扣减条款因扫描模糊无法核验，需补充清晰版本后才能完成申报准备。\",\n  \"plain_language_steps_zh\": [\n    \"第一步：确认申报资格：你是2026届外籍硕士毕业生，毕业在2年内，已签订1年以上劳动合同并正常缴纳社保，符合申报资格。\",\n    \"第二步：核对申报截止时间：申报期为2026年11月1日至2026年11月30日17:00，逾期系统自动关闭且不予补报；拟于2026-11-25提交仍在截止前。\",\n    \"第三步：确认已备齐核心材料：硕士学位证及留服认证书扫描件、2年期劳动合同及社保缴费明细、经住建部门备案的房屋租赁合同均有效。\",\n    \"第四步：处理无法识别的附件B：因附件B扫描模糊，补贴金额分级标准及特殊扣减条款无法核验，需补充清晰版本或人工确认后再提交。\",\n    \"第五步：提交申报前最终核验：在附件B内容补齐后，按系统要求提交申报，确保材料完整、时限合规。\"\n  ],\n  \"bilingual_summary_en\": \"The application materials and eligibility are largely complete, but Annex B is scanned too poorly to verify the subsidy amount tiers and special deduction clauses, so clear supplementary version or manual confirmation is needed before final submission.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm eligibility: you are a 2026 graduation-year foreign master's graduate, graduated within 2 years, have signed a 1+ year labor contract in the city and paid social insurance normally, meeting the application eligibility.\",\n    \"Step 2: Confirm the deadline: the application period is 2026-11-01 to 2026-11-30 17:00; after that the system automatically closes and no supplementary application is allowed. Submitting on 2026-11-25 is still before the deadline.\",\n    \"Step 3: Confirm core materials are ready: the master's degree certificate and MOE overseas education recognition certificate scan, the 2-year labor contract and social insurance payment details, and the housing lease contract filed with the housing authority are all valid.\",\n    \"Step 4: Handle the unreadable Annex B: because Annex B is scanned too poorly, its subsidy amount tiers and special deduction clauses cannot be verified. Obtain a clear version or manual confirmation before submitting.\",\n    \"Step 5: Do a final verification before submission: after completing Annex B, submit the application according to the system requirements to ensure materials are complete and the deadline is respected.\"\n  ]\n}",
+    "reasoning_content": "We need answer JSON only. Need follow instructions. Need analyze. We must produce legal JSON with fields. Need reason carefully.\n\nCase: 高校毕业生租房补贴申报, reference date 2026-11-24, bilingual.\n\nUser profile: 2026届外籍硕士毕业生, already signed 2-year labor contract and social security paid 2 months, holds degree certification and filed rental contract, plan submit 2026-11-25.\n\nExisting materials:\nI01: 硕士学位证及留服认证书扫描件 (graduated June 2026, certification valid)\nI02: 2年期劳动合同及社保缴费明细 (normal paid 2 months)\nI03: 住建部门备案房屋租赁合同 (valid period)\n\nStage A blind extraction:\nR1 deadline: 2026-11-01 to 2026-11-30 17:00, overdue system closes no supplement. source S1 L2.\nR2 eligibility: graduated within 2 years; full-time bachelor and above; signed 1+ year labor contract in city; normal social security. S1 L3.\nR3 doc: diploma & degree scan, overseas学历 must attach MOE留学服务中心认证书. S1 L4.\nR4 doc: valid labor contract and social security payment details. S1 L5.\nR5 doc: housing rental contract filed with housing admin. S1 L6.\nmulti_source_conflicts empty.\nunreadable_sections: S1 L7 附件B ambiguous, cannot read. Must establish entry status needs_confirmation? Rule 4: if Stage A has unreadable_sections, must establish one status needs_confirmation item, no fabricate amounts/terms. We need include maybe a requirement entry for unreadable section? But schema requirements probably can include R6? Need likely add R6 with item 附件B无法识别，needs_confirmation. Need decide.\n\nNeed overall_status. There is unreadable section -> needs_confirmation? Also check missing/expired/conflict. User has materials. Need eligibility: 2026届外籍硕士毕业生, graduated June 2026, within 2 years? Reference date 2026-11-24, graduation 2026-06 maybe within 2 years yes. Full-time bachelor and above? 硕士 yes. Signed 2-year labor contract (>=1 year) yes. Social security normal 2 months yes. Deadline: 2026-11-24 within Nov 1-Nov30 17:00, yes. Plan submit 2026-11-25? Wait reference date 2026-11-24, plan submit 2026-11-25. Deadline is Nov 30 17:00, so 2026-11-25 still within deadline. But \"拟于2026-11-25提交申报\" likely okay. Need compute dates? They mention in prompt instructions: 2026-11-01 to 2026-11-24 is 23 days <=30未超期; 2026-11-29距基准日仅剩5天 <7 expired/conflict; user has expired files e.g. 2026-03-10体检报告超6个月、2026-10-01体检单54天超30日 -> expired; residence registration 2026-08-15 < half year conflict; only phone photo missing etc. Here no such expired items? Existing materials valid. Unreadable Annex B. Need maybe status for R1 ready, R2 ready, R3 ready, R4 ready, R5 ready. R6 unreadable needs_confirmation. Overall needs_confirmation due unreadable section. But rule: 有任一 missing/expired/conflict -> not_ready; else has needs_confirmation -> needs_confirmation; else ready. So overall needs_confirmation. Need maybe if unreadable section is not a requirement? The instruction says must establish one status needs_confirmation entry. So include R6.\n\nNeed applicability. User profile is 2026届外籍硕士毕业生, has contract etc. Does it exclude? It doesn't exclude. Applicability applies? Need maybe \"applies\". Since user profile includes identity and conditions. But for each requirement? Rule says applicability only applies/not_applicable/unknown. We can set R1-R5 applicability \"applies\" maybe R6? The unreadable section applies to this case. Need maybe for R6? It's a section in source, applies. But no need.\n\nNeed statuses:\nR1 deadline: date 2026-11-24 reference is before deadline 2026-11-30 17:00. 23 days <=30 not expired. status ready. matched_inventory_ids? For deadline no inventory? Contract says if status ready must fill at least one matched_inventory_ids. But R1 is deadline, no document inventory. Could leave []? But \"一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 plain_language_steps_zh ... 不要作为空匹配项放进 requirements.\" That suggests for R1 maybe status ready but matched_inventory_ids maybe []? The contract says status ready must fill at least one matched_inventory_ids. But if no matched inventory for deadline, maybe status not ready? Hmm. Need satisfy contract? For R1, there is no material inventory. But overall ready? Not ready due unreadable. But for individual R1 maybe status ready and matched_inventory_ids [] might violate contract? The rule says \"status==\"ready\" 必须填写至少一个 matched_inventory_ids\". Does that apply to all requirements? Likely yes. But if requirement is deadline, no inventory. Could maybe set status \"not_ready\"? No, deadline is satisfied. Could set matched_inventory_ids [\"I01\"]? Not appropriate. Need think.\n\nMaybe we can treat R1 as not requiring materials, but contract says ready must have matched_inventory_ids. Could set R1 status \"ready\" with matched_inventory_ids []? But contract explicit.",
+    "raw_content": "{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"基准日2026-11-24处于2026-11-01至2026-11-30 17:00申报期内，未超期；用户拟于2026-11-25提交，仍在截止日前。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为2026届外籍硕士毕业生，2026年6月毕业，毕业2年内；全日制本科及以上；已签订2年期劳动合同，满足1年以上；已正常缴纳社保2个月，符合资格条件。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"I01为硕士学位证及留服认证书扫描件，认证有效，满足境外学历认证书要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"I02为2年期劳动合同及社保缴费明细，正常在缴2个月，满足有效期内要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"I03为住建部门备案房屋租赁合同，处于有效期内，满足备案要求。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"附件B：分学历与分区域补贴金额分级标准及特殊扣减条款（原文扫描严重模糊，文字与数字无法识别）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"Stage A发现S1:L7附件B原图扫描严重模糊，文字与数字无法识别；不能据此判定补贴金额或扣减条款，需用户补充清晰版本或人工确认。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"向发文单位申请补充清晰的附件B扫描件，或提供人工核验的补贴金额与特殊扣减条款，以便完成申报前材料核验。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"questions\": [\n    \"附件B原文扫描严重模糊，无法识别分学历、分区域补贴金额分级标准及特殊扣减条款，是否可获取清晰版本或由人工提供对应内容？\",\n    \"用户拟于2026-11-25提交申报，是否确认该时间仍在2026-11-30 17:00截止前，并接受逾期系统关闭、不予补报的规则？\"\n  ],\n  \"plain_language_summary_zh\": \"申报材料基本齐全且资格符合，但附件B补贴金额与扣减条款因扫描模糊无法核验，需补充清晰版本后才能完成申报准备。\",\n  \"plain_language_steps_zh\": [\n    \"第一步：确认申报资格：你是2026届外籍硕士毕业生，毕业在2年内，已签订1年以上劳动合同并正常缴纳社保，符合申报资格。\",\n    \"第二步：核对申报截止时间：申报期为2026年11月1日至2026年11月30日17:00，逾期系统自动关闭且不予补报；拟于2026-11-25提交仍在截止前。\",\n    \"第三步：确认已备齐核心材料：硕士学位证及留服认证书扫描件、2年期劳动合同及社保缴费明细、经住建部门备案的房屋租赁合同均有效。\",\n    \"第四步：处理无法识别的附件B：因附件B扫描模糊，补贴金额分级标准及特殊扣减条款无法核验，需补充清晰版本或人工确认后再提交。\",\n    \"第五步：提交申报前最终核验：在附件B内容补齐后，按系统要求提交申报，确保材料完整、时限合规。\"\n  ],\n  \"bilingual_summary_en\": \"The application materials and eligibility are largely complete, but Annex B is scanned too poorly to verify the subsidy amount tiers and special deduction clauses, so clear supplementary version or manual confirmation is needed before final submission.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm eligibility: you are a 2026 graduation-year foreign master's graduate, graduated within 2 years, have signed a 1+ year labor contract in the city and paid social insurance normally, meeting the application eligibility.\",\n    \"Step 2: Confirm the deadline: the application period is 2026-11-01 to 2026-11-30 17:00; after that the system automatically closes and no supplementary application is allowed. Submitting on 2026-11-25 is still before the deadline.\",\n    \"Step 3: Confirm core materials are ready: the master's degree certificate and MOE overseas education recognition certificate scan, the 2-year labor contract and social insurance payment details, and the housing lease contract filed with the housing authority are all valid.\",\n    \"Step 4: Handle the unreadable Annex B: because Annex B is scanned too poorly, its subsidy amount tiers and special deduction clauses cannot be verified. Obtain a clear version or manual confirmation before submitting.\",\n    \"Step 5: Do a final verification before submission: after completing Annex B, submit the application according to the system requirements to ensure materials are complete and the deadline is respected.\"\n  ]\n}</think>{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"申报截止时间及逾期处理\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"基准日2026-11-24处于2026-11-01至2026-11-30 17:00申报期内，未超期；用户拟于2026-11-25提交，仍在截止日前。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"申报资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为2026届外籍硕士毕业生，2026年6月毕业，毕业2年内；全日制本科及以上；已签订2年期劳动合同，满足1年以上；已正常缴纳社保2个月，符合资格条件。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"I01为硕士学位证及留服认证书扫描件，认证有效，满足境外学历认证书要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"I02为2年期劳动合同及社保缴费明细，正常在缴2个月，满足有效期内要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"I03为住建部门备案房屋租赁合同，处于有效期内，满足备案要求。\",\n      \"evidence_refs\": [\"S1:L6\"]\n    },\n    {\n      \"id\": \"R6\",\n      \"item\": \"附件B：分学历与分区域补贴金额分级标准及特殊扣减条款（原文扫描严重模糊，文字与数字无法识别）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"Stage A发现S1:L7附件B原图扫描严重模糊，文字与数字无法识别；不能据此判定补贴金额或扣减条款，需用户补充清晰版本或人工确认。\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"向发文单位申请补充清晰的附件B扫描件，或提供人工核验的补贴金额与特殊扣减条款，以便完成申报前材料核验。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L7\"]\n    }\n  ],\n  \"questions\": [\n    \"附件B原文扫描严重模糊，无法识别分学历、分区域补贴金额分级标准及特殊扣减条款，是否可获取清晰版本或由人工提供对应内容？\",\n    \"用户拟于2026-11-25提交申报，是否确认该时间仍在2026-11-30 17:00截止前，并接受逾期系统关闭、不予补报的规则？\"\n  ],\n  \"plain_language_summary_zh\": \"申报材料基本齐全且资格符合，但附件B补贴金额与扣减条款因扫描模糊无法核验，需补充清晰版本后才能完成申报准备。\",\n  \"plain_language_steps_zh\": [\n    \"第一步：确认申报资格：你是2026届外籍硕士毕业生，毕业在2年内，已签订1年以上劳动合同并正常缴纳社保，符合申报资格。\",\n    \"第二步：核对申报截止时间：申报期为2026年11月1日至2026年11月30日17:00，逾期系统自动关闭且不予补报；拟于2026-11-25提交仍在截止前。\",\n    \"第三步：确认已备齐核心材料：硕士学位证及留服认证书扫描件、2年期劳动合同及社保缴费明细、经住建部门备案的房屋租赁合同均有效。\",\n    \"第四步：处理无法识别的附件B：因附件B扫描模糊，补贴金额分级标准及特殊扣减条款无法核验，需补充清晰版本或人工确认后再提交。\",\n    \"第五步：提交申报前最终核验：在附件B内容补齐后，按系统要求提交申报，确保材料完整、时限合规。\"\n  ],\n  \"bilingual_summary_en\": \"The application materials and eligibility are largely complete, but Annex B is scanned too poorly to verify the subsidy amount tiers and special deduction clauses, so clear supplementary version or manual confirmation is needed before final submission.\",\n  \"bilingual_steps_en\": [\n    \"Step 1: Confirm eligibility: you are a 2026 graduation-year foreign master's graduate, graduated within 2 years, have signed a 1+ year labor contract in the city and paid social insurance normally, meeting the application eligibility.\",\n    \"Step 2: Confirm the deadline: the application period is 2026-11-01 to 2026-11-30 17:00; after that the system automatically closes and no supplementary application is allowed. Submitting on 2026-11-25 is still before the deadline.\",\n    \"Step 3: Confirm core materials are ready: the master's degree certificate and MOE overseas education recognition certificate scan, the 2-year labor contract and social insurance payment details, and the housing lease contract filed with the housing authority are all valid.\",\n    \"Step 4: Handle the unreadable Annex B: because Annex B is scanned too poorly, its subsidy amount tiers and special deduction clauses cannot be verified. Obtain a clear version or manual confirmation before submitting.\",\n    \"Step 5: Do a final verification before submission: after completing Annex B, submit the application according to the system requirements to ensure materials are complete and the deadline is respected.\"\n  ]\n}",
+    "prompt_tokens": 2203,
+    "completion_tokens": 4791,
+    "total_tokens": 6994,
+    "wall_seconds": 110.527,
+    "tokens_per_sec": 43.35,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中英双语无障碍改写】：输出 4-5 条中文易读步骤 `plain_language_steps_zh` 和 4-5 条完整英文对照步骤 `bilingual_steps_en` + `bilingual_summary_en`。无论用户当前是否已满足某项条件，中文步骤与英文步骤中都必须完整保留原文所有关键资格门槛（如 1年以上 / over 1 year、毕业2年内 / within 2 years、本人到场 / in person）、材料规格（如 护照/passport、白底/white background、6个月内/within 6 months、行程安排/itinerary）和全部时限（如 入境30日内/within 30 days、届满7日前/7 days before expiry、15个工作日/15 working days、7个工作日/7 working days、2026年11月30日17:00/2026-11-30 17:00、附件B不可读/unreadable Annex B），严禁省略！"
+        },
+        {
+          "role": "user",
+          "content": "【案件】高校毕业生租房补贴申报｜参考日期：2026-11-24｜模式：bilingual\n【用户画像】2026届外籍硕士毕业生，已在本市签订2年劳动合同并缴纳社保2个月，持有学位认证与备案租房合同，拟于2026-11-25提交申报。\n【现有材料】\n- I01: 硕士学位证及留服认证书扫描件（2026年6月毕业，认证有效）\n- I02: 2年期劳动合同及社保缴费明细（正常在缴2个月）\n- I03: 住建部门备案房屋租赁合同（有效期内）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"deadline\", \"item\": \"申报截止时间及逾期处理\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【申报截止】2026年11月1日至2026年11月30日17:00，逾期系统自动关闭、不予补报。\"}, {\"id\": \"R2\", \"category\": \"eligibility\", \"item\": \"申报资格条件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"毕业2年内；全日制本科及以上；在本市用人单位签订1年以上劳动合同；正常缴纳社会保险\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【资格条件】毕业2年内的全日制本科及以上毕业生，在本市用人单位签订1年以上劳动合同并正常缴纳社会保险。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"基本材料1：毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"扫描件；境外学历须附教育部留学服务中心认证书\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【基本材料1】毕业证及学位证（境外学历须附教育部留学服务中心认证书）扫描件。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"基本材料2：有效期内劳动合同及社保缴费明细\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"有效期内\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【基本材料2】有效期内劳动合同及社保缴费明细。\"}, {\"id\": \"R5\", \"category\": \"document\", \"item\": \"基本材料3：经住建部门备案的房屋租赁合同\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"经住建部门备案\", \"source_id\": \"S1\", \"locator\": \"L6\", \"quote\": \"【基本材料3】经住建部门备案的房屋租赁合同。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [{\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"[附件B：分学历与分区域补贴金额分级标准及特殊扣减条款——原图扫描严重模糊，文字与数字无法识别]\"}], \"service_info_notes\": []}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "申报材料基本齐全且资格符合，但附件B补贴金额与扣减条款因扫描模糊无法核验，需补充清晰版本后才能完成申报准备。",
+  "plain_language_steps_zh": [
+    "第一步：确认申报资格：你是2026届外籍硕士毕业生，毕业在2年内，已签订1年以上劳动合同并正常缴纳社保，符合申报资格。",
+    "第二步：核对申报截止时间：申报期为2026年11月1日至2026年11月30日17:00，逾期系统自动关闭且不予补报；拟于2026-11-25提交仍在截止前。",
+    "第三步：确认已备齐核心材料：硕士学位证及留服认证书扫描件、2年期劳动合同及社保缴费明细、经住建部门备案的房屋租赁合同均有效。",
+    "第四步：处理无法识别的附件B：因附件B扫描模糊，补贴金额分级标准及特殊扣减条款无法核验，需补充清晰版本或人工确认后再提交。",
+    "第五步：提交申报前最终核验：在附件B内容补齐后，按系统要求提交申报，确保材料完整、时限合规。"
+  ],
+  "bilingual_summary_en": "The application materials and eligibility are largely complete, but Annex B is scanned too poorly to verify the subsidy amount tiers and special deduction clauses, so clear supplementary version or manual confirmation is needed before final submission.",
+  "bilingual_steps_en": [
+    "Step 1: Confirm eligibility: you are a 2026 graduation-year foreign master's graduate, graduated within 2 years, have signed a 1+ year labor contract in the city and paid social insurance normally, meeting the application eligibility.",
+    "Step 2: Confirm the deadline: the application period is 2026-11-01 to 2026-11-30 17:00; after that the system automatically closes and no supplementary application is allowed. Submitting on 2026-11-25 is still before the deadline.",
+    "Step 3: Confirm core materials are ready: the master's degree certificate and MOE overseas education recognition certificate scan, the 2-year labor contract and social insurance payment details, and the housing lease contract filed with the housing authority are all valid.",
+    "Step 4: Handle the unreadable Annex B: because Annex B is scanned too poorly, its subsidy amount tiers and special deduction clauses cannot be verified. Obtain a clear version or manual confirmation before submitting.",
+    "Step 5: Do a final verification before submission: after completing Annex B, submit the application according to the system requirements to ensure materials are complete and the deadline is respected."
+  ],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].matched_inventory_ids must identify evidence for a ready item",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].matched_inventory_ids must identify evidence for a ready item",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "requirements[4].evidence must be a non-empty list",
+      "requirements[5].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 5,
+    "verbatim_hits": 5,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "R1: downgraded ready item without matched_inventory_ids -> needs_confirmation",
+    "R2: linked ready item to explicitly cited inventory ['I02']",
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 7,
+    "verbatim_hits": 7,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "needs_confirmation",
+    "overall_actual": "needs_confirmation",
+    "overall_match": true,
+    "clause_survived": 10,
+    "clause_total": 11,
+    "clause_survival_rate": 0.9091,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "毕业2年内",
+          "survived": true
+        },
+        {
+          "clause": "1年以上劳动合同",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "认证书",
+          "survived": true
+        },
+        {
+          "clause": "社保",
+          "survived": true
+        },
+        {
+          "clause": "备案",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "2026年11月30日17:00",
+          "survived": true
+        }
+      ],
+      "bilingual_en": [
+        {
+          "clause": "2026",
+          "survived": true
+        },
+        {
+          "clause": "17:00",
+          "survived": true
+        },
+        {
+          "clause": "2 years",
+          "survived": true
+        },
+        {
+          "clause": "1 year",
+          "survived": false
+        },
+        {
+          "clause": "unreadable",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "needs_confirmation",
+        "keywords": [
+          "附件B",
+          "模糊"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 176.025,
+  "total_completion_tokens": 7712
+}

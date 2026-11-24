@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "中国公民普通护照换发",
+    "reference_date": "2026-11-24",
+    "profile_summary": "68岁退休居民（原民营企业员工，非登记备案国家工作人员），本人现场办理普通护照换发，现持护照将于2027-03-10到期（剩余不足4个月）。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_ordinary_passport_renewal.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "换发普通护照的办理条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁退休居民，本人现场办理，符合换发条件；原护照距到期约3.5个月，不足6个月，满足换发资格。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "基本材料1：有效期内的原普通护照原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已持有原普通护照原件，距到期约3.5个月不足6个月，符合有效期要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】有效期内的原普通护照原件。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料2：本人有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已持有长期有效的居民身份证原件，符合材料要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】本人有效居民身份证原件。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料3：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已完成现场照相并取得合格回执，同时填写申请表，符合材料要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "条件材料1：未满16周岁的未成年人换发所需材料",
+      "necessity": "conditional",
+      "condition": "未满16周岁的未成年人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁成年人，不满足未成年人条件，该条件材料不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "条件材料2：登记备案的国家工作人员换发所需材料",
+      "necessity": "conditional",
+      "condition": "登记备案的国家工作人员",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为原民营企业员工、非登记备案国家工作人员，不满足该条件，所需材料不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L7",
+          "quote": "【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "办理时携带原普通护照原件、居民身份证原件、已填写申请表及合格相片回执，按窗口要求提交申请。",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】有效期内的原普通护照原件。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】本人有效居民身份证原件。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "按公安机关出入境管理机构自受理之日起7至15个工作日内办结的时限，预留办理时间。",
+      "priority": "normal",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L8",
+          "quote": "【办理时限】公安机关出入境管理机构自受理之日起7至15个工作日内办结。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

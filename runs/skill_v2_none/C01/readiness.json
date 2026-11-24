@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "外国人工作类居留许可办理",
+    "reference_date": "2026-11-24",
+    "profile_summary": "外籍在职工程师，单人首次申办（无随迁家属），2026-11-01持Z签证入境，拟申请2年期工作类居留许可，现场本人办理。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_work_residence_permit_guide.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "要求名：申请时限：入境后30日内提出申请",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [],
+      "reason": "2026-11-01入境，至基准日2026-11-24已23天，超过30日申请时限，已过期。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "要求名：基本材料：本人有效护照或其他国际旅行证件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "I01为本人有效护照原件，含入境章，符合要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "【基本材料1】本人有效护照或者其他国际旅行证件原件。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "要求名：基本材料：填写完整并签署的签证申请表及符合标准的近期白底彩色免冠照片",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [
+        "I02",
+        "I03"
+      ],
+      "reason": "I02符合填写完整并签署的申请表要求；但I03为蓝底彩色免冠照片，与要求的白底标准冲突。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "要求名：基本材料：来华工作许可证明及聘用单位工作单位证明函件原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I04"
+      ],
+      "reason": "I04为盖章原件，符合工作许可证明及单位证明函件原件要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L5",
+          "quote": "【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "要求名：条件材料：有效期1年以上居留证件的，提交6个月内有效身体健康证明原件",
+      "necessity": "conditional",
+      "condition": "申请有效期1年以上居留证件",
+      "applicability": "applies",
+      "status": "expired",
+      "matched_inventory_ids": [
+        "I05"
+      ],
+      "reason": "用户拟申请2年期居留许可（有效期1年以上），条件适用；但I05体检报告为2026-03-10出具，距基准日已超8个月，且非当地卫生检疫部门或指定医疗机构原件，不符合6个月内有效原件要求，已过期。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "要求名：条件材料：有随迁家属一同申请的，提交经认证的亲属关系证明原件及复印件",
+      "necessity": "conditional",
+      "condition": "有随迁家属一同申请",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为单人首次申办，无随迁家属，条件不适用。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L7",
+          "quote": "【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。"
+        }
+      ]
+    },
+    {
+      "id": "R7",
+      "item": "要求名：受理回执有效期：自受理之日起不超过15个工作日",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "属一般审批时限，无对应已匹配材料，作为通用流程要求记录。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L8",
+          "quote": "【办理时限】公安机关出入境管理机构作出的受理回执有效期自受理之日起不超过15个工作日。"
+        }
+      ]
+    },
+    {
+      "id": "R8",
+      "item": "要求名：办理方式：首次申请须本人到场办理并留存生物特征，不可委托代办",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "needs_confirmation",
+      "matched_inventory_ids": [],
+      "reason": "用户为首次申请且现场本人办理，符合本人到场留存生物特征、不可委托代办要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L9",
+          "quote": "【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "补办符合白底标准的近期免冠照片，替换现有蓝底照片；重新获取当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。"
+        },
+        {
+          "source_id": "S1",
+          "locator": "L6",
+          "quote": "【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "确认申请时限：入境后30日内为法定申请期限，当前已超期，需核实是否可补办或调整申请路径",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "当前已超过入境后30日申请时限，是否可申请补办相关申请材料或调整办理路径？",
+    "现有蓝底照片不符合白底标准，是否可现场重新拍摄符合《出入境证件相片照相指引》的白底照片？"
+  ],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "service": "老年人敬老卡（免费乘车卡）申领",
+    "reference_date": "2026-11-24",
+    "profile_summary": "62周岁本市户籍居民，本人持身份证和手机电子证件照前往办理，手上同时拿到了小区旧公告(S1)和区里新通知(S2)。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "community_poster_2024.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2024-05-01",
+      "currentness": "user_provided_current"
+    },
+    {
+      "id": "S2",
+      "filename": "district_notice_2026.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-09-15",
+      "currentness": "user_provided_current"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "办理年龄与户籍/常住范围",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L2",
+          "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "办理年龄与户籍/常住范围",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知年龄门槛冲突：S1要求年满65周岁及以上，S2要求年满60周岁及以上；用户62周岁，按S2可申领、按S1不符合，需以最新区里新通知为准。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L2",
+          "quote": "办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L2",
+          "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "必备材料（S1）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知材料要求冲突：S1要求身份证原件、户口簿原件、近期2寸纸质彩色照片2张，用户未带户口簿和纸质照片；S2要求身份证原件即可，现场免费采集电子照片，无需携带户口簿和纸质照片。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "必备材料（S2）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知材料要求冲突：S1要求户口簿原件及2寸纸质彩色照片，用户未带；S2要求身份证原件即可，现场免费采集电子照片。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "办理费用（S1）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "办理费用：首次办卡收取工本费20元。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L4",
+          "quote": "办理费用：首次申领免收工本费。"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "办理费用（S2）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "新旧通知收费标准冲突：S1首次办卡收取工本费20元，S2首次申领免收工本费。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L4",
+          "quote": "办理费用：首次办卡收取工本费20元。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L4",
+          "quote": "办理费用：首次申领免收工本费。"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "携带身份证原件和手机电子证件照前往办理窗口，主动出示本人62周岁、本市户籍身份，请窗口按区里最新新通知确认办理资格与材料要求，避免被旧公告要求户口簿和纸质照片阻拦。",
+      "priority": "blocking",
+      "evidence": [
+        {
+          "source_id": "S2",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "若窗口仍要求户口簿或2寸纸质照片，立即询问是否可凭手机电子证件照办理、或现场补交，并确认费用按最新新通知免收工本费。",
+      "priority": "high",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L4",
+          "quote": "办理费用：首次申领免收工本费。"
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "action": "办理前再次核对最新区里新通知，以S2的60周岁以上、身份证原件即可、现场免费采集电子照片、免收工本费为准。",
+      "priority": "normal",
+      "evidence": [
+        {
+          "source_id": "S2",
+          "locator": "L2",
+          "quote": "办理年龄：年满60周岁及以上的常住老年人即可申领。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L3",
+          "quote": "必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。"
+        },
+        {
+          "source_id": "S2",
+          "locator": "L4",
+          "quote": "办理费用：首次申领免收工本费。"
+        }
+      ]
+    }
+  ],
+  "overall_status": "not_ready",
+  "questions": [
+    "办理资格和材料要求应以小区旧公告还是区里新通知为准？",
+    "本次申领费用按新通知免收工本费，是否需要窗口额外确认？",
+    "若按新通知办理，是否仍需要提交户口簿或纸质照片？"
+  ],
+  "limitations": [
+    "来源当前性基于用户于 2026-11-24 提供的文本，未联网实时核验最新政策变更，请以当地官方政务网或窗口公示为准。",
+    "本工具全程本地只读运行，不代办提交或预约，最终受理与审核权归属官方受理机构。"
+  ]
+}

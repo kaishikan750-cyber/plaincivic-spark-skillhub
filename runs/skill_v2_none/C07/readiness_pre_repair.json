@@ -1,0 +1,108 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "办理年龄要求（旧公告）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对办理年龄要求冲突：旧公告要求年满65周岁，新通知要求年满60周岁，用户62周岁，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L2",
+        "S2:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "办理年龄要求（新通知）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对办理年龄要求冲突：旧公告要求年满65周岁，新通知要求年满60周岁，用户62周岁，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L2",
+        "S2:L2"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "必备材料（旧公告）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对必备材料要求冲突：旧公告要求户口簿原件及2寸纸质照片2张，新通知仅要求身份证原件、现场采集电子照片，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L3",
+        "S2:L3"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "必备材料（新通知）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对必备材料要求冲突：旧公告要求户口簿原件及2寸纸质照片2张，新通知仅要求身份证原件、现场采集电子照片，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L3",
+        "S2:L3"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "办理费用（旧公告）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对办理费用要求冲突：旧公告首次办卡收取工本费20元，新通知首次申领免收工本费，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L4",
+        "S2:L4"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "办理费用（新通知）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "unknown",
+      "status": "conflict",
+      "matched_inventory_ids": [],
+      "reason": "S1与S2对办理费用要求冲突：旧公告首次办卡收取工本费20元，新通知首次申领免收工本费，需确认以哪个有效版本为准。",
+      "evidence_refs": [
+        "S1:L4",
+        "S2:L4"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "先向办理窗口确认新旧公告的效力，明确年龄要求、材料清单及收费标准以哪个版本为准",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L2",
+        "S1:L3",
+        "S1:L4",
+        "S2:L2",
+        "S2:L3",
+        "S2:L4"
+      ]
+    }
+  ],
+  "overall_status": "needs_confirmation",
+  "questions": [
+    "小区旧公告与区里新通知同时有效时，办理敬老卡申领应以哪个版本的要求为准？",
+    "用户已持有手机电子证件照，是否可直接现场采集使用，无需额外准备纸质照片？"
+  ]
+}

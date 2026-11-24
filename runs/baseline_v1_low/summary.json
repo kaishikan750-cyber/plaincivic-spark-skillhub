@@ -1,0 +1,17 @@
+{
+  "run_name": "baseline_v1_low",
+  "cases": 10,
+  "overall_accuracy": 0.7,
+  "overall_match_count": "7/10",
+  "trap_pass_rate": 0.6,
+  "trap_pass_count": "6/10",
+  "clause_survival_rate": 0.7945,
+  "clause_survival_count": "58/73",
+  "pre_repair_strict_pass": "0/10",
+  "post_repair_strict_pass": "0/10",
+  "pre_repair_verbatim_rate": 0.6111,
+  "post_repair_verbatim_rate": 0.6111,
+  "avg_wall_seconds": 52.81,
+  "avg_completion_tokens": 2564.5,
+  "avg_tokens_per_sec": 48.57
+}

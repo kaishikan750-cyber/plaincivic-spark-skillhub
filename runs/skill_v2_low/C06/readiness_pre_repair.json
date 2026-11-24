@@ -1,0 +1,74 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "办理资格条件：申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已连续足额缴存8个月，满足满3个月要求；未婚无配偶，且本市无自有住房，符合资格条件。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "必备材料：申请人有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已携带有效期内居民身份证原件，材料齐全。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "必备材料：申请人本人名下I类银行借记卡原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已携带本人名下I类银行借记卡原件且状态正常，材料齐全。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "条件材料：已婚申请人须提供结婚证原件及配偶身份证复印件",
+      "necessity": "conditional",
+      "condition": "已婚申请人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为未婚单身职工，不适用该已婚条件材料要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "按窗口要求携带身份证、本人I类银行借记卡及公积金缴存与无房记录材料原件办理，确认窗口办理时间后按时前往。",
+      "priority": "high",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": []
+}

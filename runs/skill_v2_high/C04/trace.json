@@ -1,0 +1,240 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C04",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料2】填写完整的《跨省异地就医备案表》。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"constraints\": \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"constraints\": \"具有转诊资质的定点医疗机构开具的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料2】填写完整的《跨省异地就医备案表》。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"constraints\": \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"constraints\": \"具有转诊资质的定点医疗机构开具的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，根据 skill 第一步先提取要求再查看现有材料。用户给了原文 S1 内容，只有 S1，没有 S2。需要提取所有可核验资格条件、申请截止/前置时限、必备/条件材料、多源冲突项、不可读附件；一般性受理后审批工作日/收费标准/开放时间/不设截止日期记入 service_info_notes。输出 JSON 格式。\n\n需要仔细解析原文：\n\n事项：跨省异地就医直接结算备案（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=cross_province_medical_filing.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】跨省异地就医直接结算备案\nL2: 【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\nL3: 【基本材料2】填写完整的《跨省异地就医备案表》。\nL4: 【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\nL5: 【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\nL6: 【办理时限】线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\n\n输出 JSON 字段：\nextracted_requirements: array of objects with id R1 etc, category eligibility | document | deadline | fee | unreadable, item, necessity required|conditional|optional, condition only conditional, constraints, source_id, locator, quote.\n\nmulti_source_conflicts: if S1 and S2 conflict, but there is no S2. So likely empty array? Need include? The user said if S1 and S2 互相冲突，写入 multi_source_conflicts 并列双方，严禁自行选边。 Here only S1, no S2, so probably empty array [].\n\nunreadable_sections: if original has scan blur/unreadable paragraphs, write. Here no unreadable sections. So empty array [].\n\nservice_info_notes: general acceptance/approval workdays/fee/open time/no deadline. There is 办理时限 in L6: 线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结. This is not 受理后审批工作日? It's办理时限, includes 1个工作日 and 当场办结. Should be recorded in service_info_notes? The instruction says \"一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes.\" Here办理时限 is specific, maybe should be recorded as service_info_notes? The output schema has service_info_notes with label \"办理时限/费用/窗口时间\", exact_text, source_id, locator. So yes include L6 exact text.\n\nNeed extract requirements:\n- Basic materials: L2 and L3 are essential documents.\n  - R1: 必备材料：有效身份证件或社会保障卡（或医保电子凭证）。 category document, necessity required, condition null, constraints maybe \"有效\"？ quote direct copy from L2: \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\" But quote should be direct continuous original fragment. They said quote direct copied from that line's original fragment. We can include the line content? It says \"直接复制自该行的一段连续原文短句，切勿改写\". Could quote \"有效身份证件或社会保障卡（或医保电子凭证）。\" maybe excluding label? But \"该行\" includes label. Better quote exact line? Need quote direct from L2. We can use \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\" That's continuous original. But maybe requirement item is精炼要求名. We can include label as part quote or not? The schema says quote direct copy from that line's original fragment, not necessarily full line. To be safe, quote full line text as given: \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\" But if they expect quote from line, that's fine.\n  - R2: 必备材料：填写完整的《跨省异地就医备案表》。 category document, necessity required, condition null, constraints maybe \"填写完整的\" (硬限定). quote \"【基本材料2】填写完整的《跨省异地就医备案表》。\"\n\n- Conditional materials: L4 and L5. These are conditional materials for different eligibility groups:\n  - R3: 条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。 category document, necessity conditional? The item is conditional material. The trigger condition is \"异地长期居住人员\". But note \"之一\" means one of four options. Need represent? category document, necessity conditional, condition \"异地长期居住人员\", constraints \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\" maybe include \"之一\". quote L4 full: \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"\n  - R4: 条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。 category document, necessity conditional, condition \"异地转诊就医人员\", constraints \"具有转诊资质的定点医疗机构开具的\" maybe quote full L5.\n\n- eligibility? The conditions imply eligible person types: 异地长期居住人员 and 异地转诊就医人员. But the materials are documents. There's no explicit eligibility category. Could include eligibility items? The schema category has eligibility | document | deadline | fee | unreadable. We can categorize the conditional triggers as eligibility? Maybe better to record them as eligibility with necessity conditional? But then documents separate. The instruction says 资格条件、申请截止/前置时限、必备/条件材料. So eligibility conditions: \"异地长期居住人员\" and \"异地转诊就医人员\" are eligible groups? They appear in condition materials. We can include them as eligibility category with necessity conditional, condition maybe null? Hmm.\n\nLet's parse: L4 says 异地长期居住人员须提交... one of four. L5 says 异地转诊就医人员须提交... proof.",
+    "raw_content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料2】填写完整的《跨省异地就医备案表》。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"constraints\": \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"constraints\": \"具有转诊资质的定点医疗机构开具的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"有效\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"填写完整的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料2】填写完整的《跨省异地就医备案表》。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"constraints\": \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"constraints\": \"具有转诊资质的定点医疗机构开具的\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用/窗口时间\",\n      \"exact_text\": \"线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```",
+    "prompt_tokens": 927,
+    "completion_tokens": 2703,
+    "total_tokens": 3630,
+    "wall_seconds": 55.77,
+    "tokens_per_sec": 48.47,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：跨省异地就医直接结算备案（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=cross_province_medical_filing.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】跨省异地就医直接结算备案\nL2: 【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\nL3: 【基本材料2】填写完整的《跨省异地就医备案表》。\nL4: 【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\nL5: 【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\nL6: 【办理时限】线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "document",
+        "item": "必备材料：有效身份证件或社会保障卡（或医保电子凭证）",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "有效",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "必备材料：填写完整的《跨省异地就医备案表》",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "填写完整的",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【基本材料2】填写完整的《跨省异地就医备案表》。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一",
+        "necessity": "conditional",
+        "condition": "异地长期居住人员",
+        "constraints": "提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》",
+        "necessity": "conditional",
+        "condition": "异地转诊就医人员",
+        "constraints": "具有转诊资质的定点医疗机构开具的",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理时限/费用/窗口时间",
+        "exact_text": "线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。",
+        "source_id": "S1",
+        "locator": "L6"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供居民身份证与社会保障卡原件，且均在有效期内，满足必备材料要求。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供跨省异地就医备案表且已填写基本信息，但无法确认是否填写完整，需用户确认。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于异地长期居住人员，也未提供居住证、户籍证明等对应材料，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于医院转诊就医人员，也未提供转诊证明，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"请用户确认备案表是否填写完整，并补充是否属于异地长期居住或转诊就医人员，以及是否已取得居住证/户籍证明或采用个人承诺、是否已有转诊证明。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"《跨省异地就医备案表》是否已填写完整？\",\n    \"用户是否属于异地长期居住人员，是否需要提交居住证、户籍证明、单位派驻证明或个人承诺书之一？\",\n    \"用户是否属于医院转诊就医人员，是否需要提交具有转诊资质的定点医疗机构开具的转诊转院证明？\"\n  ],\n  \"plain_language_summary_zh\": \"目前身份证和社会保障卡已齐全，备案表已填基本信息但还需确认是否完整，另外是否属于长期居住或转诊就医、对应居住证/转诊证明也需补充确认。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带上居民身份证和社会保障卡原件，确认在有效期内，用于办理跨省异地就医直接结算备案。\",\n    \"第2步：使用已填写基本信息的《跨省异地就医备案表》，先确认是否填写完整，不完整就补充完整后再提交。\",\n    \"第3步：如果属于异地长期居住人员，还需提供居住证、户籍证明、单位派驻证明或个人承诺书之一；如果是医院转诊就医人员，还需提供具有转诊资质的定点医疗机构开具的转诊转院证明。\",\n    \"第4步：按线下窗口或线上国家医保服务平台App要求提交材料，线上一般1个工作日内办结，线下材料齐全当场办结。\",\n    \"第5步：提交前再次确认所有材料齐全、份数符合要求，避免因材料不全影响办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}</think>{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供居民身份证与社会保障卡原件，且均在有效期内，满足必备材料要求。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供跨省异地就医备案表且已填写基本信息，但无法确认是否填写完整，需用户确认。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于异地长期居住人员，也未提供居住证、户籍证明等对应材料，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于医院转诊就医人员，也未提供转诊证明，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"请用户确认备案表是否填写完整，并补充是否属于异地长期居住或转诊就医人员，以及是否已取得居住证/户籍证明或采用个人承诺、是否已有转诊证明。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"《跨省异地就医备案表》是否已填写完整？\",\n    \"用户是否属于异地长期居住人员，是否需要提交居住证、户籍证明、单位派驻证明或个人承诺书之一？\",\n    \"用户是否属于医院转诊就医人员，是否需要提交具有转诊资质的定点医疗机构开具的转诊转院证明？\"\n  ],\n  \"plain_language_summary_zh\": \"目前身份证和社会保障卡已齐全，备案表已填基本信息但还需确认是否完整，另外是否属于长期居住或转诊就医、对应居住证/转诊证明也需补充确认。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带上居民身份证和社会保障卡原件，确认在有效期内，用于办理跨省异地就医直接结算备案。\",\n    \"第2步：使用已填写基本信息的《跨省异地就医备案表》，先确认是否填写完整，不完整就补充完整后再提交。\",\n    \"第3步：如果属于异地长期居住人员，还需提供居住证、户籍证明、单位派驻证明或个人承诺书之一；如果是医院转诊就医人员，还需提供具有转诊资质的定点医疗机构开具的转诊转院证明。\",\n    \"第4步：按线下窗口或线上国家医保服务平台App要求提交材料，线上一般1个工作日内办结，线下材料齐全当场办结。\",\n    \"第5步：提交前再次确认所有材料齐全、份数符合要求，避免因材料不全影响办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "reasoning_content": "我们需要回答用户要求直接输出 JSON。需要按照 SkillHub 技能流程，条件解析→材料比对→状态计算→无障碍改写。注意系统提示 thinking_effort high，但用户要求直接输出合法 JSON，不要重复长引文。我们需要在思考中完成分析，但最终只输出 JSON？用户说“请直接输出 JSON”。我们作为模型需要输出 JSON 对象。需要遵守所有契约。\n\n先理解案例：跨省异地就医直接结算备案，参考日期 2026-11-24，模式 plain_zh。用户画像：71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，但未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。\n现有材料：\n- I01: 居民身份证与社会保障卡原件（均在有效期内）\n- I02: 跨省异地就医备案表（已填写基本信息）\nStage A 盲提结果：\nextracted_requirements R1-R4，其中 R3 条件材料异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一；R4 条件材料异地转诊就医人员须提交转诊证明。\nservice_info_notes: 办理时限/费用/窗口时间：线上一般1个工作日内办结；线下材料齐全当场办结。\nmulti_source_conflicts 空，unreadable_sections 空。\n\n需要按步骤：\n1 applicability 仅限 applies/not_applicable/unknown。用户画像：71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。关键身份：是退休人员，但属于城镇职工医保，跨省异地就医直接结算备案。用户画像明确排除？规则：用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ not_applicable。这里不是排除，是71岁城镇职工医保退休人员，计划外省居住看病，适用。但未说明是否长期居住还是转诊、有无居住证。用户画像未说明关键身份或选择 → 严禁猜测，applicability=\"unknown\", status=\"needs_confirmation\"。注意：applicability 是整个案件是否适用？因为用户是退休职工医保异地就医备案，明确适用，但关键条件未说明，所以 applicability 可能 unknown？规则说“用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 applicability=\"unknown\", status=\"needs_confirmation\"！” 这里关键身份是是否长期居住/转诊/有无居住证，所以 applicability 应为 unknown，status needs_confirmation。但注意整体状态铁律：有任一 missing/expired/conflict → not_ready；否则有 needs_confirmation → needs_confirmation；否则 ready。这里 R3/R4 条件材料未确认，可能 status needs_confirmation？现有材料 I01 和 I02 已具备必需材料。但 R3/R4 条件材料未知是否适用（长期居住/转诊）。由于用户未说明是否属于医院转诊，也未说明是否长期居住，因此条件材料要求存在但未知适用性。我们需要对每个 requirement 标 status。R1 必备材料：身份证和社会保障卡原件均在有效期内，已匹配 I01，status ready，applicability applies？整体 applicability unknown 因为关键条件未说明，但 R1 本身适用。规则说 applicability 仅限 applies/not_applicable/unknown，针对整体？在 requirements 中每个条目可能有 applicability？示例中 requirements 有 applicability 字段。需要为每个 requirement 标 applicability。对于 R1，必备材料身份证卡，用户已提供，适用，applicability=\"applies\"。R2 必备材料填写完整的备案表，已有 I02 已填写基本信息，但“填写完整”是否完整？Stage A 只说已填写基本信息，未说明是否完整。可能 status needs_confirmation? 材料比对：I02 是跨省异地就医备案表（已填写基本信息）。必备材料要求填写完整的《跨省异地就医备案表》。如果仅填写基本信息，可能不完整，但用户未说明是否完整。这算 missing? 规则：仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 missing 或 conflict。这里 I02 是备案表已填写基本信息，没有说缺原件/份数/规格。但要求是“填写完整的”。可能已有备案表，但只填写基本信息，未必完整。Stage A 盲提 R2 未标缺失。我们应保守：I02 已提供备案表且已填写基本信息，是否满足“填写完整”？不清楚。但根据材料比对，不能猜测。用户未说明是否完整。这可能导致 needs_confirmation？但 R2 是 required，已有 I02 但可能不完整。然而技能要求严格日期算术与状态区分，不替用户猜身份。对于材料完整性，如果 Stage A 盲提已识别为已有 I02，且没有标记缺失，也许可标 ready？但“填写完整”的约束是约束，I02 只是已填写基本信息，可能不满足完整约束。但现有材料中没有明确说明不完整。是否应标 needs_confirmation？需要看规则：不可读门禁：若 Stage A 存在 unreadable_sections，必须建立一条 status needs_confirmation 条目，禁止编造金额或条款。这里没有 unreadable_sections。多源冲突没有。材料比对：用户已有 I01、I02。R1 满足；R2 备案表已填写基本信息，但要求填写完整。可能 status ready? 但“填写完整的”是约束，材料只说明已填写基本信息，不等于完整。但 Stage A 盲提未标记不完整，我们不能自行判定不完整？可能应标 needs_confirmation 因为无法确认是否完整。但整体状态：有 needs_confirmation → needs_confirmation。这符合用户未说明是否完整。不过用户问题最多3个待澄清问题。可以加问题：备案表是否填写完整？是否已取得居住证/户籍证明或采用个人承诺？是否属于医院转诊？最多3个。\n\n但需要仔细：R3/R4 是条件材料，条件为“异地长期居住人员”和“异地",
+    "raw_content": "{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供居民身份证与社会保障卡原件，且均在有效期内，满足必备材料要求。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供跨省异地就医备案表且已填写基本信息，但无法确认是否填写完整，需用户确认。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于异地长期居住人员，也未提供居住证、户籍证明等对应材料，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于医院转诊就医人员，也未提供转诊证明，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"请用户确认备案表是否填写完整，并补充是否属于异地长期居住或转诊就医人员，以及是否已取得居住证/户籍证明或采用个人承诺、是否已有转诊证明。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"《跨省异地就医备案表》是否已填写完整？\",\n    \"用户是否属于异地长期居住人员，是否需要提交居住证、户籍证明、单位派驻证明或个人承诺书之一？\",\n    \"用户是否属于医院转诊就医人员，是否需要提交具有转诊资质的定点医疗机构开具的转诊转院证明？\"\n  ],\n  \"plain_language_summary_zh\": \"目前身份证和社会保障卡已齐全，备案表已填基本信息但还需确认是否完整，另外是否属于长期居住或转诊就医、对应居住证/转诊证明也需补充确认。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带上居民身份证和社会保障卡原件，确认在有效期内，用于办理跨省异地就医直接结算备案。\",\n    \"第2步：使用已填写基本信息的《跨省异地就医备案表》，先确认是否填写完整，不完整就补充完整后再提交。\",\n    \"第3步：如果属于异地长期居住人员，还需提供居住证、户籍证明、单位派驻证明或个人承诺书之一；如果是医院转诊就医人员，还需提供具有转诊资质的定点医疗机构开具的转诊转院证明。\",\n    \"第4步：按线下窗口或线上国家医保服务平台App要求提交材料，线上一般1个工作日内办结，线下材料齐全当场办结。\",\n    \"第5步：提交前再次确认所有材料齐全、份数符合要求，避免因材料不全影响办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}</think>{\n  \"overall_status\": \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"用户已提供居民身份证与社会保障卡原件，且均在有效期内，满足必备材料要求。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供跨省异地就医备案表且已填写基本信息，但无法确认是否填写完整，需用户确认。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地长期居住人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于异地长期居住人员，也未提供居住证、户籍证明等对应材料，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"异地转诊就医人员\",\n      \"applicability\": \"unknown\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户未说明是否属于医院转诊就医人员，也未提供转诊证明，无法确认该条件材料是否适用及满足。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"请用户确认备案表是否填写完整，并补充是否属于异地长期居住或转诊就医人员，以及是否已取得居住证/户籍证明或采用个人承诺、是否已有转诊证明。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L3\", \"S1:L4\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"《跨省异地就医备案表》是否已填写完整？\",\n    \"用户是否属于异地长期居住人员，是否需要提交居住证、户籍证明、单位派驻证明或个人承诺书之一？\",\n    \"用户是否属于医院转诊就医人员，是否需要提交具有转诊资质的定点医疗机构开具的转诊转院证明？\"\n  ],\n  \"plain_language_summary_zh\": \"目前身份证和社会保障卡已齐全，备案表已填基本信息但还需确认是否完整，另外是否属于长期居住或转诊就医、对应居住证/转诊证明也需补充确认。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：带上居民身份证和社会保障卡原件，确认在有效期内，用于办理跨省异地就医直接结算备案。\",\n    \"第2步：使用已填写基本信息的《跨省异地就医备案表》，先确认是否填写完整，不完整就补充完整后再提交。\",\n    \"第3步：如果属于异地长期居住人员，还需提供居住证、户籍证明、单位派驻证明或个人承诺书之一；如果是医院转诊就医人员，还需提供具有转诊资质的定点医疗机构开具的转诊转院证明。\",\n    \"第4步：按线下窗口或线上国家医保服务平台App要求提交材料，线上一般1个工作日内办结，线下材料齐全当场办结。\",\n    \"第5步：提交前再次确认所有材料齐全、份数符合要求，避免因材料不全影响办理。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "prompt_tokens": 1965,
+    "completion_tokens": 3511,
+    "total_tokens": 5476,
+    "wall_seconds": 75.948,
+    "tokens_per_sec": 46.23,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】跨省异地就医直接结算备案｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，但未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。\n【现有材料】\n- I01: 居民身份证与社会保障卡原件（均在有效期内）\n- I02: 跨省异地就医备案表（已填写基本信息）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"document\", \"item\": \"必备材料：有效身份证件或社会保障卡（或医保电子凭证）\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"有效\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"必备材料：填写完整的《跨省异地就医备案表》\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"填写完整的\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【基本材料2】填写完整的《跨省异地就医备案表》。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"条件材料：异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\", \"necessity\": \"conditional\", \"condition\": \"异地长期居住人员\", \"constraints\": \"提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"条件材料：异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》\", \"necessity\": \"conditional\", \"condition\": \"异地转诊就医人员\", \"constraints\": \"具有转诊资质的定点医疗机构开具的\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。\", \"source_id\": \"S1\", \"locator\": \"L6\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "目前身份证和社会保障卡已齐全，备案表已填基本信息但还需确认是否完整，另外是否属于长期居住或转诊就医、对应居住证/转诊证明也需补充确认。",
+  "plain_language_steps_zh": [
+    "第1步：带上居民身份证和社会保障卡原件，确认在有效期内，用于办理跨省异地就医直接结算备案。",
+    "第2步：使用已填写基本信息的《跨省异地就医备案表》，先确认是否填写完整，不完整就补充完整后再提交。",
+    "第3步：如果属于异地长期居住人员，还需提供居住证、户籍证明、单位派驻证明或个人承诺书之一；如果是医院转诊就医人员，还需提供具有转诊资质的定点医疗机构开具的转诊转院证明。",
+    "第4步：按线下窗口或线上国家医保服务平台App要求提交材料，线上一般1个工作日内办结，线下材料齐全当场办结。",
+    "第5步：提交前再次确认所有材料齐全、份数符合要求，避免因材料不全影响办理。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 4,
+    "verbatim_hits": 4,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 7,
+    "verbatim_hits": 7,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "needs_confirmation",
+    "overall_actual": "needs_confirmation",
+    "overall_match": true,
+    "clause_survived": 6,
+    "clause_total": 6,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "异地长期居住",
+          "survived": true
+        },
+        {
+          "clause": "异地转诊",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证",
+          "survived": true
+        },
+        {
+          "clause": "备案表",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "1个工作日",
+          "survived": true
+        },
+        {
+          "clause": "当场办结",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "needs_confirmation",
+        "keywords": [
+          "居住证",
+          "承诺书",
+          "转诊"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 131.718,
+  "total_completion_tokens": 6214
+}

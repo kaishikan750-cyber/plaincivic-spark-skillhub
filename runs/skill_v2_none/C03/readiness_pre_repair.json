@@ -1,0 +1,110 @@
+{
+  "requirements": [
+    {
+      "id": "R1",
+      "item": "换发普通护照的办理条件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁退休居民，本人现场办理，符合换发条件；原护照距到期约3.5个月，不足6个月，满足换发资格。",
+      "evidence_refs": [
+        "S1:L2"
+      ]
+    },
+    {
+      "id": "R2",
+      "item": "基本材料1：有效期内的原普通护照原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I01"
+      ],
+      "reason": "已持有原普通护照原件，距到期约3.5个月不足6个月，符合有效期要求。",
+      "evidence_refs": [
+        "S1:L3"
+      ]
+    },
+    {
+      "id": "R3",
+      "item": "基本材料2：本人有效居民身份证原件",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I02"
+      ],
+      "reason": "已持有长期有效的居民身份证原件，符合材料要求。",
+      "evidence_refs": [
+        "S1:L4"
+      ]
+    },
+    {
+      "id": "R4",
+      "item": "基本材料3：填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）",
+      "necessity": "required",
+      "condition": null,
+      "applicability": "applies",
+      "status": "ready",
+      "matched_inventory_ids": [
+        "I03"
+      ],
+      "reason": "已完成现场照相并取得合格回执，同时填写申请表，符合材料要求。",
+      "evidence_refs": [
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "R5",
+      "item": "条件材料1：未满16周岁的未成年人换发所需材料",
+      "necessity": "conditional",
+      "condition": "未满16周岁的未成年人",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为68岁成年人，不满足未成年人条件，该条件材料不适用。",
+      "evidence_refs": [
+        "S1:L6"
+      ]
+    },
+    {
+      "id": "R6",
+      "item": "条件材料2：登记备案的国家工作人员换发所需材料",
+      "necessity": "conditional",
+      "condition": "登记备案的国家工作人员",
+      "applicability": "not_applicable",
+      "status": "not_applicable",
+      "matched_inventory_ids": [],
+      "reason": "用户为原民营企业员工、非登记备案国家工作人员，不满足该条件，所需材料不适用。",
+      "evidence_refs": [
+        "S1:L7"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "T1",
+      "action": "办理时携带原普通护照原件、居民身份证原件、已填写申请表及合格相片回执，按窗口要求提交申请。",
+      "priority": "blocking",
+      "evidence_refs": [
+        "S1:L3",
+        "S1:L4",
+        "S1:L5"
+      ]
+    },
+    {
+      "id": "T2",
+      "action": "按公安机关出入境管理机构自受理之日起7至15个工作日内办结的时限，预留办理时间。",
+      "priority": "normal",
+      "evidence_refs": [
+        "S1:L8"
+      ]
+    }
+  ],
+  "overall_status": "ready",
+  "questions": []
+}

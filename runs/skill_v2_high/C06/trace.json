@@ -1,0 +1,234 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C06",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": null,\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】申请人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人名下I类银行借记卡原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申请人本人名下I类银行借记卡原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"constraints\": \"结婚证原件；配偶身份证复印件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用\",\n      \"exact_text\": \"审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": null,\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】申请人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人名下I类银行借记卡原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申请人本人名下I类银行借记卡原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"constraints\": \"结婚证原件；配偶身份证复印件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用\",\n      \"exact_text\": \"审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，按照步骤1，先提取要求，再查看现有材料。用户给了 S1 登记来源全文，可能还有 S2？但只给了 S1 内容，没有 S2。需要输出 JSON 格式。需要仔细提取要求。\n\n需要注意：用户说“若 S1 与 S2 互相冲突，写入 multi_source_conflicts 并列双方”。这里没有 S2，所以 multi_source_conflicts 应为空数组？ 应该输出 []。unreadable_sections 如果没有不可读段落，应为 []。service_info_notes 记录一般性的受理后审批工作日/收费标准/开放时间/不设截止日期等。这里 L6 有办理时限：审核通过后3个工作日内资金划转至指定银行卡；免收手续费。这属于 service_info_notes？ 用户说明“一般性的‘受理后审批工作日/收费标准/开放时间/不设截止日期’记入 service_info_notes。” L6 是办理时限和费用，应该记入 service_info_notes。但 extracted_requirements 里 category 有 fee 等，也许费用要提取？ 用户要求 extracted_requirements 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 service_info_notes。所以 L6 的办理时限和免收手续费属于 service_info_notes，而不是 extracted_requirements？ 但 fee 类别在 extracted_requirements 中允许，可能用于必备材料？ 这里没有明确收费要求。但“免收手续费”是服务信息，应放 service_info_notes。\n\n需要提取：\n- 资格条件：L2 办理条件：申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。 source_id S1 locator L2 quote 直接复制 L2 全文或短句？ 用户要求 quote 直接复制自该行的一段连续原文短句，切勿改写。可以复制整行 L2 内容。注意 L2 包含“【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。” 这是连续原文。可以 quote 整行。\n- 必备材料：L3 申请人有效居民身份证原件。 L4 申请人本人名下I类银行借记卡原件。 这些是基本材料1/2。 category document, necessity required, constraints 保留原文硬限定（原件）。 L3 quote 整行。 L4 quote 整行。\n- 条件材料：L5 已婚申请人须提供结婚证原件及配偶身份证复印件。 category document, necessity conditional, condition 已婚申请人，约束 结婚证原件、配偶身份证复印件。 quote 整行。\n- 办理时限/费用：L6 审核通过后3个工作日内资金划转至指定银行卡；免收手续费。 这个属于 service_info_notes 更合适。但也可以提取为 fee? 用户说一般性受理后审批工作日/收费标准记入 service_info_notes。所以放 service_info_notes。但 extracted_requirements 是否包含“办理时限”类？ 用户说“资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的‘受理后审批工作日/收费标准/开放时间/不设截止日期’记入 service_info_notes。” 这里 L6 是受理后审批工作日，属于一般性，放 service_info_notes。\n\n- 参考日期 2026-11-24 是否要求提取？ 用户说事项包含参考日期，但提取要求不能加入原文未写的材料。参考日期不是要求，可能不需要。服务信息？ 不设截止日期？ 没有明确截止日期。可以忽略。\n- 是否有申请截止/前置时限？ L2 有连续缴存满3个月，这是前置时限？ 资格条件，不是申请截止。可以放在 eligibility。\n- 是否有不可读段落？ 没有，unreadable_sections 空数组。\n- S2 不存在？ 用户只给了 S1，没有 S2。输出 multi_source_conflicts 空数组。\n\n需要注意 JSON 结构。用户要求输出 JSON，不要额外解释。需要合法 JSON 对象。字段必须包含 extracted_requirements, multi_source_conflicts, unreadable_sections, service_info_notes。可以按给定结构。\n\n注意 source_id 和 locator 精确。例如 S1, L2。\n\n需要决定 extracted_requirements 中是否包含 fee 项？ 没有独立收费要求，但 service_info_notes 有免收手续费。也许在 extracted_requirements 中不需要 fee。但用户 category 有 fee，但如果没有可提取的收费要求，就不加。但“免收手续费”是费用信息，放 service_info_notes。\n\n需要确保 quote 直接逐字复制自该行原文片段。对于 L2，原文：\nL2: 【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\n注意 L2 行尾可能有换行？ 我们复制内容不包括行号标记。用户 quote 要求直接复制自该行的一段连续原文短句，切勿改写。所以 quote 可以是“申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。” 但最好包含【办理条件】？ 因为该行是“【办理条件】申请人须...”。如果只复制条件内容，也算该行连续原文片段。但为了精确，可以复制整行（不包括行号）。用户示例 quote 可能直接复制原文片段。可以包括标签。比如 quote: \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\" 这是该行连续原文。可以。\n\n对于 L3: “【基本材料1】申请人有效居民身份证原件。” quote 整行。\nL4: “【基本材料2】申请人本人名下I类银行借记卡原件。” quote 整行。\nL5: “【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。” quote 整行。\nservice_info_notes 项： label \"办理时限/费用\" exact_text 原文精确表述，source_id S1, locator L6。 exact_text 可以是“审核通过后3个工作日内资金划",
+    "raw_content": "```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": null,\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】申请人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人名下I类银行借记卡原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申请人本人名下I类银行借记卡原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"constraints\": \"结婚证原件；配偶身份证复印件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用\",\n      \"exact_text\": \"审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```</think>```json\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": null,\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】申请人有效居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人名下I类银行借记卡原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申请人本人名下I类银行借记卡原件。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"constraints\": \"结婚证原件；配偶身份证复印件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限/费用\",\n      \"exact_text\": \"审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}\n```",
+    "prompt_tokens": 903,
+    "completion_tokens": 2519,
+    "total_tokens": 3422,
+    "wall_seconds": 52.726,
+    "tokens_per_sec": 47.78,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：住房公积金租房提取（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=synthetic_housing_fund_rent_guide.txt | date=2026-10-15 | type=synthetic_civic_notice | currentness=user_provided_current\nL1: 【事项名称】住房公积金无房租房提取（示范模拟政务指南）\nL2: 【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\nL3: 【基本材料1】申请人有效居民身份证原件。\nL4: 【基本材料2】申请人本人名下I类银行借记卡原件。\nL5: 【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\nL6: 【办理时限】审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "eligibility",
+        "item": "办理资格条件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": null,
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "基本材料：有效居民身份证原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "原件",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【基本材料1】申请人有效居民身份证原件。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "基本材料：本人名下I类银行借记卡原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "本人名下I类银行借记卡原件",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【基本材料2】申请人本人名下I类银行借记卡原件。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "条件材料：结婚证及配偶身份证复印件（已婚申请人）",
+        "necessity": "conditional",
+        "condition": "已婚申请人",
+        "constraints": "结婚证原件；配偶身份证复印件",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理时限/费用",
+        "exact_text": "审核通过后3个工作日内资金划转至指定银行卡；免收手续费。",
+        "source_id": "S1",
+        "locator": "L6"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已连续足额缴存住房公积金8个月，满足满3个月要求；本人及配偶在本市无自有住房，未婚单身无配偶影响该条件。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供有效期内居民身份证原件，符合原件要求。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已提供本人名下I类银行借记卡原件且状态正常，符合原件要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为未婚单身，不满足“已婚申请人”条件，无需提供结婚证及配偶身份证复印件。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出发前核对身份证、本人名下I类银行借记卡原件均有效且在有效期内，按现场要求携带公积金缴存与无房记录材料，直接到窗口办理。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"你的条件符合公积金租房提取要求，携带身份证、本人借记卡原件和公积金缴存无房记录即可办理，审核通过后3个工作日内划转资金，免收手续费。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：准备好公积金缴存与无房记录、有效居民身份证原件、本人名下I类银行借记卡原件，三项材料都要带原件。\",\n    \"第2步：因你未婚单身，不需要提供结婚证及配偶身份证复印件。\",\n    \"第3步：按缴存城市窗口要求直接办理提取申请，审核通过后资金会在3个工作日内划转到指定银行卡。\",\n    \"第4步：本次办理免收手续费，请按现场指引提交材料即可。\",\n    \"第5步：若现场提示需补充居住登记等额外材料，再按要求补齐，不要提前自行猜测办理条件。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "reasoning_content": "我们需要回答用户要求，直接输出合法 JSON。需要执行 skill 条件解析→材料比对→状态计算→无障碍改写。要基于给定信息。需要思考仔细。\n\n用户画像：未婚单身职工，已连续足额缴存住房公积金8个月，在缴存城市名下无自有住房，本人携带证件办理。\n参考日期 2026-11-24。\n模式 plain_zh。\nStage A 盲提结果 extracted_requirements R1-R4, multi_source_conflicts [], unreadable_sections [], service_info_notes 办理时限/费用：审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\n现有材料：\nI01 公积金缴存与无房记录（连续足额缴存8个月，本市无自有住房）\nI02 居民身份证原件（有效期内）\nI03 本人I类银行借记卡原件（状态正常）\n\n需要按契约输出 JSON。要确定 applicability 每个 requirement，status，matched_inventory_ids，reason，evidence_refs；actions；questions；plain_language_summary_zh；plain_language_steps_zh 4-5 条大白话易读步骤，必须保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。注意这里 service_info_notes 有办理时限/费用但没窗口时间？原文资格条件、原件/复印件份数、照片规格等可能没有，但必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限。如果有缺失可能需 needs_confirmation? 但用户已有材料齐全，Stage A 无不可读。需要判断整体状态。\n\n先看 R1 资格条件：申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。用户未婚单身，已连续足额缴存8个月，在缴存城市名下无自有住房。注意原文说“本人及配偶”无自有住房，用户未婚单身，配偶不存在？资格条件对未婚单身是否适用？用户画像明确未婚单身，已无自有住房，连续足额缴存8个月，满足“本人无房”和“连续足额缴存满3个月”。配偶无房条件对未婚单身可视为不适用？但原文条件包含配偶，未婚无配偶，应满足（无配偶，自然无自有住房）。因此 R1 满足，applicability applies, status ready, matched_inventory_ids [\"I01\"]? I01 是公积金缴存与无房记录，匹配资格。evidence_refs [\"S1:L2\"]。reason 说明连续足额缴存8个月≥3个月、本市无自有住房，未婚单身无配偶影响。\n\nR2 基本材料：有效居民身份证原件，necessity required, condition null, constraints 原件。用户有 I02 居民身份证原件（有效期内）。applicability applies, status ready, matched_inventory_ids [\"I02\"]? 契约要求 status ready 必须至少一个 matched_inventory_ids。对于每个 requirement 可包含 matched_inventory_ids。reason: 已提供有效居民身份证原件。evidence_refs [\"S1:L3\"]。\n\nR3 基本材料：本人名下I类银行借记卡原件。用户有 I03 本人I类银行借记卡原件（状态正常）。applicability applies, status ready, matched_inventory_ids [\"I03\"], evidence_refs [\"S1:L4\"]。\n\nR4 条件材料：结婚证及配偶身份证复印件（已婚申请人），necessity conditional, condition \"已婚申请人\", constraints \"结婚证原件；配偶身份证复印件\"。用户未婚单身，不满足条件“已婚申请人”。那么 applicability? 需要看 applicability 是 applies/not_applicable/unknown。用户画像明确未婚单身，所以该条件材料对当前用户不适用。status 应标 \"not_applicable\"？契约中 status 包括 not_applicable。对于条件材料，由于用户未婚，不适用，且不需要准备。applicability 可以是 not_applicable? 但 applicability 可能指整个 requirement 是否适用于用户？这里 R4 是条件性材料，当前用户不适用，所以 applicability=\"not_applicable\"，status=\"not_applicable\"，matched_inventory_ids 空？条件 null。reason: 用户为未婚单身，不满足“已婚申请人”条件，无需提供结婚证及配偶身份证复印件。evidence_refs [\"S1:L5\"]。注意 necessity conditional 必须有非空 condition，有。\n\n需要判断整体状态：有 R4 not_applicable 不是 missing/expired/conflict；其余 ready。没有 needs_confirmation。整体状态 ready？但注意 service_info_notes 有办理时限/费用，但无窗口时间及截止时限，可能不需要确认。用户已有材料齐全，资格满足。整体 ready。\n\n但需要检查是否有可能需要确认：用户画像“在缴存城市名下无自有住房”，公积金缴存与无房记录 I01 已有。已连续足额缴存8个月。未婚单身。办理条件要求“本人及配偶在本市无自有住房”，未婚无配偶，满足。不需要确认。Stage A 盲提结果没有不可读。所以整体 ready。\n\n需要 actions：可能包含 T1 办理前准备？比如核对身份证/银行卡在有效期内、携带原件等。但用户已携带证件办理。动作可以 normal 或 high？比如“T1: 出发前核对身份证、本人I类借记卡原件均有效且在有效期内，按现场要求准备材料；优先级 high”。但 service_info_notes 有审核通过后3个工作日内资金划转、免收手续费。actions 可包含 T1 带齐材料（身份证、借记卡、公积金缴存与无房记录）并在窗口办理；T2? 需要 action 列表，至少一个？契约没强制数量。可给一个或两个。注意 actions 的 evidence_refs 应引用 Stage A 相关行号？比如 T1 引用 S1:L6 办理时限/费用？但动作是出门前准备，可能引用 S1:L2/L3/L4？可以 T1 evidence_refs [\"S1:L2\",\"S1:L3\",\"S1:L4\"]? 契约没限制。最好简单。\n\nquestions：最多3个待澄清问题，无则 []。这里用户画像明确，材料齐全，无待",
+    "raw_content": "{\n  \"overall_status\": \"ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"办理资格条件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"已连续足额缴存住房公积金8个月，满足满3个月要求；本人及配偶在本市无自有住房，未婚单身无配偶影响该条件。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"基本材料：有效居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已提供有效期内居民身份证原件，符合原件要求。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"基本材料：本人名下I类银行借记卡原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已提供本人名下I类银行借记卡原件且状态正常，符合原件要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\",\n      \"necessity\": \"conditional\",\n      \"condition\": \"已婚申请人\",\n      \"applicability\": \"not_applicable\",\n      \"status\": \"not_applicable\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"用户为未婚单身，不满足“已婚申请人”条件，无需提供结婚证及配偶身份证复印件。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"出发前核对身份证、本人名下I类银行借记卡原件均有效且在有效期内，按现场要求携带公积金缴存与无房记录材料，直接到窗口办理。\",\n      \"priority\": \"high\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L3\", \"S1:L4\"]\n    }\n  ],\n  \"questions\": [],\n  \"plain_language_summary_zh\": \"你的条件符合公积金租房提取要求，携带身份证、本人借记卡原件和公积金缴存无房记录即可办理，审核通过后3个工作日内划转资金，免收手续费。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：准备好公积金缴存与无房记录、有效居民身份证原件、本人名下I类银行借记卡原件，三项材料都要带原件。\",\n    \"第2步：因你未婚单身，不需要提供结婚证及配偶身份证复印件。\",\n    \"第3步：按缴存城市窗口要求直接办理提取申请，审核通过后资金会在3个工作日内划转到指定银行卡。\",\n    \"第4步：本次办理免收手续费，请按现场指引提交材料即可。\",\n    \"第5步：若现场提示需补充居住登记等额外材料，再按要求补齐，不要提前自行猜测办理条件。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "prompt_tokens": 1874,
+    "completion_tokens": 2249,
+    "total_tokens": 4123,
+    "wall_seconds": 48.62,
+    "tokens_per_sec": 46.26,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】住房公积金租房提取｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】未婚单身职工，已连续足额缴存住房公积金8个月，在缴存城市名下无自有住房，本人携带证件办理。\n【现有材料】\n- I01: 公积金缴存与无房记录（连续足额缴存8个月，本市无自有住房）\n- I02: 居民身份证原件（有效期内）\n- I03: 本人I类银行借记卡原件（状态正常）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"eligibility\", \"item\": \"办理资格条件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": null, \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"基本材料：有效居民身份证原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"原件\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【基本材料1】申请人有效居民身份证原件。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"基本材料：本人名下I类银行借记卡原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"本人名下I类银行借记卡原件\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【基本材料2】申请人本人名下I类银行借记卡原件。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"条件材料：结婚证及配偶身份证复印件（已婚申请人）\", \"necessity\": \"conditional\", \"condition\": \"已婚申请人\", \"constraints\": \"结婚证原件；配偶身份证复印件\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理时限/费用\", \"exact_text\": \"审核通过后3个工作日内资金划转至指定银行卡；免收手续费。\", \"source_id\": \"S1\", \"locator\": \"L6\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "你的条件符合公积金租房提取要求，携带身份证、本人借记卡原件和公积金缴存无房记录即可办理，审核通过后3个工作日内划转资金，免收手续费。",
+  "plain_language_steps_zh": [
+    "第1步：准备好公积金缴存与无房记录、有效居民身份证原件、本人名下I类银行借记卡原件，三项材料都要带原件。",
+    "第2步：因你未婚单身，不需要提供结婚证及配偶身份证复印件。",
+    "第3步：按缴存城市窗口要求直接办理提取申请，审核通过后资金会在3个工作日内划转到指定银行卡。",
+    "第4步：本次办理免收手续费，请按现场指引提交材料即可。",
+    "第5步：若现场提示需补充居住登记等额外材料，再按要求补齐，不要提前自行猜测办理条件。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 4,
+    "verbatim_hits": 4,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 7,
+    "verbatim_hits": 7,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "ready",
+    "overall_actual": "ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "满3个月",
+          "survived": true
+        },
+        {
+          "clause": "无自有住房",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证原件",
+          "survived": true
+        },
+        {
+          "clause": "I类银行借记卡",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "3个工作日",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "not_applicable",
+        "keywords": [
+          "结婚证"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 101.346,
+  "total_completion_tokens": 4768
+}

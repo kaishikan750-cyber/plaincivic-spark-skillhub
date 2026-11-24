@@ -1,0 +1,159 @@
+{
+  "mode": "baseline_v1",
+  "thinking_mode": "low",
+  "case_id": "C05",
+  "spark_call": {
+    "thinking_mode": "low",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"当前不满足居住证申领前置条件：居住登记未满半年，且租房合同缺少纸质原件及复印件，材料不完整。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"离开常住户口所在地并在其他城市办理居住登记满半年以上\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"not_ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"居住登记日期为2026-08-15，至参考日期2026-11-24仅约3个月零9天，未满半年。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"登记日期为2026-08-15\",\n          \"quote\": \"居住登记凭证（登记日期为2026-08-15）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"合法稳定住所证明：房屋租赁合同或房屋产权证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"现有材料仅有手机拍摄的租赁合同照片，无纸质原件及复印件，无法确认是否符合材料规格要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有有效期内本人居民身份证原件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人居民身份证原件。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"本人居民身份证原件（有效期内）\",\n          \"quote\": \"本人居民身份证原件（有效期内）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有纸质2张近期标准证件相片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"近期标准证件相片（纸质2张）\",\n          \"quote\": \"近期标准证件相片（纸质2张）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"办理时限：自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"时限要求已明确，符合办理流程要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L6\",\n          \"quote\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"等待居住登记满半年后再申领居住证，或向办理机构咨询是否有可提前办理的例外情形\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"action\": \"补充纸质房屋租赁合同原件及复印件1份（或提供劳动合同/在读证明原件及复印件1份）\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认居住登记满半年。你2026-08-15办理了居住登记，目前距2026-11-24仅约3个月零9天，还不满半年，需先满足居住登记满半年条件。\",\n    \"第二步：准备完整材料。申领居住证需本人居民身份证原件、近期标准证件相片，以及合法稳定住所证明（房屋租赁合同或房屋产权证明的原件及复印件1份，或劳动合同/在读证明原件及复印件1份）。\",\n    \"第三步：补充租房合同纸质材料。目前只有手机拍摄的租赁合同照片，没有纸质原件和复印件，需补充房屋租赁合同原件及复印件1份。\",\n    \"第四步：材料齐全后，在办理期限内提交申请。符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [\n    {\n      \"question\": \"是否可继续在沪居住并办理后续居住登记，待满半年后申领居住证？\"\n    },\n    {\n      \"question\": \"租房合同目前能否补签纸质原件并复印？如不能，是否可提供劳动合同或在读证明作为合法稳定住所/就业材料？\"\n    }\n  ],\n  \"limitations\": [\n    \"居住登记满半年是申领居住证的前置条件，当前未满足，不能直接申领。\",\n    \"租房合同仅有手机拍摄照片，不符合通知要求的原件及复印件要求，需补充纸质材料后才能进入材料齐全的办理流程。\",\n    \"本判断基于参考日期2026-11-24及用户现有材料，实际办理时以现场窗口最新要求为准。\"\n  ]\n}</think>{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"当前不满足居住证申领前置条件：居住登记未满半年，且租房合同缺少纸质原件及复印件，材料不完整。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"离开常住户口所在地并在其他城市办理居住登记满半年以上\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"not_ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"居住登记日期为2026-08-15，至参考日期2026-11-24仅约3个月零9天，未满半年。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"登记日期为2026-08-15\",\n          \"quote\": \"居住登记凭证（登记日期为2026-08-15）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"合法稳定住所证明：房屋租赁合同或房屋产权证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"现有材料仅有手机拍摄的租赁合同照片，无纸质原件及复印件，无法确认是否符合材料规格要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有有效期内本人居民身份证原件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人居民身份证原件。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"本人居民身份证原件（有效期内）\",\n          \"quote\": \"本人居民身份证原件（有效期内）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有纸质2张近期标准证件相片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"近期标准证件相片（纸质2张）\",\n          \"quote\": \"近期标准证件相片（纸质2张）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"办理时限：自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"时限要求已明确，符合办理流程要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L6\",\n          \"quote\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"等待居住登记满半年后再申领居住证，或向办理机构咨询是否有可提前办理的例外情形\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"action\": \"补充纸质房屋租赁合同原件及复印件1份（或提供劳动合同/在读证明原件及复印件1份）\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认居住登记满半年。你2026-08-15办理了居住登记，目前距2026-11-24仅约3个月零9天，还不满半年，需先满足居住登记满半年条件。\",\n    \"第二步：准备完整材料。申领居住证需本人居民身份证原件、近期标准证件相片，以及合法稳定住所证明（房屋租赁合同或房屋产权证明的原件及复印件1份，或劳动合同/在读证明原件及复印件1份）。\",\n    \"第三步：补充租房合同纸质材料。目前只有手机拍摄的租赁合同照片，没有纸质原件和复印件，需补充房屋租赁合同原件及复印件1份。\",\n    \"第四步：材料齐全后，在办理期限内提交申请。符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [\n    {\n      \"question\": \"是否可继续在沪居住并办理后续居住登记，待满半年后申领居住证？\"\n    },\n    {\n      \"question\": \"租房合同目前能否补签纸质原件并复印？如不能，是否可提供劳动合同或在读证明作为合法稳定住所/就业材料？\"\n    }\n  ],\n  \"limitations\": [\n    \"居住登记满半年是申领居住证的前置条件，当前未满足，不能直接申领。\",\n    \"租房合同仅有手机拍摄照片，不符合通知要求的原件及复印件要求，需补充纸质材料后才能进入材料齐全的办理流程。\",\n    \"本判断基于参考日期2026-11-24及用户现有材料，实际办理时以现场窗口最新要求为准。\"\n  ]\n}",
+    "reasoning_content": "我们需要回答用户请求。需要输出合法 JSON 对象，不输出多余解释或 Markdown 以外文字？用户说请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。注意最后说 bilingual_steps_en 无需英文，填 []。我们需要构建 JSON。\n\n需要理解任务：政务办事助手，参考日期 2026-11-24，事项居住证申领，用户情况外地来沪务工人员，2026-08-15办理居住登记（距2026-11-24仅约3个月零9天），在当地租房，拟本人现场申领居住证。\n\n办事通知原文有 L1-L6。用户现有材料 I01 居住登记凭证（登记日期2026-08-15），I02 身份证原件，I03 近期标准证件相片纸质2张，I04 租房合同照片（仅手机拍摄租赁合同照片，无纸质原件及复印件）。\n\n需要判断 overall_status: ready / not_ready / needs_confirmation。\n\n前置条件：离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一。用户2026-08-15办理居住登记，到2026-11-24 约3个月零9天，不到半年（半年是6个月）。所以不满足“满半年以上”前置条件。但用户有租房合同照片，可能合法稳定住所？但是居住登记未满半年，前置条件要求“居住并办理居住登记满半年以上”。是否必须先满半年才能申领？原文 L2：公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合...条件之一的，可以申领居住证。所以必须满半年。用户当前距参考日期仅约3个月零9天，不满足。因此 overall_status 可能 not_ready？需要确认是否可能等6个月后。但是否有其他条件：合法稳定住所证明需要租房合同照片但无纸质原件及复印件，材料不完整。居住登记未满半年。所以整体 not_ready。但也可能 needs_confirmation? 需要确认是否用户居住登记日期能否补足？目前是 not_ready 更合适。\n\n需要输出 requirements 数组，每项含 id, item, necessity, condition",
+    "raw_content": "{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"当前不满足居住证申领前置条件：居住登记未满半年，且租房合同缺少纸质原件及复印件，材料不完整。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"离开常住户口所在地并在其他城市办理居住登记满半年以上\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"not_ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"居住登记日期为2026-08-15，至参考日期2026-11-24仅约3个月零9天，未满半年。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"登记日期为2026-08-15\",\n          \"quote\": \"居住登记凭证（登记日期为2026-08-15）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"合法稳定住所证明：房屋租赁合同或房屋产权证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"现有材料仅有手机拍摄的租赁合同照片，无纸质原件及复印件，无法确认是否符合材料规格要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有有效期内本人居民身份证原件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人居民身份证原件。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"本人居民身份证原件（有效期内）\",\n          \"quote\": \"本人居民身份证原件（有效期内）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有纸质2张近期标准证件相片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"近期标准证件相片（纸质2张）\",\n          \"quote\": \"近期标准证件相片（纸质2张）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"办理时限：自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"时限要求已明确，符合办理流程要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L6\",\n          \"quote\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"等待居住登记满半年后再申领居住证，或向办理机构咨询是否有可提前办理的例外情形\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"action\": \"补充纸质房屋租赁合同原件及复印件1份（或提供劳动合同/在读证明原件及复印件1份）\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认居住登记满半年。你2026-08-15办理了居住登记，目前距2026-11-24仅约3个月零9天，还不满半年，需先满足居住登记满半年条件。\",\n    \"第二步：准备完整材料。申领居住证需本人居民身份证原件、近期标准证件相片，以及合法稳定住所证明（房屋租赁合同或房屋产权证明的原件及复印件1份，或劳动合同/在读证明原件及复印件1份）。\",\n    \"第三步：补充租房合同纸质材料。目前只有手机拍摄的租赁合同照片，没有纸质原件和复印件，需补充房屋租赁合同原件及复印件1份。\",\n    \"第四步：材料齐全后，在办理期限内提交申请。符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [\n    {\n      \"question\": \"是否可继续在沪居住并办理后续居住登记，待满半年后申领居住证？\"\n    },\n    {\n      \"question\": \"租房合同目前能否补签纸质原件并复印？如不能，是否可提供劳动合同或在读证明作为合法稳定住所/就业材料？\"\n    }\n  ],\n  \"limitations\": [\n    \"居住登记满半年是申领居住证的前置条件，当前未满足，不能直接申领。\",\n    \"租房合同仅有手机拍摄照片，不符合通知要求的原件及复印件要求，需补充纸质材料后才能进入材料齐全的办理流程。\",\n    \"本判断基于参考日期2026-11-24及用户现有材料，实际办理时以现场窗口最新要求为准。\"\n  ]\n}</think>{\n  \"overall_status\": \"not_ready\",\n  \"summary_zh\": \"当前不满足居住证申领前置条件：居住登记未满半年，且租房合同缺少纸质原件及复印件，材料不完整。\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"离开常住户口所在地并在其他城市办理居住登记满半年以上\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"not_ready\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"居住登记日期为2026-08-15，至参考日期2026-11-24仅约3个月零9天，未满半年。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        },\n        {\n          \"source_id\": \"I01\",\n          \"locator\": \"登记日期为2026-08-15\",\n          \"quote\": \"居住登记凭证（登记日期为2026-08-15）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"合法稳定住所证明：房屋租赁合同或房屋产权证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"needs_confirmation\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"现有材料仅有手机拍摄的租赁合同照片，无纸质原件及复印件，无法确认是否符合材料规格要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已持有有效期内本人居民身份证原件。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L3\",\n          \"quote\": \"【基本材料1】本人居民身份证原件。\"\n        },\n        {\n          \"source_id\": \"I02\",\n          \"locator\": \"本人居民身份证原件（有效期内）\",\n          \"quote\": \"本人居民身份证原件（有效期内）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已持有纸质2张近期标准证件相片。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L4\",\n          \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n        },\n        {\n          \"source_id\": \"I03\",\n          \"locator\": \"近期标准证件相片（纸质2张）\",\n          \"quote\": \"近期标准证件相片（纸质2张）\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"item\": \"办理时限：自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [],\n      \"reason\": \"时限要求已明确，符合办理流程要求。\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L6\",\n          \"quote\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n        }\n      ]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"A1\",\n      \"action\": \"等待居住登记满半年后再申领居住证，或向办理机构咨询是否有可提前办理的例外情形\",\n      \"priority\": \"blocking\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L2\",\n          \"quote\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n        }\n      ]\n    },\n    {\n      \"id\": \"A2\",\n      \"action\": \"补充纸质房屋租赁合同原件及复印件1份（或提供劳动合同/在读证明原件及复印件1份）\",\n      \"priority\": \"high\",\n      \"evidence\": [\n        {\n          \"source_id\": \"S1\",\n          \"locator\": \"L5\",\n          \"quote\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n        },\n        {\n          \"source_id\": \"I04\",\n          \"locator\": \"租房合同照片\",\n          \"quote\": \"租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\"\n        }\n      ]\n    }\n  ],\n  \"plain_language_steps_zh\": [\n    \"第一步：确认居住登记满半年。你2026-08-15办理了居住登记，目前距2026-11-24仅约3个月零9天，还不满半年，需先满足居住登记满半年条件。\",\n    \"第二步：准备完整材料。申领居住证需本人居民身份证原件、近期标准证件相片，以及合法稳定住所证明（房屋租赁合同或房屋产权证明的原件及复印件1份，或劳动合同/在读证明原件及复印件1份）。\",\n    \"第三步：补充租房合同纸质材料。目前只有手机拍摄的租赁合同照片，没有纸质原件和复印件，需补充房屋租赁合同原件及复印件1份。\",\n    \"第四步：材料齐全后，在办理期限内提交申请。符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_steps_en\": [],\n  \"questions\": [\n    {\n      \"question\": \"是否可继续在沪居住并办理后续居住登记，待满半年后申领居住证？\"\n    },\n    {\n      \"question\": \"租房合同目前能否补签纸质原件并复印？如不能，是否可提供劳动合同或在读证明作为合法稳定住所/就业材料？\"\n    }\n  ],\n  \"limitations\": [\n    \"居住登记满半年是申领居住证的前置条件，当前未满足，不能直接申领。\",\n    \"租房合同仅有手机拍摄照片，不符合通知要求的原件及复印件要求，需补充纸质材料后才能进入材料齐全的办理流程。\",\n    \"本判断基于参考日期2026-11-24及用户现有材料，实际办理时以现场窗口最新要求为准。\"\n  ]\n}",
+    "prompt_tokens": 713,
+    "completion_tokens": 4225,
+    "total_tokens": 4938,
+    "wall_seconds": 87.781,
+    "tokens_per_sec": 48.13,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是政务办事助手。请直接输出一个合法的 JSON 对象（不要输出多余解释或 Markdown 以外的文字）。"
+        },
+        {
+          "role": "user",
+          "content": "参考日期：2026-11-24\n事项：居住证申领\n用户情况：外地来沪务工人员，2026-08-15办理居住登记（距2026-11-24仅约3个月零9天），在当地租房，拟本人现场申领居住证。\n\n【办事通知原文】\n[S1] filename=mps_residence_permit_regulation.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】居住证申领（依据《居住证暂行条例》）\nL2: 【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\nL3: 【基本材料1】本人居民身份证原件。\nL4: 【基本材料2】申领人近期标准证件相片。\nL5: 【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\nL6: 【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\n\n【用户现有材料】\n- I01: 居住登记凭证（登记日期为2026-08-15）\n- I02: 本人居民身份证原件（有效期内）\n- I03: 近期标准证件相片（纸质2张）\n- I04: 租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\n\n请输出 JSON：\n- overall_status: \"ready\" | \"not_ready\" | \"needs_confirmation\"\n- summary_zh: 一句话结论\n- requirements: 数组，每项含 id, item, necessity(\"required\"|\"conditional\"|\"optional\"), condition(无则为null), applicability(\"applies\"|\"not_applicable\"|\"unknown\"), status(\"ready\"|\"missing\"|\"expired\"|\"conflict\"|\"needs_confirmation\"|\"not_applicable\"), matched_inventory_ids, reason, evidence([{source_id, locator, quote}])\n- actions: 数组，每项含 id, action, priority(\"blocking\"|\"high\"|\"normal\"), evidence([{source_id, locator, quote}])\n- plain_language_steps_zh: 3-5条通俗分步指南（保留资格、材料规格与截止时限）\n- bilingual_steps_en: 无需英文，bilingual_steps_en 填 []。\n- questions: 待确认问题数组\n- limitations: 局限说明数组\n"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "low"
+      }
+    }
+  },
+  "parsed_ok": true,
+  "skillhub_strict": {
+    "valid": false,
+    "errors": [
+      "requirements[0].status must be one of ['conflict', 'expired', 'missing', 'needs_confirmation', 'not_applicable', 'ready']",
+      "requirements[0].evidence[1] has unknown source_id: 'I01'",
+      "requirements[1].evidence[1] has unknown source_id: 'I04'",
+      "requirements[2].evidence[1] has unknown source_id: 'I02'",
+      "requirements[3].evidence[1] has unknown source_id: 'I03'",
+      "requirements[4].matched_inventory_ids must identify evidence for a ready item",
+      "actions[1].evidence[1] has unknown source_id: 'I04'",
+      "overall_status must be 'needs_confirmation' for the requirement statuses, got 'not_ready'",
+      "questions must be a list of non-empty strings"
+    ],
+    "warnings": [],
+    "exit_code": 1
+  },
+  "quote_check": {
+    "total_quotes": 12,
+    "verbatim_hits": 7,
+    "verbatim_rate": 0.5833,
+    "misses": [
+      {
+        "section": "requirements",
+        "item_id": "R1",
+        "source_id": "I01",
+        "locator": "登记日期为2026-08-15",
+        "quote": "居住登记凭证（登记日期为2026-08-15）",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R2",
+        "source_id": "I04",
+        "locator": "租房合同照片",
+        "quote": "租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R3",
+        "source_id": "I02",
+        "locator": "本人居民身份证原件（有效期内）",
+        "quote": "本人居民身份证原件（有效期内）",
+        "actual_line": ""
+      },
+      {
+        "section": "requirements",
+        "item_id": "R4",
+        "source_id": "I03",
+        "locator": "近期标准证件相片（纸质2张）",
+        "quote": "近期标准证件相片（纸质2张）",
+        "actual_line": ""
+      },
+      {
+        "section": "actions",
+        "item_id": "A2",
+        "source_id": "I04",
+        "locator": "租房合同照片",
+        "quote": "租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）",
+        "actual_line": ""
+      }
+    ]
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "满半年",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证原件",
+          "survived": true
+        },
+        {
+          "clause": "复印件1份",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "15日内",
+          "survived": true
+        },
+        {
+          "clause": "30日",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "missing_or_conflict",
+        "keywords": [
+          "租赁合同",
+          "原件"
+        ],
+        "passed": false
+      },
+      {
+        "bucket": "conflict_or_missing_elig",
+        "keywords": [
+          "满半年"
+        ],
+        "passed": false
+      }
+    ],
+    "all_traps_passed": false
+  }
+}

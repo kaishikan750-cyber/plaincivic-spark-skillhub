@@ -1,0 +1,241 @@
+{
+  "mode": "skill_v2",
+  "thinking_mode": "high",
+  "case_id": "C05",
+  "stage_a_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"居住证申领前置资格\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人居民身份证原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】本人居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"申领人近期标准证件相片\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"合法稳定住所证明或劳动合同/在读证明\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限\",\n      \"exact_text\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}",
+    "reasoning_content": "我们需要回答用户要求：输出合法 JSON 对象，根据 skill 第一步先提取要求再查看现有材料。用户给了原文 S1 和 L1-L6，没有 S2。需要提取所有可核验资格条件、申请截止/前置时限、必备/条件材料、多源冲突项、不可读附件；一般性受理后审批工作日/收费标准/开放时间/不设截止日期记入 service_info_notes。格式 JSON 必须符合指定结构。\n\n需要仔细解析原文。\n\nS1 filename=mps_residence_permit_regulation.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】居住证申领（依据《居住证暂行条例》）\nL2: 【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\nL3: 【基本材料1】本人居民身份证原件。\nL4: 【基本材料2】申领人近期标准证件相片。\nL5: 【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\nL6: 【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\n\n需要输出 JSON 包含 extracted_requirements 数组，每个对象有 id, category, item, necessity, condition, constraints, source_id, locator, quote。multi_source_conflicts 空数组？因为无 S2。unreadable_sections 空数组。service_info_notes 包含一般性的办理时限、费用、窗口时间、不设截止日期等。这里 L6 是办理时限，应记入 service_info_notes。注意 service_info_notes 中 exact_text 是原文精确表述，source_id, locator。可能只有一个。\n\n需要提取资格条件 R1/L2：前置条件。category eligibility, necessity required? 这是前置条件，是否 required? 应该是 required? 根据格式 necessity: required | conditional | optional。前置条件如果符合才能申领，是必备资格条件，应 required。condition 仅 conditional 时填触发条件，否则 null。这里 L2 包含多个条件：离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一。这是资格条件，necessity required。constraints 保留原文硬限定（如满半年以上等）。quote 直接逐字复制自该行原文片段。需要 quote 是直接复制自该行的原文片段，不是整行？可以整行 L2 原文。注意 L2 原文是：“【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。” 可以直接复制。\n\n基本材料 R2/L3：本人居民身份证原件。category document, necessity required, condition null, constraints 原文硬限定：本人居民身份证原件。quote 直接复制 L3：“【基本材料1】本人居民身份证原件。” 或片段？用户说 quote 直接逐字复制自该行的原文片段。可以整行。但 item 精炼要求名。constraints 保留原文硬限定。L3 的硬限定是“本人居民身份证原件”。可能需要把整行作为 quote，因为该行就是材料条目。但 quote 应该直接复制自该行的一段连续原文短句，可以整行。\n\nR3/L4：申领人近期标准证件相片。category document, necessity required, condition null, constraints 原文硬限定：“申领人近期标准证件相片”。quote L4 整行：“【基本材料2】申领人近期标准证件相片。”\n\nR4/L5：合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。category document, necessity required? 是基本材料3，必备材料，所以 required。condition null? 它本身是材料条件，但格式说 condition 仅 conditional 时填触发条件，否则 null。这里不是资格条件，是材料要求，necessity required。constraints 保留原文硬限定：房屋租赁合同或房屋产权证明原件及复印件1份，或劳动合同/在读证明原件及复印件1份。quote L5 整行：“【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。”\n\n注意 L5 有括号和“或”。需要精确复制。\n\n是否还有其他可核验资格条件？L2 已包含前置条件。无其他。\n\nservice_info_notes: L6 办理时限。label 可以是“办理时限”，exact_text 原文精确表述，source_id S1, locator L6。原文：“【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。” 注意原文有分号。这是一般性的办理时限，记入 service_info_notes。\n\n是否有费用？没有。窗口时间？没有。不设截止日期？没有。只记录有的。\n\nmulti_source_conflicts: 无 S2，空数组。\n\nunreadable_sections: 无，空数组。\n\n需要确保 JSON 合法。不能有额外解释。输出仅 JSON 对象。注意用户要求“每项必须给出精确 source_id、locator、quote”，quote 直接复制自该行的一段连续原文短句，切勿改写。对于 L1 是否要提取？L1 是事项名称，不是要求，不提取。\n\n需要小心 JSON 中的引号、换行。可以输出紧凑或格式化。最好格式化便于阅读。但必须是合法 JSON 对象。不能有 markdown 代码块？用户说输出一个合法 JSON 对象，不要额外解释。通常直接输出 JSON 文本，可以带缩进。不要代码块标记？可能直接输出 JSON 对象即可。为安全，直接输出纯 JSON，不带 ```json 标记。\n\n需要检查提取的 requirements 的 category 取值：eligibility, document, deadline, fee, unreadable。这里资格条件 R1 eligibility；材料 R2-R4 document。办理时限在 service_info_not",
+    "raw_content": "{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\",\n      \"item\": \"居住证申领前置资格\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"\n    },\n    {\n      \"id\": \"R2\",\n      \"category\": \"document\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"本人居民身份证原件\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L3\",\n      \"quote\": \"【基本材料1】本人居民身份证原件。\"\n    },\n    {\n      \"id\": \"R3\",\n      \"category\": \"document\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"申领人近期标准证件相片\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L4\",\n      \"quote\": \"【基本材料2】申领人近期标准证件相片。\"\n    },\n    {\n      \"id\": \"R4\",\n      \"category\": \"document\",\n      \"item\": \"合法稳定住所证明或劳动合同/在读证明\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"constraints\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L5\",\n      \"quote\": \"【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"\n    }\n  ],\n  \"multi_source_conflicts\": [],\n  \"unreadable_sections\": [],\n  \"service_info_notes\": [\n    {\n      \"label\": \"办理时限\",\n      \"exact_text\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L6\"\n    }\n  ]\n}",
+    "prompt_tokens": 940,
+    "completion_tokens": 2043,
+    "total_tokens": 2983,
+    "wall_seconds": 42.931,
+    "tokens_per_sec": 47.59,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第1步【先提取要求，再查看现有材料】。\n请简明直接地输出一个合法 JSON 对象（不要反复数字符数，不要输出额外解释）：\n1. 你看不到用户材料，只能从原文提取正式要求，跳过纯标题行（如“【事项名称】”），严禁加入原文未写的材料。\n2. 每项必须给出精确 source_id（如 \"S1\"）、locator（行号如 \"L4\"）和 quote（直接复制自该行的一段连续原文短句，切勿改写）。\n3. `extracted_requirements` 提取所有可核验的资格条件、申请截止/前置时限、必备/条件材料、多源冲突项与不可读附件；一般性的“受理后审批工作日/收费标准/开放时间/不设截止日期”记入 `service_info_notes`。\n4. 若 S1 与 S2 互相冲突，写入 `multi_source_conflicts` 并列双方，严禁自行选边。\n5. 若原文有扫描模糊/不可读段落，写入 `unreadable_sections`，严禁猜测其中的金额或条款。"
+        },
+        {
+          "role": "user",
+          "content": "事项：居住证申领（参考日期：2026-11-24）\n\n【登记来源全文】\n[S1] filename=mps_residence_permit_regulation.txt | date=2026-11-24 | type=public_official_guide_excerpt | currentness=user_provided_current\nL1: 【事项名称】居住证申领（依据《居住证暂行条例》）\nL2: 【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\nL3: 【基本材料1】本人居民身份证原件。\nL4: 【基本材料2】申领人近期标准证件相片。\nL5: 【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\nL6: 【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\n\n输出 JSON：\n{\n  \"extracted_requirements\": [\n    {\n      \"id\": \"R1\",\n      \"category\": \"eligibility\" | \"document\" | \"deadline\" | \"fee\" | \"unreadable\",\n      \"item\": \"精炼要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": \"仅 conditional 时填触发条件，否则 null\",\n      \"constraints\": \"保留原文硬限定（如原件/复印件2份/白底/6个月内/30日内/7日前/15个工作日）\",\n      \"source_id\": \"S1\",\n      \"locator\": \"L2\",\n      \"quote\": \"直接逐字复制自该行的原文片段\"\n    }\n  ],\n  \"multi_source_conflicts\": [\n    {\"topic\": \"冲突项\", \"side_a\": {\"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"原文\"}, \"side_b\": {\"source_id\": \"S2\", \"locator\": \"L2\", \"quote\": \"原文\"}}\n  ],\n  \"unreadable_sections\": [\n    {\"source_id\": \"S1\", \"locator\": \"L7\", \"quote\": \"原文不可读摘录\"}\n  ],\n  \"service_info_notes\": [\n    {\"label\": \"办理时限/费用/窗口时间\", \"exact_text\": \"原文精确表述\", \"source_id\": \"S1\", \"locator\": \"L8\"}\n  ]\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 5120,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_a_parsed": {
+    "extracted_requirements": [
+      {
+        "id": "R1",
+        "category": "eligibility",
+        "item": "居住证申领前置资格",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。",
+        "source_id": "S1",
+        "locator": "L2",
+        "quote": "【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。"
+      },
+      {
+        "id": "R2",
+        "category": "document",
+        "item": "本人居民身份证原件",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "本人居民身份证原件",
+        "source_id": "S1",
+        "locator": "L3",
+        "quote": "【基本材料1】本人居民身份证原件。"
+      },
+      {
+        "id": "R3",
+        "category": "document",
+        "item": "申领人近期标准证件相片",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "申领人近期标准证件相片",
+        "source_id": "S1",
+        "locator": "L4",
+        "quote": "【基本材料2】申领人近期标准证件相片。"
+      },
+      {
+        "id": "R4",
+        "category": "document",
+        "item": "合法稳定住所证明或劳动合同/在读证明",
+        "necessity": "required",
+        "condition": null,
+        "constraints": "合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。",
+        "source_id": "S1",
+        "locator": "L5",
+        "quote": "【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。"
+      }
+    ],
+    "multi_source_conflicts": [],
+    "unreadable_sections": [],
+    "service_info_notes": [
+      {
+        "label": "办理时限",
+        "exact_text": "【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。",
+        "source_id": "S1",
+        "locator": "L6"
+      }
+    ]
+  },
+  "stage_b_spark": {
+    "thinking_mode": "high",
+    "model": "D:\\tools\\spark-runtime\\models\\XHToken--Spark-X2.6-4B-GGUF\\Spark-X2.6-4B-Q4_K_M.gguf",
+    "content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"居住证申领前置资格（离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"2026-08-15办理居住登记，至2026-11-24仅约3个月零9天，不足半年以上，前置资格不满足。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已有本人居民身份证原件且在有效期内。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已有近期标准证件相片纸质2张，满足材料要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"仅有手机拍摄的租房合同照片，缺少纸质租赁合同原件及复印件1份，不满足住所证明要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"先核实居住登记是否满半年：若未满半年，需补办居住登记至满半年以上后再申请；同时现场补齐纸质租房合同原件及复印件1份。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"当前居住登记自2026-08-15起是否已满半年？若未满，是否可先补办居住登记再申领？\"\n  ],\n  \"plain_language_summary_zh\": \"目前居住登记还差约3个月半，未满半年，租房合同也缺纸质原件和复印件，暂不符合申领条件，需补足后再申请。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：确认居住登记是否已满半年（2026-08-15起需满半年以上），未满的先在居住地补办居住登记满半年。\",\n    \"第2步：带上本人居民身份证原件、近期标准证件相片纸质2张，以及租房合同纸质原件和复印件1份。\",\n    \"第3步：到居住证申领窗口现场提交材料，工作人员核验后制作发放居住证。\",\n    \"第4步：注意居住证办理时限，符合条件的自受理之日起15日内制作发放，交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "reasoning_content": "我们需要回答用户要求直接输出 JSON。需要按照 SkillHub 技能流程，条件解析→材料比对→状态计算→无障碍改写。我们已有 Stage A 盲提结果。需要基于用户画像、现有材料、基准日 2026-11-24，判断 applicability、status、overall_status、actions、questions、plain_language_steps_zh等。\n\n需要仔细分析。\n\n用户：外地来沪务工人员，2026-08-15办理居住登记（距2026-11-24约3个月零9天），在当地租房，拟本人现场申领居住证。\n\n画像明确排除？没有排除单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚。用户是外地来沪务工人员，成年人，合法稳定住所（租房），符合资格。因此 applicability=\"applies\"。\n\n现有材料：\nI01: 居住登记凭证（登记日期2026-08-15）\nI02: 本人居民身份证原件（有效期内）\nI03: 近期标准证件相片（纸质2张）\nI04: 租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\n\nStage A requirements:\nR1 eligibility: 前置资格：居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一。用户 2026-08-15 登记，距 2026-11-24 约3个月零9天，不足半年（满半年需 6 个月）。注意“满半年以上”是居住登记满半年以上，即至少 6 个月。2026-08-15 到 2026-11-24 是 3个月9天，不足半年。但是用户拟本人现场申领居住证，是否可能现在申领资格不符合？需要确认是否居住登记未满半年。根据条件，必须满半年以上。所以 R1 应该是 missing? 还是 needs_confirmation? 用户已有居住登记，但未满半年。Stage A 没有提取该日期计算。根据整体状态铁律：有任一 missing/expired/conflict → not_ready；否则 needs_confirmation → needs_confirmation；否则 ready。这里资格不满足（未满半年），应标 status=\"missing\"？ 或者 \"needs_confirmation\"？ 因为用户明确 2026-08-15 登记，现在 2026-11-24，确实不满半年。不能猜测，但已有日期明确，所以可判定 missing。但注意：居住证申领条件“办理居住登记满半年以上”是硬性前置资格，不满足则不能申领。所以 R1 status=\"missing\"（缺少满半年条件？ 也许 missing 表示材料缺失，但资格条件缺失）。需要看技能定义：status 可能 missing 表示材料缺失，expired 超期，conflict 冲突，needs_confirmation 待确认，not_applicable 不适用。这里 R1 是资格条件，不是材料。用户资格不满足，应标 \"missing\" 还是 \"needs_confirmation\"？ 用户画像明确说 2026-08-15办理居住登记，距现在仅约3个月零9天，不足半年。因此可判定资格不满足，属于 missing（缺少满半年条件）。但需要谨慎：也许有其他途径？用户拟现场申领，可能居住登记未满半年不能申领，需先补登记满半年或转诊等。但现有材料明确，应标 missing 或 needs_confirmation？ 根据规则：“用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 applicability=unknown, status=needs_confirmation”。这里用户已说明居住登记日期和租房，关键身份明确。所以不是 unknown。资格不满足是确定事实。可标 missing。\n\nR2: 本人居民身份证原件：I02 已有有效期内 → status ready, matched_inventory_ids [\"I02\"], evidence S1:L3。\nR3: 申领人近期标准证件相片：I03 有纸质2张 → 是否满足？通常居住证需要近期标准相片，纸质2张？ 用户说“近期标准证件相片（纸质2张）”，这应该满足。status ready, matched_inventory_ids [\"I03\"], evidence S1:L4。但注意可能要求1份？ 材料有2张，满足。\nR4: 合法稳定住所证明：要求房屋租赁合同或房屋产权证明原件及复印件1份。用户 I04 是租房合同照片，仅有手机拍摄，无纸质原件及复印件 → 不满足原件及复印件。应标 status=\"missing\" 或 \"conflict\"? 仅有照片缺原件/复印件，规则说“仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 missing 或 conflict”。这里缺少纸质原件及复印件，属于材料缺失，应标 missing。matched_inventory_ids 可包括 I04? 但 status 是 missing 表示不满足，matched_inventory_ids 可能列已有材料？ 契约里 matched_inventory_ids 用于 status ready 必须填写至少一个。对于 missing 可以填 [\"I04\"] 表示已检查但缺失原件/复印件？ 需要看格式。通常 matched_inventory_ids 是匹配到的材料ID，即使 status missing 也可以列已识别但未满足的。但契约说“status==\"ready\" 必须填写至少一个 matched_inventory_ids”，没有说 missing 不能填。可以填 [\"I04\"] 表示已匹配到该材料但缺原件/复印件。不过为了清晰，可以填 [\"I04\"] 或空？ 最好填 [\"I04\"] 以表明已比对到租房合同照片，但状态是 missing 因为缺原件及复印件。证据引用 S1:L5。\n\nR1 的 matched_inventory_ids 可能包括 I01（居住登记凭证）？ 因为 R1 资格涉及居住登记满半年。I01 是居住登记凭证，但状态不满足满半年。可以 matched_inventory_ids [\"I01\"] 表示已匹配到居住登记凭证，但日期不足半年。证据 S1:L2。\n\nR4 ",
+    "raw_content": "{\n  \"overall_status\": \"not_ready\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"居住证申领前置资格（离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一）\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"2026-08-15办理居住登记，至2026-11-24仅约3个月零9天，不足半年以上，前置资格不满足。\",\n      \"evidence_refs\": [\"S1:L2\"]\n    },\n    {\n      \"id\": \"R2\",\n      \"item\": \"本人居民身份证原件\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I02\"],\n      \"reason\": \"已有本人居民身份证原件且在有效期内。\",\n      \"evidence_refs\": [\"S1:L3\"]\n    },\n    {\n      \"id\": \"R3\",\n      \"item\": \"申领人近期标准证件相片\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"ready\",\n      \"matched_inventory_ids\": [\"I03\"],\n      \"reason\": \"已有近期标准证件相片纸质2张，满足材料要求。\",\n      \"evidence_refs\": [\"S1:L4\"]\n    },\n    {\n      \"id\": \"R4\",\n      \"item\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份\",\n      \"necessity\": \"required\",\n      \"condition\": null,\n      \"applicability\": \"applies\",\n      \"status\": \"missing\",\n      \"matched_inventory_ids\": [\"I04\"],\n      \"reason\": \"仅有手机拍摄的租房合同照片，缺少纸质租赁合同原件及复印件1份，不满足住所证明要求。\",\n      \"evidence_refs\": [\"S1:L5\"]\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"T1\",\n      \"action\": \"先核实居住登记是否满半年：若未满半年，需补办居住登记至满半年以上后再申请；同时现场补齐纸质租房合同原件及复印件1份。\",\n      \"priority\": \"blocking\",\n      \"evidence_refs\": [\"S1:L2\", \"S1:L5\"]\n    }\n  ],\n  \"questions\": [\n    \"当前居住登记自2026-08-15起是否已满半年？若未满，是否可先补办居住登记再申领？\"\n  ],\n  \"plain_language_summary_zh\": \"目前居住登记还差约3个月半，未满半年，租房合同也缺纸质原件和复印件，暂不符合申领条件，需补足后再申请。\",\n  \"plain_language_steps_zh\": [\n    \"第1步：确认居住登记是否已满半年（2026-08-15起需满半年以上），未满的先在居住地补办居住登记满半年。\",\n    \"第2步：带上本人居民身份证原件、近期标准证件相片纸质2张，以及租房合同纸质原件和复印件1份。\",\n    \"第3步：到居住证申领窗口现场提交材料，工作人员核验后制作发放居住证。\",\n    \"第4步：注意居住证办理时限，符合条件的自受理之日起15日内制作发放，交通不便地区最长不超过30日。\"\n  ],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}",
+    "prompt_tokens": 2007,
+    "completion_tokens": 2322,
+    "total_tokens": 4329,
+    "wall_seconds": 54.057,
+    "tokens_per_sec": 42.95,
+    "finish_reason": "stop",
+    "request_payload": {
+      "model": "Spark-X2.6-4B-Q4_K_M",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你正在执行 SkillHub 技能「生活办事材料核验管家」(v20260716.135124) 第2–5步【条件解析→材料比对→状态计算→无障碍改写】。\n请简明思考并直接输出合法 JSON（系统会自动补全 case/sources/完整原文引文/limitations 契约字段，无需重复抄写长引文，也不要数字符数）：\n1. 【不替用户猜身份】：`applicability` 仅限 `\"applies\"` / `\"not_applicable\"` / `\"unknown\"`。\n   - 用户画像明确排除（单人无随迁、成年非未成年、民营退休非国家工作人员、未婚非已婚）→ `applicability=\"not_applicable\"`, `status=\"not_applicable\"`。\n   - 用户画像未说明关键身份或选择（如未说是否长期居住还是转诊、有无居住证）→ 严禁猜测！必须 `applicability=\"unknown\"`, `status=\"needs_confirmation\"`！\n2. 【严格日期算术与状态区分】（基准日 `2026-11-24`）：\n   - 先算准确天数再比较：2026-11-01 到 2026-11-24 为 23 天，23 <= 30（未超期）；\n   - 2026-11-29 距 2026-11-24 仅剩 5 天，5 < 7（已错过“届满7日前”提前申请期 → 标 `\"expired\"` 或 `\"conflict\"`）；\n   - 用户已有但超期的文件（如 2026-03-10 体检报告超 6 个月、2026-10-01 体检单 54 天超 30 日）→ 必须标 `\"expired\"`（不要标 missing！）；\n   - 居住登记 2026-08-15 距 2026-11-24 约 3 个月 < 半年 → 标 `\"conflict\"`；\n   - 仅有手机照片缺原件、复印件份数不够、蓝底非白底 → 标 `\"missing\"` 或 `\"conflict\"`。\n3. 【多源冲突】：若 Stage A 发现 S1 与 S2 冲突，必须在对应 requirement 标 `\"status\": \"conflict\"` 且 `evidence_refs` 同时引用双方行号（如 `[\"S1:L2\", \"S2:L2\"]`），严禁自行选边！\n4. 【不可读门禁】：若 Stage A 存在 `unreadable_sections`，必须建立一条 `status=\"needs_confirmation\"` 的条目，禁止编造金额或条款。\n5. 【契约硬约束】：`necessity==\"conditional\"` 必须有非空 `condition`，否则 `condition=null`；`status==\"ready\"` 必须填写至少一个 `matched_inventory_ids`（如 `[\"I01\"]`）。一般性的审批工作日、收费/免收费、开放时间与“不设报名截止日期”写入 `plain_language_steps_zh`（及英文步骤），不要作为空匹配项放进 `requirements`。\n6. 【整体状态铁律】：有任一 `missing`/`expired`/`conflict` → `\"not_ready\"`；否则有 `needs_confirmation` → `\"needs_confirmation\"`；否则 → `\"ready\"`。\n7. 【中文无障碍易读改写】：输出 4-5 条大白话易读步骤 `plain_language_steps_zh`（适合老人大字与读屏朗读）。无论用户是否已满足，步骤中必须完整保留原文资格条件、原件/复印件份数、照片规格、有效期天数、免费/收费标准、窗口时间及截止时限（含“不设报名截止日期”）。`bilingual_summary_en` 填 \"\"，`bilingual_steps_en` 填 []。"
+        },
+        {
+          "role": "user",
+          "content": "【案件】居住证申领｜参考日期：2026-11-24｜模式：plain_zh\n【用户画像】外地来沪务工人员，2026-08-15办理居住登记（距2026-11-24仅约3个月零9天），在当地租房，拟本人现场申领居住证。\n【现有材料】\n- I01: 居住登记凭证（登记日期为2026-08-15）\n- I02: 本人居民身份证原件（有效期内）\n- I03: 近期标准证件相片（纸质2张）\n- I04: 租房合同照片（仅有手机拍摄的租赁合同照片，无纸质原件及复印件）\n\n【Stage A 盲提结果】\n{\"extracted_requirements\": [{\"id\": \"R1\", \"category\": \"eligibility\", \"item\": \"居住证申领前置资格\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\", \"source_id\": \"S1\", \"locator\": \"L2\", \"quote\": \"【前置条件】公民离开常住户口所在地，到其他城市居住并办理居住登记满半年以上，符合合法稳定就业、合法稳定住所或连续就读条件之一的，可以申领居住证。\"}, {\"id\": \"R2\", \"category\": \"document\", \"item\": \"本人居民身份证原件\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"本人居民身份证原件\", \"source_id\": \"S1\", \"locator\": \"L3\", \"quote\": \"【基本材料1】本人居民身份证原件。\"}, {\"id\": \"R3\", \"category\": \"document\", \"item\": \"申领人近期标准证件相片\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"申领人近期标准证件相片\", \"source_id\": \"S1\", \"locator\": \"L4\", \"quote\": \"【基本材料2】申领人近期标准证件相片。\"}, {\"id\": \"R4\", \"category\": \"document\", \"item\": \"合法稳定住所证明或劳动合同/在读证明\", \"necessity\": \"required\", \"condition\": null, \"constraints\": \"合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\", \"source_id\": \"S1\", \"locator\": \"L5\", \"quote\": \"【基本材料3】合法稳定住所证明（房屋租赁合同或房屋产权证明原件及复印件1份），或劳动合同/在读证明原件及复印件1份。\"}], \"multi_source_conflicts\": [], \"unreadable_sections\": [], \"service_info_notes\": [{\"label\": \"办理时限\", \"exact_text\": \"【办理时限】符合条件的，自受理之日起15日内制作发放居住证；交通不便地区最长不超过30日。\", \"source_id\": \"S1\", \"locator\": \"L6\"}]}\n\n请直接输出 JSON：\n{\n  \"overall_status\": \"ready\" | \"not_ready\" | \"needs_confirmation\",\n  \"requirements\": [\n    {\n      \"id\": \"R1\",\n      \"item\": \"要求名\",\n      \"necessity\": \"required\" | \"conditional\" | \"optional\",\n      \"condition\": null,\n      \"applicability\": \"applies\" | \"not_applicable\" | \"unknown\",\n      \"status\": \"ready\" | \"missing\" | \"expired\" | \"conflict\" | \"needs_confirmation\" | \"not_applicable\",\n      \"matched_inventory_ids\": [\"I01\"],\n      \"reason\": \"简明判定理由与日期计算\",\n      \"evidence_refs\": [\"S1:L2\"]\n    }\n  ],\n  \"actions\": [\n    {\"id\": \"T1\", \"action\": \"出门前补救或准备动作\", \"priority\": \"blocking\" | \"high\" | \"normal\", \"evidence_refs\": [\"S1:L6\"]}\n  ],\n  \"questions\": [\"最多3个待澄清问题，无则 []\"],\n  \"plain_language_summary_zh\": \"一句话大白话结论\",\n  \"plain_language_steps_zh\": [\"第1步：...\", \"第2步：...\"],\n  \"bilingual_summary_en\": \"\",\n  \"bilingual_steps_en\": []\n}"
+        }
+      ],
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "repeat_penalty": 1.08,
+      "presence_penalty": 0.4,
+      "max_tokens": 6144,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "high"
+      }
+    }
+  },
+  "stage_b_parsed_ok": true,
+  "stage_b_retried_no_think": false,
+  "plain_language_summary_zh": "目前居住登记还差约3个月半，未满半年，租房合同也缺纸质原件和复印件，暂不符合申领条件，需补足后再申请。",
+  "plain_language_steps_zh": [
+    "第1步：确认居住登记是否已满半年（2026-08-15起需满半年以上），未满的先在居住地补办居住登记满半年。",
+    "第2步：带上本人居民身份证原件、近期标准证件相片纸质2张，以及租房合同纸质原件和复印件1份。",
+    "第3步：到居住证申领窗口现场提交材料，工作人员核验后制作发放居住证。",
+    "第4步：注意居住证办理时限，符合条件的自受理之日起15日内制作发放，交通不便地区最长不超过30日。"
+  ],
+  "bilingual_summary_en": "",
+  "bilingual_steps_en": [],
+  "pre_repair_strict": {
+    "valid": false,
+    "errors": [
+      "schema_version must be '1.0'",
+      "case must be an object",
+      "sources must be a non-empty list",
+      "requirements[0].evidence must be a non-empty list",
+      "requirements[1].evidence must be a non-empty list",
+      "requirements[2].evidence must be a non-empty list",
+      "requirements[3].evidence must be a non-empty list",
+      "actions[0].evidence must be a non-empty list",
+      "limitations must be a list of non-empty strings"
+    ],
+    "warnings": [
+      "limitations is empty; state the final-review and source-currentness boundary"
+    ],
+    "exit_code": 1
+  },
+  "pre_repair_quotes": {
+    "total_quotes": 4,
+    "verbatim_hits": 4,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "stage_c_repairs": [
+    "limitations: populated mandatory source-currentness and final-review boundary"
+  ],
+  "skillhub_strict": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "exit_code": 0
+  },
+  "quote_check": {
+    "total_quotes": 6,
+    "verbatim_hits": 6,
+    "verbatim_rate": 1.0,
+    "misses": []
+  },
+  "audit": {
+    "overall_expected": "not_ready",
+    "overall_actual": "not_ready",
+    "overall_match": true,
+    "clause_survived": 5,
+    "clause_total": 5,
+    "clause_survival_rate": 1.0,
+    "survival_detail": {
+      "eligibility": [
+        {
+          "clause": "满半年",
+          "survived": true
+        }
+      ],
+      "documents": [
+        {
+          "clause": "身份证原件",
+          "survived": true
+        },
+        {
+          "clause": "复印件1份",
+          "survived": true
+        }
+      ],
+      "deadlines": [
+        {
+          "clause": "15日内",
+          "survived": true
+        },
+        {
+          "clause": "30日",
+          "survived": true
+        }
+      ]
+    },
+    "trap_checks": [
+      {
+        "bucket": "missing_or_conflict",
+        "keywords": [
+          "租赁合同",
+          "原件"
+        ],
+        "passed": true
+      },
+      {
+        "bucket": "conflict_or_missing_elig",
+        "keywords": [
+          "满半年"
+        ],
+        "passed": true
+      }
+    ],
+    "all_traps_passed": true
+  },
+  "total_wall_seconds": 96.988,
+  "total_completion_tokens": 4365
+}

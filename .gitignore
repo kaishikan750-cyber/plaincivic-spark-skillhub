@@ -5,3 +5,5 @@
 *.zip
 !skills/life-service-doc-verifier-20260716.135124.zip
 runtime/
+
+runs/*.log
