@@ -36,6 +36,9 @@ python tests/test_verifier.py
 
 # 2. Place official llama.cpp b12671+ and Spark-X2.6-4B-Q4_K_M.gguf under D:\tools\spark-runtime\
 #    (SHA-256: 91cb2811aebb47ac916aa619d27d4cdd7f4143106b7917accb8ead4cd7f5cbd9)
+#    or point the scripts at another folder: $env:SPARK_RUNTIME_DIR = "E:\my\spark-runtime"
+#    All other paths are resolved relative to this repository, so it can be cloned anywhere.
+python scripts/smoke_test_spark.py
 
 # 3. Run all 4 ablation configs (Baseline v1 + PlainCivic v2 none/low/high) and build demo/index.html
 python scripts/run_all_benchmarks.py
@@ -53,7 +56,11 @@ python scripts/capture_demo_screenshots.py
 | **PlainCivic v2** (`SkillHub`, `thinking=low`, `budget=512`) | **9/10 (90%)** | **10/10 (100%)** | 64/73 (87.7%) | 0/10 → **10/10** | **100.0% → 100.0%** | 79.0s | 3,625 tok (45.9 tok/s) |
 | **PlainCivic v2** (`SkillHub`, `thinking=high`, `budget=1400`) | **9/10 (90%)** | **10/10 (100%)** | **68/73 (93.2%)** | 0/10 → **10/10** | **100.0% → 100.0%** | 121.6s | 5,547 tok (45.6 tok/s) |
 
-Full ready-to-publish submission drafts live in [`submission/HF_DISCUSSION_POST.md`](submission/HF_DISCUSSION_POST.md) and [`submission/GITHUB_ISSUE_32_REPLY.md`](submission/GITHUB_ISSUE_32_REPLY.md).
+## Submission
+
+- **Full entry (Hugging Face Community Discussion):** https://huggingface.co/XHToken/Spark-X2.6-4B/discussions/51
+- **Registration comment (GitHub Issue #32):** https://github.com/XHToken/Spark-X2.6/issues/32#issuecomment-7135568413
+- Published texts are archived in [`submission/HF_DISCUSSION_POST.md`](submission/HF_DISCUSSION_POST.md) and [`submission/GITHUB_ISSUE_32_REPLY.md`](submission/GITHUB_ISSUE_32_REPLY.md).
 
 ## Limitations & Boundaries
 

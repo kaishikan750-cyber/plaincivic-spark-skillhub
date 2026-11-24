@@ -11,7 +11,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
+ROOT = Path(__file__).resolve().parents[1]
 DEMO_HTML = ROOT / "demo" / "index.html"
 SHOTS_DIR = ROOT / "demo" / "screenshots"
 RUNS_DIR = ROOT / "runs"

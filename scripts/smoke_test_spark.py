@@ -4,18 +4,20 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from plaincivic.spark_client import LocalSparkClient  # noqa: E402
 
-SERVER_EXE = Path(r"D:\tools\spark-runtime\llama-b12671-vulkan\llama-server.exe")
-GGUF_PATH = Path(r"D:\tools\spark-runtime\models\XHToken--Spark-X2.6-4B-GGUF\Spark-X2.6-4B-Q4_K_M.gguf")
+RUNTIME = Path(os.environ.get("SPARK_RUNTIME_DIR", r"D:\tools\spark-runtime"))  # override with SPARK_RUNTIME_DIR
+SERVER_EXE = RUNTIME / "llama-b12671-vulkan" / "llama-server.exe"
+GGUF_PATH = RUNTIME / "models" / "XHToken--Spark-X2.6-4B-GGUF" / "Spark-X2.6-4B-Q4_K_M.gguf"
 EXPECTED_SHA = "91cb2811aebb47ac916aa619d27d4cdd7f4143106b7917accb8ead4cd7f5cbd9"
 
 

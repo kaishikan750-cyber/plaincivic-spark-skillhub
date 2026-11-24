@@ -12,8 +12,8 @@ from pathlib import Path
 
 import requests
 
-ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
-RUNTIME = Path(r"D:\tools\spark-runtime")
+ROOT = Path(__file__).resolve().parents[1]
+RUNTIME = Path(os.environ.get("SPARK_RUNTIME_DIR", r"D:\tools\spark-runtime"))  # override with SPARK_RUNTIME_DIR
 VULKAN_ZIP = RUNTIME / "llama-b12671-bin-win-vulkan-x64.zip"
 VULKAN_DIR = RUNTIME / "llama-b12671-vulkan"
 GGUF_PATH = RUNTIME / "models" / "XHToken--Spark-X2.6-4B-GGUF" / "Spark-X2.6-4B-Q4_K_M.gguf"

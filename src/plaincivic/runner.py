@@ -23,7 +23,7 @@ from .verifier import (
     run_skillhub_strict_validator,
 )
 
-ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
+ROOT = Path(__file__).resolve().parents[2]
 CASES_DIR = ROOT / "cases"
 GOLD_PATH = ROOT / "gold" / "gold.json"
 RUNS_DIR = ROOT / "runs"

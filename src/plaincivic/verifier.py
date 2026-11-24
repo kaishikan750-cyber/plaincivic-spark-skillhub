@@ -9,8 +9,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
-SKILLHUB_VALIDATOR = Path(
-    r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub\skills\life-service-doc-verifier\scripts\validate_readiness.py"
+SKILLHUB_VALIDATOR = (
+    Path(__file__).resolve().parents[2] / "skills" / "life-service-doc-verifier" / "scripts" / "validate_readiness.py"
 )
 
 VALID_NECESSITIES = {"required", "conditional", "optional"}

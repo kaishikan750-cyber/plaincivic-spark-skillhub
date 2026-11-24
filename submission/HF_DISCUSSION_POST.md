@@ -3,7 +3,7 @@
 > **Track:** Accessibility and languages (无障碍与多语言)
 > **SkillHub Skill:** [`global/生活办事材料核验管家`](https://skill.xfyun.cn/space/global/%E7%94%9F%E6%B4%BB%E5%8A%9E%E4%BA%8B%E6%9D%90%E6%96%99%E6%A0%B8%E9%AA%8C%E7%AE%A1%E5%AE%B6) (`v20260716.135124`)
 > **Local Model:** [`XHToken/Spark-X2.6-4B-GGUF`](https://huggingface.co/XHToken/Spark-X2.6-4B-GGUF) (`Spark-X2.6-4B-Q4_K_M.gguf`, rev `9d716770ac7477776de5f891f70cdf98b003a5cd`, SHA-256 `91cb2811...5cbd9`) running 100% locally on an NVIDIA RTX 4060 Laptop GPU via `llama.cpp b12671` (Vulkan).
-> **Repository (code, pre-committed gold labels, raw Spark traces, interactive WCAG-AAA demo & screenshots):** `<REPLACE_WITH_YOUR_GITHUB_REPO_URL>`
+> **Repository (code, pre-committed gold labels, raw Spark traces, interactive WCAG-AAA demo & screenshots):** **https://github.com/kaishikan750-cyber/plaincivic-spark-skillhub**
 
 ---
 
@@ -64,33 +64,33 @@ Two underserved real-world groups frequently suffer wasted counter trips (**“�
 
 ## Demo (Illustrated Walkthrough)
 
-> *(Upload the 7 PNG files from `demo/screenshots/` into this Hugging Face Discussion post or link them from your GitHub repo!)*
+> The 7 screenshots below are captured from the offline interactive viewer [`demo/index.html`](https://github.com/kaishikan750-cyber/plaincivic-spark-skillhub/blob/master/demo/index.html) (download the repo and double-click it to explore all 10 cases and the 4 view modes).
 
 ### Walkthrough Screenshots with Captions
 
 1. **Hero Case `C01` — Bilingual ZH/EN Side-by-Side + Click-to-Highlight Verbatim Source Evidence (`S1:L6`)**
-   ![01_c01_bilingual_evidence_highlight](demo/screenshots/01_c01_bilingual_evidence_highlight.png)
+   ![01_c01_bilingual_evidence_highlight](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/01_c01_bilingual_evidence_highlight.png)
    *Caption: Local `Spark-X2.6-4B` (`high`) inspects the NIA 2-year work residence permit guide (`S1`) and applicant inventory (`I01`–`I05`), issues a `not_ready` verdict (`DO NOT GO YET`), catches the blue-background photo (`I03`) and 8-month-expired foreign clinic copy (`I05`), excludes accompanying family proof (`not_applicable`), preserves key clauses in both Chinese plain language and English, and passes SkillHub `validate_readiness.py --strict` (0 errors, 0 warnings).*
 
 2. **Hero Case `C01` — Verifiable Execution Trace (`Spark-X2.6-4B` `<think>` + Raw JSON + Stage C Gate)**
-   ![02_c01_spark_raw_trace_and_gate](demo/screenshots/02_c01_spark_raw_trace_and_gate.png)
+   ![02_c01_spark_raw_trace_and_gate](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/02_c01_spark_raw_trace_and_gate.png)
    *Caption: Full audit trace panel showing exact Stage A blind extraction (3,693 tok @ 45.7 tok/s), Stage B `<think>` reasoning + structured JSON (5,053 tok @ 44.2 tok/s), 100% verbatim quote grounding (9/9), and Stage C contract audit.*
 
 3. **Accessibility Showcase `C04` — Elderly Large-Font High-Contrast Mode (WCAG AAA) + No-Identity-Guessing Rule**
-   ![03_c04_elderly_wcag_aaa_unknown_trap](demo/screenshots/03_c04_elderly_wcag_aaa_unknown_trap.png)
+   ![03_c04_elderly_wcag_aaa_unknown_trap](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/03_c04_elderly_wcag_aaa_unknown_trap.png)
    *Caption: 71-year-old retiree cross-province medical filing (`C04`) rendered in WCAG AAA dark-gold large-font mode (`21px+`). Because the profile omits whether the retiree holds a local residence permit or hospital referral, Spark obeys SkillHub Rule #2 (`applicability="unknown"` → `needs_confirmation`) instead of guessing.*
 
 4. **Multi-Source Conflict `C07` — Side-by-Side Conflicting Civic Notices (`S1` 2024 vs `S2` 2026)**
-   ![04_c07_multi_source_conflict](demo/screenshots/04_c07_multi_source_conflict.png)
+   ![04_c07_multi_source_conflict](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/04_c07_multi_source_conflict.png)
    *Caption: Unlike Baseline v1 (which silently picked `S2` and falsely told the 62-year-old applicant `ready`), PlainCivic v2 cites BOTH `S1:L2` (age ≥ 65) and `S2:L2` (age ≥ 60) side-by-side with `status="conflict"` and blocks premature travel (`not_ready`).*
 
 5. **Screen-Reader Accessibility `C08` — Linearized Plain-Text Mode + Zero-Hallucination No-Deadline Check**
-   ![05_c08_screen_reader_linearized](demo/screenshots/05_c08_screen_reader_linearized.png)
+   ![05_c08_screen_reader_linearized](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/05_c08_screen_reader_linearized.png)
    *Caption: Accessible Braille & Audio Library Card (`C08`) in linearized screen-reader plain text — accurately reports `ready`, zero fee, open Tue–Sun 09:00–17:00, and explicitly preserves "no application deadline" (`不设报名截止日期`) without inventing dates.*
 
 6. **10-Case Ablation Table & Spark-X2.6-4B Thinking Budget Benchmark (`none` / `low` / `high`)**
-   ![06_benchmark_table_10_cases](demo/screenshots/06_benchmark_table_10_cases.png)
-   ![07_thinking_budget_chart](demo/screenshots/07_thinking_budget_chart.png)
+   ![06_benchmark_table_10_cases](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/06_benchmark_table_10_cases.png)
+   ![07_thinking_budget_chart](https://raw.githubusercontent.com/kaishikan750-cyber/plaincivic-spark-skillhub/9048ad39200c5fac1880e06287fd1aeca7b94594/demo/screenshots/07_thinking_budget_chart.png)
 
 ### Actual Input → Raw Spark Output → Final Artifact → Human Review (`C01`)
 
@@ -121,6 +121,11 @@ python scripts/run_all_benchmarks.py
 # 4. Regenerate consecutive walkthrough screenshots and thinking-budget charts
 python scripts/capture_demo_screenshots.py
 ```
+
+### Code or runnable example
+
+- **Repository:** https://github.com/kaishikan750-cyber/plaincivic-spark-skillhub — 3 commits in order: `61d9137` (cases + gold labels + acceptance protocol locked **before** any inference) → `731a730` (pipeline, verifier, runner, demo) → `9048ad3` (40 local GPU runs with raw `trace.json` logs, demo, screenshots).
+- Raw Spark inputs/outputs for every run: [`runs/<config>/<case>/trace.json`](https://github.com/kaishikan750-cyber/plaincivic-spark-skillhub/tree/master/runs); unit tests: `tests/test_verifier.py`.
 
 ### Hardware, runtime version, precision/quantization, prompts and settings
 
@@ -160,7 +165,7 @@ python scripts/capture_demo_screenshots.py
 
 ## Contributors and disclosure
 
-- **Individual contributor:** `<REPLACE_WITH_YOUR_NAME_AND_HF_OR_GITHUB_PROFILE_URL>` (task selection, hardware confirmation, model retrieval, review of outputs and demo, final publication).
+- **Individual contributor:** `kaishikan750-cyber` (GitHub: [@kaishikan750-cyber](https://github.com/kaishikan750-cyber) · Hugging Face: [fafafafwafwfa](https://huggingface.co/fafafafwafwfa)), individual entry (task selection, hardware confirmation, model retrieval, review of outputs and demo, final publication).
 - **How AI assisted development:** Built with assistance from Antigravity (Gemini), which drafted the dataset scaffolding, Python orchestration/verifier code (`src/plaincivic/`), WCAG-AAA HTML demo template, and documentation; all 40 benchmark inferences were genuinely executed locally on the contributor's RTX 4060 GPU using `XHToken/Spark-X2.6-4B-GGUF` (`Q4_K_M`) and verified deterministically against the official SkillHub `validate_readiness.py --strict` script.
 - **Data and dependency sources and permissions:**
   - SkillHub skill `global/生活办事材料核验管家` (`v20260716.135124`) from `https://skill.xfyun.cn`;

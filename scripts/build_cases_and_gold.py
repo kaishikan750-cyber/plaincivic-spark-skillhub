@@ -8,7 +8,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-ROOT = Path(r"C:\Users\qqq\.gemini\antigravity\scratch\plaincivic-spark-skillhub")
+ROOT = Path(__file__).resolve().parents[1]
 CASES_DIR = ROOT / "cases"
 GOLD_DIR = ROOT / "gold"
 

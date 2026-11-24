@@ -1,4 +1,4 @@
-"""Download official llama.cpp b12671 CUDA runtime and Spark-X2.6-4B-Q4_K_M.gguf to D:\\spark-runtime."""
+"""Download official llama.cpp b12671 CUDA runtime and Spark-X2.6-4B-Q4_K_M.gguf to SPARK_RUNTIME_DIR (default D:\\tools\\spark-runtime)."""
 
 import hashlib
 import os
@@ -8,7 +8,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-RUNTIME_ROOT = Path(r"D:\tools\spark-runtime")
+RUNTIME_ROOT = Path(os.environ.get("SPARK_RUNTIME_DIR", r"D:\tools\spark-runtime"))  # override with SPARK_RUNTIME_DIR
 LLAMA_DIR = RUNTIME_ROOT / "llama-b12671-cuda12.4"
 MODEL_DIR = RUNTIME_ROOT / "models" / "XHToken--Spark-X2.6-4B-GGUF"
 
