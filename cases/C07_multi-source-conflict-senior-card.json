@@ -1,0 +1,51 @@
+{
+  "case_id": "C07",
+  "slug": "multi-source-conflict-senior-card",
+  "title_zh": "老年人免费乘车敬老卡办理（新旧两份通知直接冲突）",
+  "title_en": "Senior Free Transit Card (Conflicting Community Poster vs District Notice)",
+  "mode": "plain_zh",
+  "target_user": "62-year-old resident confused between an old community bulletin board poster and a newer district notice",
+  "reference_date": "2026-11-24",
+  "service": "老年人敬老卡（免费乘车卡）申领",
+  "profile_summary": "62周岁本市户籍居民，本人持身份证和手机电子证件照前往办理，手上同时拿到了小区旧公告(S1)和区里新通知(S2)。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "community_poster_2024.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2024-05-01",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【小区宣传栏通知】老年人敬老卡办理须知（2024年5月张贴）",
+        "L2: 办理年龄：仅限年满65周岁及以上的本市户籍老年人办理。",
+        "L3: 必备材料：身份证原件、户口簿原件、近期2寸纸质彩色照片2张。",
+        "L4: 办理费用：首次办卡收取工本费20元。"
+      ]
+    },
+    {
+      "id": "S2",
+      "filename": "district_notice_2026.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-09-15",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【区民政与交通局联合通知】2026年敬老卡便民升级通知（2026年9月15日发布）",
+        "L2: 办理年龄：年满60周岁及以上的常住老年人即可申领。",
+        "L3: 必备材料：身份证原件即可，现场免费采集电子照片，无需携带纸质照片及户口簿。",
+        "L4: 办理费用：首次申领免收工本费。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "居民身份证原件",
+      "details": "年龄62周岁，本市户籍"
+    },
+    {
+      "id": "I02",
+      "name": "手机电子证件照",
+      "details": "无2寸纸质照片，未带户口簿"
+    }
+  ]
+}

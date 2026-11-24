@@ -1,0 +1,48 @@
+{
+  "case_id": "C03",
+  "slug": "passport-renewal-elderly",
+  "title_zh": "老年人普通护照到期换发（清晰就绪案例）",
+  "title_en": "Senior Citizen Ordinary Passport Renewal (Ready Case)",
+  "mode": "plain_zh",
+  "target_user": "68-year-old retired citizen checking whether all documents are complete before visiting the exit-entry hall",
+  "reference_date": "2026-11-24",
+  "service": "中国公民普通护照换发",
+  "profile_summary": "68岁退休居民（原民营企业员工，非登记备案国家工作人员），本人现场办理普通护照换发，现持护照将于2027-03-10到期（剩余不足4个月）。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_ordinary_passport_renewal.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_url": "https://www.nia.gov.cn/",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【事项名称】中国公民普通护照换发",
+        "L2: 【办理条件】护照有效期不足6个月，或签证页即将使用完毕，可申请换发普通护照。",
+        "L3: 【基本材料1】有效期内的原普通护照原件。",
+        "L4: 【基本材料2】本人有效居民身份证原件。",
+        "L5: 【基本材料3】填写完整的《中国公民出入境证件申请表》及符合标准的出入境证件相片（含回执）。",
+        "L6: 【条件材料1】未满16周岁的未成年人，须提交户口簿及监护人身份证原件并由监护人陪同。",
+        "L7: 【条件材料2】登记备案的国家工作人员，须按干部管理权限提交单位出具的同意出境意见函。",
+        "L8: 【办理时限】公安机关出入境管理机构自受理之日起7至15个工作日内办结。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "原普通护照原件",
+      "details": "有效期至2027-03-10（距2026-11-24约3.5个月，不足6个月）"
+    },
+    {
+      "id": "I02",
+      "name": "居民身份证原件",
+      "details": "长期有效"
+    },
+    {
+      "id": "I03",
+      "name": "申请表与出入境相片回执",
+      "details": "已完成现场照相取得合格回执并填写申请表"
+    }
+  ]
+}

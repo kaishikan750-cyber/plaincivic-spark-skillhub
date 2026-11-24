@@ -1,0 +1,44 @@
+{
+  "case_id": "C09",
+  "slug": "child-school-enrollment-proxy",
+  "title_zh": "社区暑托/青少年公益班祖辈代办报名（过期体检+缺复印件+缺委托书）",
+  "title_en": "Grandparent Proxy Enrollment for Community Youth Program (Expiry + Copies + Proxy Trap)",
+  "mode": "plain_zh",
+  "target_user": "Grandfather handling offline registration on behalf of parents for an 8-year-old grandchild",
+  "reference_date": "2026-11-24",
+  "service": "社区青少年公益托管班线下报名",
+  "profile_summary": "孩子的爷爷（非法定监护人）代父母现场为8岁孙子办理报名，参考日期2026-11-24。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "synthetic_youth_program_notice.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-11-10",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【事项名称】社区寒假青少年公益托管班线下报名须知（示范模拟通知）",
+        "L2: 【报名截止】2026年11月28日16:00前至街道服务中心3号窗口提交，逾期不予受理。",
+        "L3: 【基本材料1】儿童户口簿原件及复印件2份。",
+        "L4: 【基本材料2】社区医院出具的30日内有效儿童健康体检单原件。",
+        "L5: 【条件材料1】非监护人本人代办的，须提交监护人亲笔签字的《授权委托书》原件及代办人身份证原件。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "儿童户口簿原件及复印件",
+      "details": "原件1本，但仅复印了1份（少1份）"
+    },
+    {
+      "id": "I02",
+      "name": "儿童健康体检单原件",
+      "details": "开具日期2026-10-01（距2026-11-24已54天，超过30日有效期）"
+    },
+    {
+      "id": "I03",
+      "name": "代办人（爷爷）身份证原件",
+      "details": "有效期内，但未带父母签字的授权委托书"
+    }
+  ]
+}

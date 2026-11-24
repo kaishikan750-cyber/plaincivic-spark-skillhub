@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0",
+  "reference_date": "2026-11-24",
+  "cases": {
+    "C01": {
+      "expected_overall_status": "not_ready",
+      "traps": [
+        "T1_expiry_date_math",
+        "T2_format_original_vs_photo",
+        "T4_not_applicable_no_false_block"
+      ],
+      "must_have_statuses": {
+        "expired_or_conflict": [
+          "身体健康证明",
+          "体检"
+        ],
+        "conflict_or_missing": [
+          "白底",
+          "照片"
+        ],
+        "not_applicable": [
+          "亲属关系",
+          "随迁家属"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "1年以上",
+          "本人到场"
+        ],
+        "documents": [
+          "护照",
+          "白底",
+          "工作许可",
+          "6个月内"
+        ],
+        "deadlines": [
+          "30日内",
+          "15个工作日"
+        ]
+      },
+      "bilingual_survival_en": [
+        "30 days",
+        "15 working days",
+        "white",
+        "1 year",
+        "6 months",
+        "in person"
+      ]
+    },
+    "C02": {
+      "expected_overall_status": "not_ready",
+      "traps": [
+        "T1_expiry_date_math"
+      ],
+      "must_have_statuses": {
+        "missing": [
+          "行程",
+          "机票",
+          "住宿"
+        ],
+        "expired_or_conflict": [
+          "7日前"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "L字"
+        ],
+        "documents": [
+          "护照",
+          "申请表",
+          "行程"
+        ],
+        "deadlines": [
+          "7日前",
+          "7个工作日"
+        ]
+      },
+      "bilingual_survival_en": [
+        "7 days",
+        "7 working days",
+        "passport",
+        "itinerary"
+      ]
+    },
+    "C03": {
+      "expected_overall_status": "ready",
+      "traps": [
+        "T4_not_applicable_no_false_block"
+      ],
+      "must_have_statuses": {
+        "not_applicable": [
+          "未满16周岁",
+          "国家工作人员"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "不足6个月"
+        ],
+        "documents": [
+          "原普通护照",
+          "居民身份证",
+          "相片"
+        ],
+        "deadlines": [
+          "7至15个工作日"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C04": {
+      "expected_overall_status": "needs_confirmation",
+      "traps": [
+        "T3_unknown_identity_no_guess"
+      ],
+      "must_have_statuses": {
+        "needs_confirmation": [
+          "居住证",
+          "承诺书",
+          "转诊"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "异地长期居住",
+          "异地转诊"
+        ],
+        "documents": [
+          "身份证",
+          "备案表"
+        ],
+        "deadlines": [
+          "1个工作日",
+          "当场办结"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C05": {
+      "expected_overall_status": "not_ready",
+      "traps": [
+        "T1_expiry_date_math",
+        "T2_format_original_vs_photo"
+      ],
+      "must_have_statuses": {
+        "missing_or_conflict": [
+          "租赁合同",
+          "原件"
+        ],
+        "conflict_or_missing_elig": [
+          "满半年"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "满半年"
+        ],
+        "documents": [
+          "身份证原件",
+          "复印件1份"
+        ],
+        "deadlines": [
+          "15日内",
+          "30日"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C06": {
+      "expected_overall_status": "ready",
+      "traps": [
+        "T4_not_applicable_no_false_block"
+      ],
+      "must_have_statuses": {
+        "not_applicable": [
+          "结婚证"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "满3个月",
+          "无自有住房"
+        ],
+        "documents": [
+          "身份证原件",
+          "I类银行借记卡"
+        ],
+        "deadlines": [
+          "3个工作日"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C07": {
+      "expected_overall_status": "not_ready",
+      "traps": [
+        "T5_multi_source_conflict"
+      ],
+      "must_have_statuses": {
+        "conflict": [
+          "65周岁",
+          "60周岁",
+          "纸质",
+          "电子",
+          "20元",
+          "免收"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "65周岁",
+          "60周岁"
+        ],
+        "documents": [
+          "身份证原件",
+          "纸质",
+          "电子"
+        ],
+        "deadlines": [
+          "2024",
+          "2026"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C08": {
+      "expected_overall_status": "ready",
+      "traps": [
+        "T6_no_invented_deadline_or_fee"
+      ],
+      "must_have_statuses": {
+        "ready": [
+          "身份证",
+          "残疾人证"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "免收押金与工本费"
+        ],
+        "documents": [
+          "身份证",
+          "残疾人证"
+        ],
+        "deadlines": [
+          "不设报名截止日期",
+          "09:00-17:00"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C09": {
+      "expected_overall_status": "not_ready",
+      "traps": [
+        "T1_expiry_date_math",
+        "T2_format_original_vs_photo"
+      ],
+      "must_have_statuses": {
+        "expired": [
+          "体检单",
+          "30日"
+        ],
+        "missing_or_conflict": [
+          "复印件2份",
+          "授权委托书"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "非监护人本人代办"
+        ],
+        "documents": [
+          "复印件2份",
+          "30日内",
+          "授权委托书"
+        ],
+        "deadlines": [
+          "2026年11月28日16:00"
+        ]
+      },
+      "bilingual_survival_en": []
+    },
+    "C10": {
+      "expected_overall_status": "needs_confirmation",
+      "traps": [
+        "T7_unreadable_section_gate"
+      ],
+      "must_have_statuses": {
+        "needs_confirmation": [
+          "附件B",
+          "模糊"
+        ]
+      },
+      "survival_clauses": {
+        "eligibility": [
+          "毕业2年内",
+          "1年以上劳动合同"
+        ],
+        "documents": [
+          "认证书",
+          "社保",
+          "备案"
+        ],
+        "deadlines": [
+          "2026年11月30日17:00"
+        ]
+      },
+      "bilingual_survival_en": [
+        "2026",
+        "17:00",
+        "2 years",
+        "1 year",
+        "unreadable"
+      ]
+    }
+  }
+}

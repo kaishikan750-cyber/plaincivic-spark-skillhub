@@ -1,0 +1,7 @@
+﻿__pycache__/
+*.pyc
+*.part
+*.gguf
+*.zip
+!skills/life-service-doc-verifier-20260716.135124.zip
+runtime/

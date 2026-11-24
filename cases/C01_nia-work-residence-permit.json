@@ -1,0 +1,59 @@
+{
+  "case_id": "C01",
+  "slug": "nia-work-residence-permit",
+  "title_zh": "外国人工作类居留许可首次申办（2年期）",
+  "title_en": "Foreign National Work Residence Permit (First-Time, 2-Year Validity)",
+  "mode": "bilingual",
+  "target_user": "Newly arrived non-Chinese-speaking software engineer in China preparing an in-person PSB Exit-Entry Administration counter visit",
+  "reference_date": "2026-11-24",
+  "service": "外国人工作类居留许可办理",
+  "profile_summary": "外籍在职工程师，单人首次申办（无随迁家属），2026-11-01持Z签证入境，拟申请2年期工作类居留许可，现场本人办理。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "nia_work_residence_permit_guide.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_url": "https://www.nia.gov.cn/",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【事项名称】外国人工作类居留证件签发（首次申办）",
+        "L2: 【申请时限】持签证入境后需办理居留证件的，应当自入境之日起30日内向拟居留地公安机关出入境管理机构提出申请。",
+        "L3: 【基本材料1】本人有效护照或者其他国际旅行证件原件。",
+        "L4: 【基本材料2】填写完整并签署的《外国人签证证件申请表》，提交一张符合《出入境证件相片照相指引》标准的近期白底彩色免冠照片。",
+        "L5: 【基本材料3】外国人来华工作许可证明及聘用单位出具的工作单位证明函件原件。",
+        "L6: 【条件材料1】申请有效期1年以上居留证件的，须提交当地卫生检疫部门或指定医疗机构出具的6个月内有效《身体健康证明》原件。",
+        "L7: 【条件材料2】有随迁家属一同申请的，须提交经认证的亲属关系证明原件及复印件。",
+        "L8: 【办理时限】公安机关出入境管理机构作出的受理回执有效期自受理之日起不超过15个工作日。",
+        "L9: 【办理方式】首次申请居留证件须由申请人本人到场办理并留存生物特征，不可委托他人代办。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "本人有效护照原件",
+      "details": "有效期至2029-08-20，含2026-11-01入境章（Z字签证）"
+    },
+    {
+      "id": "I02",
+      "name": "外国人签证证件申请表",
+      "details": "已打印填写并由本人签字"
+    },
+    {
+      "id": "I03",
+      "name": "证件照片",
+      "details": "近期蓝底彩色免冠照片2张（非白底）"
+    },
+    {
+      "id": "I04",
+      "name": "外国人工作许可证及单位在职证明函",
+      "details": "均为盖章原件，日期2026-11-18"
+    },
+    {
+      "id": "I05",
+      "name": "体检报告",
+      "details": "海外诊所2026-03-10出具的英文体检报告复印件（距2026-11-24已超过8个月，且非当地卫生检疫部门或指定医疗机构原件）"
+    }
+  ]
+}

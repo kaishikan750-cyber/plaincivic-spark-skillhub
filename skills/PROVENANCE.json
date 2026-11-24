@@ -1,0 +1,21 @@
+{
+  "skill_slug": "生活办事材料核验管家",
+  "skill_namespace": "global",
+  "skill_version": "20260716.135124",
+  "registry": "https://skill.xfyun.cn",
+  "detail_page_url": "https://skill.xfyun.cn/space/global/%E7%94%9F%E6%B4%BB%E5%8A%9E%E4%BA%8B%E6%9D%90%E6%96%99%E6%A0%B8%E9%AA%8C%E7%AE%A1%E5%AE%B6",
+  "metadata_api_url": "https://skill.xfyun.cn/api/v1/skills/%E7%94%9F%E6%B4%BB%E5%8A%9E%E4%BA%8B%E6%9D%90%E6%96%99%E6%A0%B8%E9%AA%8C%E7%AE%A1%E5%AE%B6",
+  "download_api_url": "https://skill.xfyun.cn/api/v1/skills/global/%E7%94%9F%E6%B4%BB%E5%8A%9E%E4%BA%8B%E6%9D%90%E6%96%99%E6%A0%B8%E9%AA%8C%E7%AE%A1%E5%AE%B6/versions/20260716.135124/download",
+  "retrieved_at_utc": "2026-11-24T08:05:21Z",
+  "retrieval_method": "Official SkillHub public registry HTTP API (v1/skills + v1/skills/global/<slug>/versions/<version>/download), retaining the complete original ZIP archive and all 4 extracted files intact.",
+  "zip_file": "skills/life-service-doc-verifier-20260716.135124.zip",
+  "zip_bytes": 8171,
+  "zip_sha256": "5ae081adc8973c051b740c2c9e2554c8c7807f964be9e9c509731f786c5db694",
+  "moderation_verdict": "clean",
+  "files": [
+    "skills/life-service-doc-verifier/SKILL.md",
+    "skills/life-service-doc-verifier/agents/openai.yaml",
+    "skills/life-service-doc-verifier/references/output-contracts.md",
+    "skills/life-service-doc-verifier/scripts/validate_readiness.py"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "case_id": "C06",
+  "slug": "housing-fund-rent-withdrawal",
+  "title_zh": "住房公积金无房租房提取（未婚排除结婚证，全部就绪）",
+  "title_en": "Housing Provident Fund Rent Withdrawal (Unmarried Exclusion, Ready Case)",
+  "mode": "plain_zh",
+  "target_user": "Young single renter checking whether a marriage certificate is needed for rent withdrawal",
+  "reference_date": "2026-11-24",
+  "service": "住房公积金租房提取",
+  "profile_summary": "未婚单身职工，已连续足额缴存住房公积金8个月，在缴存城市名下无自有住房，本人携带证件办理。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "synthetic_housing_fund_rent_guide.txt",
+      "source_type": "synthetic_civic_notice",
+      "source_date": "2026-10-15",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【事项名称】住房公积金无房租房提取（示范模拟政务指南）",
+        "L2: 【办理条件】申请人须在本市连续足额缴存住房公积金满3个月，且本人及配偶在本市无自有住房。",
+        "L3: 【基本材料1】申请人有效居民身份证原件。",
+        "L4: 【基本材料2】申请人本人名下I类银行借记卡原件。",
+        "L5: 【条件材料1】已婚申请人须提供结婚证原件及配偶身份证复印件。",
+        "L6: 【办理时限】审核通过后3个工作日内资金划转至指定银行卡；免收手续费。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "公积金缴存与无房记录",
+      "details": "连续足额缴存8个月，本市无自有住房"
+    },
+    {
+      "id": "I02",
+      "name": "居民身份证原件",
+      "details": "有效期内"
+    },
+    {
+      "id": "I03",
+      "name": "本人I类银行借记卡原件",
+      "details": "状态正常"
+    }
+  ]
+}

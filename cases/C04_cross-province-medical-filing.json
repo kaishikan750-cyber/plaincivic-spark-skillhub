@@ -1,0 +1,41 @@
+{
+  "case_id": "C04",
+  "slug": "cross-province-medical-filing",
+  "title_zh": "老年人跨省异地就医备案（身份条件缺失待确认）",
+  "title_en": "Elderly Cross-Province Medical Insurance Filing (Unknown Applicability Trap)",
+  "mode": "plain_zh",
+  "target_user": "71-year-old retiree moving across provinces to stay with family; profile does not specify whether filing as long-term resident or hospital referral",
+  "reference_date": "2026-11-24",
+  "service": "跨省异地就医直接结算备案",
+  "profile_summary": "71岁城镇职工医保退休人员，计划前往外省子女处居住并看病，但未说明是否已取得当地居住证/户籍、是否采用个人承诺制，也未说明是否属于医院转诊。",
+  "sources": [
+    {
+      "id": "S1",
+      "filename": "cross_province_medical_filing.txt",
+      "source_type": "public_official_guide_excerpt",
+      "source_url": "https://www.gz.gov.cn/",
+      "source_date": "2026-11-24",
+      "currentness": "user_provided_current",
+      "lines": [
+        "L1: 【事项名称】跨省异地就医直接结算备案",
+        "L2: 【基本材料1】有效身份证件或社会保障卡（或医保电子凭证）。",
+        "L3: 【基本材料2】填写完整的《跨省异地就医备案表》。",
+        "L4: 【条件材料1】异地长期居住人员须提交异地户籍证明、居住证、单位派驻证明或个人承诺书之一。",
+        "L5: 【条件材料2】异地转诊就医人员须提交具有转诊资质的定点医疗机构开具的《转诊转院证明》。",
+        "L6: 【办理时限】线上通过国家医保服务平台App办理一般1个工作日内办结；线下窗口材料齐全当场办结。"
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "I01",
+      "name": "居民身份证与社会保障卡原件",
+      "details": "均在有效期内"
+    },
+    {
+      "id": "I02",
+      "name": "跨省异地就医备案表",
+      "details": "已填写基本信息"
+    }
+  ]
+}
